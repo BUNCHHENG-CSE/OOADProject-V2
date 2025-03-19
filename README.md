@@ -55,4 +55,4 @@ or open in **Visual Studio** and press `F5`.
 ## 📞 Support
 For issues, please report to **[tsosupport@gmail.com]** or create an issue on **GitHub**.
 
-✅ **Project is Fully Optimized & Ready for Deployment!** 🚀🔥
+✅ **Project is on going to optimize & Ready for Deployment Soon !** 🚀🔥
