@@ -1,17 +1,22 @@
-namespace OOADPROV2
+using OOADPROV2.Forms;
+
+namespace OOADPROV2;
+
+internal static class Program
 {
-    internal static class Program
+    /// <summary>
+    ///  The main entry point for the application.
+    /// </summary>
+    [STAThread]
+    static void Main()
     {
-        /// <summary>
-        ///  The main entry point for the application.
-        /// </summary>
-        [STAThread]
-        static void Main()
-        {
-            // To customize application configuration such as set high DPI settings or default font,
-            // see https://aka.ms/applicationconfiguration.
-            ApplicationConfiguration.Initialize();
-            Application.Run(new Form1());
-        }
+        // To customize application configuration such as set high DPI settings or default font,
+        // see https://aka.ms/applicationconfiguration.
+        ApplicationConfiguration.Initialize();
+        Application.Run(new LoadingForm());
     }
+    public static string[] Genders { get; set; } = new string[] { "Female", "Male" };
+
 }
+public delegate void AmountCountEventHandler(object? sender, bool result);
+public delegate void LoadingEventHandler(object? sender, bool result);

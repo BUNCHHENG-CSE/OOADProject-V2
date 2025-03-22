@@ -10,6 +10,7 @@ namespace OOADPROV2.Utilities.Function;
 
 public static class SaleReportfunc
 {
+    
     public static (decimal DailySales, decimal MonthlySales, decimal YearlySales) GetOverallIncome(SqlConnection con)
     {
         SqlCommand cmd = new SqlCommand("spGetOverallIncome", con)
@@ -47,7 +48,7 @@ public static class SaleReportfunc
     {
         List<(DateTime, double)> dailySales = new List<(DateTime, double)>();
 
-            SqlCommand cmd = new SqlCommand("spGetDailySales", Program.Connection)
+            SqlCommand cmd = new SqlCommand("spGetDailySales", Helper.Instance.Connection)
             {
                 CommandType = CommandType.StoredProcedure
             };

@@ -177,11 +177,7 @@ partial class CashierForm
     private Panel panelcontrolMain;
     private Button btnCashierProducts;
     private Label label1;
-    private Button btnOverview;
-    private Button btnLogout;
-    private Button btnSale;
-    private Button btnCategory;
-    private Button btnUser;
+    private Button btnLogout;    
     private Button btnOrder;
     private Label LabelUser;
     private PictureBox pictureBox1;

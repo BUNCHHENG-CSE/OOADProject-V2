@@ -309,3 +309,4 @@ partial class AddStaffForm
     private RichTextBox rtxtStaffAddress;
     private ComboBox cBStaffGender;
     private ComboBox cBStaffPosition;
+}

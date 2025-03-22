@@ -241,13 +241,8 @@ partial class AddProductsForm
 
     #endregion
     private Button btnInsert;
-    private TextBox textBox8;
-    private TextBox textBox7;
     private Button btnUploadPhoto;
     private PictureBox picProduct;
-    private Label labelPersonalNumber;
-    private Label labelContactNumber;
-    private Label labelStaffAddress;
     private Label labelDescription;
     private Label labelCategoryID;
     private TextBox txtPrice;
