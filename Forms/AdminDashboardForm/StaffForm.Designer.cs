@@ -27,19 +27,10 @@ partial class StaffForm
     /// </summary>
     private void InitializeComponent()
     {
-        btnAddStaff = new Button();
+        System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(StaffForm));
         flowLayoutPanelStaff = new FlowLayoutPanel();
+        btnAddStaff = new Button();
         SuspendLayout();
-        // 
-        // btnAddStaff
-        // 
-        btnAddStaff.FlatStyle = FlatStyle.Flat;
-        btnAddStaff.ForeColor = Color.FromArgb(243, 244, 243);
-        btnAddStaff.Location = new Point(36, 36);
-        btnAddStaff.Name = "btnAddStaff";
-        btnAddStaff.Size = new Size(49, 46);
-        btnAddStaff.TabIndex = 1;
-        btnAddStaff.UseVisualStyleBackColor = true;
         // 
         // flowLayoutPanelStaff
         // 
@@ -49,14 +40,25 @@ partial class StaffForm
         flowLayoutPanelStaff.Size = new Size(1044, 551);
         flowLayoutPanelStaff.TabIndex = 2;
         // 
+        // btnAddStaff
+        // 
+        btnAddStaff.FlatStyle = FlatStyle.Flat;
+        btnAddStaff.ForeColor = Color.FromArgb(243, 244, 243);
+        btnAddStaff.Image = (Image)resources.GetObject("btnAddStaff.Image");
+        btnAddStaff.Location = new Point(36, 36);
+        btnAddStaff.Name = "btnAddStaff";
+        btnAddStaff.Size = new Size(49, 46);
+        btnAddStaff.TabIndex = 3;
+        btnAddStaff.UseVisualStyleBackColor = true;
+        // 
         // StaffForm
         // 
         AutoScaleDimensions = new SizeF(7F, 15F);
         AutoScaleMode = AutoScaleMode.Font;
         BackColor = Color.FromArgb(243, 244, 243);
         ClientSize = new Size(1092, 802);
-        Controls.Add(flowLayoutPanelStaff);
         Controls.Add(btnAddStaff);
+        Controls.Add(flowLayoutPanelStaff);
         FormBorderStyle = FormBorderStyle.None;
         Name = "StaffForm";
         Text = "StaffForm";
@@ -65,6 +67,6 @@ partial class StaffForm
     }
 
     #endregion
-    private Button btnAddStaff;
     private FlowLayoutPanel flowLayoutPanelStaff;
+    private Button btnAddStaff;
 }

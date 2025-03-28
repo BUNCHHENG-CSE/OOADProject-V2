@@ -28,32 +28,33 @@ partial class CashierForm
     /// </summary>
     private void InitializeComponent()
     {
-        panel1 = new Panel();
+        System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CashierForm));
+        Sidebarpanel = new Panel();
         LabelUser = new Label();
-        btnOrder = new Button();
         btnLogout = new Button();
-        btnCashierProducts = new Button();
-        panel3 = new Panel();
-        label1 = new Label();
-        pictureBox1 = new PictureBox();
+        Titlepanel = new Panel();
         panelcontrolMain = new Panel();
-        panel1.SuspendLayout();
-        panel3.SuspendLayout();
-        ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+        btnOrder = new Button();
+        btnCashierProducts = new Button();
+        logoImage = new PictureBox();
+        labelTitle = new Label();
+        Sidebarpanel.SuspendLayout();
+        Titlepanel.SuspendLayout();
+        ((System.ComponentModel.ISupportInitialize)logoImage).BeginInit();
         SuspendLayout();
         // 
-        // panel1
+        // Sidebarpanel
         // 
-        panel1.BackColor = Color.FromArgb(38, 57, 91);
-        panel1.Controls.Add(LabelUser);
-        panel1.Controls.Add(btnOrder);
-        panel1.Controls.Add(btnLogout);
-        panel1.Controls.Add(btnCashierProducts);
-        panel1.Controls.Add(panel3);
-        panel1.Location = new Point(-1, -1);
-        panel1.Name = "panel1";
-        panel1.Size = new Size(291, 802);
-        panel1.TabIndex = 0;
+        Sidebarpanel.BackColor = Color.FromArgb(38, 57, 91);
+        Sidebarpanel.Controls.Add(btnOrder);
+        Sidebarpanel.Controls.Add(btnCashierProducts);
+        Sidebarpanel.Controls.Add(LabelUser);
+        Sidebarpanel.Controls.Add(btnLogout);
+        Sidebarpanel.Controls.Add(Titlepanel);
+        Sidebarpanel.Location = new Point(-1, -1);
+        Sidebarpanel.Name = "Sidebarpanel";
+        Sidebarpanel.Size = new Size(291, 802);
+        Sidebarpanel.TabIndex = 0;
         // 
         // LabelUser
         // 
@@ -65,21 +66,6 @@ partial class CashierForm
         LabelUser.Size = new Size(101, 28);
         LabelUser.TabIndex = 0;
         LabelUser.Text = "Welcome";
-        // 
-        // btnOrder
-        // 
-        btnOrder.BackColor = Color.FromArgb(38, 57, 91);
-        btnOrder.FlatAppearance.BorderSize = 0;
-        btnOrder.FlatStyle = FlatStyle.Flat;
-        btnOrder.Font = new Font("Sitka Small", 14.2499981F, FontStyle.Bold, GraphicsUnit.Point, 0);
-        btnOrder.ForeColor = Color.FromArgb(212, 203, 229);
-        btnOrder.ImageAlign = ContentAlignment.MiddleLeft;
-        btnOrder.Location = new Point(32, 285);
-        btnOrder.Name = "btnOrder";
-        btnOrder.Size = new Size(234, 38);
-        btnOrder.TabIndex = 8;
-        btnOrder.Text = "Order";
-        btnOrder.UseVisualStyleBackColor = false;
         // 
         // btnLogout
         // 
@@ -96,52 +82,15 @@ partial class CashierForm
         btnLogout.Text = "Logout";
         btnLogout.UseVisualStyleBackColor = false;
         // 
-        // btnCashierProducts
+        // Titlepanel
         // 
-        btnCashierProducts.BackColor = Color.FromArgb(38, 57, 91);
-        btnCashierProducts.Cursor = Cursors.Hand;
-        btnCashierProducts.FlatAppearance.BorderSize = 0;
-        btnCashierProducts.FlatStyle = FlatStyle.Flat;
-        btnCashierProducts.Font = new Font("Sitka Small", 14.2499981F, FontStyle.Bold, GraphicsUnit.Point, 0);
-        btnCashierProducts.ForeColor = Color.FromArgb(212, 203, 229);
-        btnCashierProducts.ImageAlign = ContentAlignment.MiddleLeft;
-        btnCashierProducts.Location = new Point(32, 201);
-        btnCashierProducts.Name = "btnCashierProducts";
-        btnCashierProducts.Size = new Size(234, 38);
-        btnCashierProducts.TabIndex = 1;
-        btnCashierProducts.Text = "Products";
-        btnCashierProducts.UseVisualStyleBackColor = false;
-        // 
-        // panel3
-        // 
-        panel3.BackColor = Color.FromArgb(38, 57, 91);
-        panel3.Controls.Add(label1);
-        panel3.Controls.Add(pictureBox1);
-        panel3.Location = new Point(0, 0);
-        panel3.Name = "panel3";
-        panel3.Size = new Size(291, 100);
-        panel3.TabIndex = 0;
-        // 
-        // label1
-        // 
-        label1.AutoSize = true;
-        label1.BackColor = Color.FromArgb(38, 57, 91);
-        label1.Font = new Font("Sitka Small", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-        label1.ForeColor = Color.FromArgb(212, 203, 229);
-        label1.Location = new Point(110, 48);
-        label1.Name = "label1";
-        label1.Size = new Size(178, 35);
-        label1.TabIndex = 0;
-        label1.Text = "Coffee Beans";
-        // 
-        // pictureBox1
-        // 
-        pictureBox1.Location = new Point(13, 19);
-        pictureBox1.Name = "pictureBox1";
-        pictureBox1.Size = new Size(130, 64);
-        pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-        pictureBox1.TabIndex = 0;
-        pictureBox1.TabStop = false;
+        Titlepanel.BackColor = Color.FromArgb(38, 57, 91);
+        Titlepanel.Controls.Add(labelTitle);
+        Titlepanel.Controls.Add(logoImage);
+        Titlepanel.Location = new Point(0, 0);
+        Titlepanel.Name = "Titlepanel";
+        Titlepanel.Size = new Size(291, 100);
+        Titlepanel.TabIndex = 0;
         // 
         // panelcontrolMain
         // 
@@ -151,34 +100,89 @@ partial class CashierForm
         panelcontrolMain.Size = new Size(1092, 802);
         panelcontrolMain.TabIndex = 1;
         // 
+        // btnOrder
+        // 
+        btnOrder.BackColor = Color.FromArgb(38, 57, 91);
+        btnOrder.FlatAppearance.BorderSize = 0;
+        btnOrder.FlatStyle = FlatStyle.Flat;
+        btnOrder.Font = new Font("Sitka Small", 14.2499981F, FontStyle.Bold, GraphicsUnit.Point, 0);
+        btnOrder.ForeColor = Color.FromArgb(212, 203, 229);
+        btnOrder.Image = (Image)resources.GetObject("btnOrder.Image");
+        btnOrder.ImageAlign = ContentAlignment.MiddleLeft;
+        btnOrder.Location = new Point(28, 292);
+        btnOrder.Name = "btnOrder";
+        btnOrder.Size = new Size(234, 38);
+        btnOrder.TabIndex = 10;
+        btnOrder.Text = "Order";
+        btnOrder.UseVisualStyleBackColor = false;
+        // 
+        // btnCashierProducts
+        // 
+        btnCashierProducts.BackColor = Color.FromArgb(38, 57, 91);
+        btnCashierProducts.Cursor = Cursors.Hand;
+        btnCashierProducts.FlatAppearance.BorderSize = 0;
+        btnCashierProducts.FlatStyle = FlatStyle.Flat;
+        btnCashierProducts.Font = new Font("Sitka Small", 14.2499981F, FontStyle.Bold, GraphicsUnit.Point, 0);
+        btnCashierProducts.ForeColor = Color.FromArgb(212, 203, 229);
+        btnCashierProducts.Image = (Image)resources.GetObject("btnCashierProducts.Image");
+        btnCashierProducts.ImageAlign = ContentAlignment.MiddleLeft;
+        btnCashierProducts.Location = new Point(28, 208);
+        btnCashierProducts.Name = "btnCashierProducts";
+        btnCashierProducts.Size = new Size(234, 38);
+        btnCashierProducts.TabIndex = 9;
+        btnCashierProducts.Text = "Products";
+        btnCashierProducts.UseVisualStyleBackColor = false;
+        // 
+        // logoImage
+        // 
+        logoImage.Image = (Image)resources.GetObject("logoImage.Image");
+        logoImage.Location = new Point(13, 19);
+        logoImage.Name = "logoImage";
+        logoImage.Size = new Size(130, 64);
+        logoImage.SizeMode = PictureBoxSizeMode.Zoom;
+        logoImage.TabIndex = 1;
+        logoImage.TabStop = false;
+        // 
+        // labelTitle
+        // 
+        labelTitle.AutoSize = true;
+        labelTitle.BackColor = Color.FromArgb(38, 57, 91);
+        labelTitle.Font = new Font("Sitka Small", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+        labelTitle.ForeColor = Color.FromArgb(212, 203, 229);
+        labelTitle.Location = new Point(110, 48);
+        labelTitle.Name = "labelTitle";
+        labelTitle.Size = new Size(178, 35);
+        labelTitle.TabIndex = 2;
+        labelTitle.Text = "Coffee Beans";
+        // 
         // CashierForm
         // 
         AutoScaleDimensions = new SizeF(7F, 15F);
         AutoScaleMode = AutoScaleMode.Font;
         ClientSize = new Size(1380, 800);
         Controls.Add(panelcontrolMain);
-        Controls.Add(panel1);
+        Controls.Add(Sidebarpanel);
         Name = "CashierForm";
         StartPosition = FormStartPosition.CenterScreen;
         Text = "Cashier";
         Load += CashierForm_Load;
-        panel1.ResumeLayout(false);
-        panel1.PerformLayout();
-        panel3.ResumeLayout(false);
-        panel3.PerformLayout();
-        ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+        Sidebarpanel.ResumeLayout(false);
+        Sidebarpanel.PerformLayout();
+        Titlepanel.ResumeLayout(false);
+        Titlepanel.PerformLayout();
+        ((System.ComponentModel.ISupportInitialize)logoImage).EndInit();
         ResumeLayout(false);
     }
 
     #endregion
 
-    private Panel panel1;
-    private Panel panel3;
+    private Panel Sidebarpanel;
+    private Panel Titlepanel;
     private Panel panelcontrolMain;
-    private Button btnCashierProducts;
-    private Label label1;
     private Button btnLogout;    
-    private Button btnOrder;
     private Label LabelUser;
-    private PictureBox pictureBox1;
+    private Button btnOrder;
+    private Button btnCashierProducts;
+    private Label labelTitle;
+    private PictureBox logoImage;
 }

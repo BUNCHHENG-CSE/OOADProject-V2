@@ -28,19 +28,10 @@ partial class UserForm
     /// </summary>
     private void InitializeComponent()
     {
-        btnAddUser = new Button();
+        System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserForm));
         flowLayoutPanelUser = new FlowLayoutPanel();
+        btnAddUser = new Button();
         SuspendLayout();
-        // 
-        // btnAddUser
-        // 
-        btnAddUser.FlatStyle = FlatStyle.Flat;
-        btnAddUser.ForeColor = Color.FromArgb(243, 244, 243);
-        btnAddUser.Location = new Point(36, 36);
-        btnAddUser.Name = "btnAddUser";
-        btnAddUser.Size = new Size(49, 46);
-        btnAddUser.TabIndex = 2;
-        btnAddUser.UseVisualStyleBackColor = true;
         // 
         // flowLayoutPanelUser
         // 
@@ -50,13 +41,24 @@ partial class UserForm
         flowLayoutPanelUser.Size = new Size(1044, 551);
         flowLayoutPanelUser.TabIndex = 3;
         // 
+        // btnAddUser
+        // 
+        btnAddUser.FlatStyle = FlatStyle.Flat;
+        btnAddUser.ForeColor = Color.FromArgb(243, 244, 243);
+        btnAddUser.Image = (Image)resources.GetObject("btnAddUser.Image");
+        btnAddUser.Location = new Point(36, 36);
+        btnAddUser.Name = "btnAddUser";
+        btnAddUser.Size = new Size(49, 46);
+        btnAddUser.TabIndex = 4;
+        btnAddUser.UseVisualStyleBackColor = true;
+        // 
         // UserForm
         // 
         AutoScaleDimensions = new SizeF(7F, 15F);
         AutoScaleMode = AutoScaleMode.Font;
         ClientSize = new Size(1092, 802);
-        Controls.Add(flowLayoutPanelUser);
         Controls.Add(btnAddUser);
+        Controls.Add(flowLayoutPanelUser);
         FormBorderStyle = FormBorderStyle.None;
         Name = "UserForm";
         Text = "UserForm";
@@ -65,7 +67,6 @@ partial class UserForm
     }
 
     #endregion
-
-    private Button btnAddUser;
     private FlowLayoutPanel flowLayoutPanelUser;
+    private Button btnAddUser;
 }

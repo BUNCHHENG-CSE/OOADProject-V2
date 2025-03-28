@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace OOADPROV2.Models;
 
-public class Customer
+public class Customers
 {
     public int CustomerID { get; set; }
     public string? CustomerName { get; set; }

@@ -8,13 +8,15 @@ using System.Threading.Tasks;
 
 namespace OOADPROV2.Utilities;
 
-public class Helper
+sealed class Helper
 {
-    private static Helper? _instance;
-    private static readonly object _lock = new object();
+    
     public string ConnectionStringKey { get; set; } = "DBConnectionString";
     public IConfiguration? Configuration { get; private set; }
     public SqlConnection? Connection { get; private set; }
+
+    private static Helper? _instance;
+    private static readonly object _lock = new();
     private Helper() { }
     public static Helper Instance
     {
@@ -22,16 +24,27 @@ public class Helper
         {
             lock (_lock)
             {
-                if (_instance == null)
-                    _instance = new Helper();
+                _instance ??= new Helper();
                 return _instance;
             }
         }
     }
     public void LoadConfiguration(string jsonFile)
     {
-        var builder = new ConfigurationBuilder()
-            .AddJsonFile(jsonFile, optional: false, reloadOnChange: true);
+     
+
+        var builder = new ConfigurationBuilder();
+
+        if (File.Exists(jsonFile))
+        {
+            builder.AddJsonFile(jsonFile, optional: false, reloadOnChange: true);
+        }
+        else
+        {
+            builder.AddJsonFile("DBConnectionFormat.json", optional: false, reloadOnChange: true);
+
+        }
+
         Configuration = builder.Build();
     }
 
@@ -42,7 +55,7 @@ public class Helper
             string? connStr = Configuration?.GetRequiredSection(ConnectionStringKey).Value;
             Connection = new SqlConnection(connStr);
             Connection.Open();
-            MessageBox.Show($"Connected to server successfully", "Connection To Server");
+           // MessageBox.Show($"Connected to server successfully", "Connection To Server");
             return Connection;
         }
         catch (Exception ex)

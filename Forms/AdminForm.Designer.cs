@@ -28,38 +28,39 @@ partial class AdminForm
     /// </summary>
     private void InitializeComponent()
     {
-        panel1 = new Panel();
+        System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AdminForm));
+        Sidebarpanel = new Panel();
         btnProducts = new Button();
-        btnLogout = new Button();
         btnSaleReport = new Button();
+        btnLogout = new Button();
         btnCategory = new Button();
         btnUser = new Button();
         btnStaff = new Button();
         btnDashboard = new Button();
-        panel3 = new Panel();
-        label1 = new Label();
-        pictureBox1 = new PictureBox();
+        Titlepanel = new Panel();
         panelcontrolMain = new Panel();
-        panel1.SuspendLayout();
-        panel3.SuspendLayout();
-        ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+        logoImage = new PictureBox();
+        labelTitle = new Label();
+        Sidebarpanel.SuspendLayout();
+        Titlepanel.SuspendLayout();
+        ((System.ComponentModel.ISupportInitialize)logoImage).BeginInit();
         SuspendLayout();
         // 
-        // panel1
+        // Sidebarpanel
         // 
-        panel1.BackColor = Color.FromArgb(38, 57, 91);
-        panel1.Controls.Add(btnProducts);
-        panel1.Controls.Add(btnLogout);
-        panel1.Controls.Add(btnSaleReport);
-        panel1.Controls.Add(btnCategory);
-        panel1.Controls.Add(btnUser);
-        panel1.Controls.Add(btnStaff);
-        panel1.Controls.Add(btnDashboard);
-        panel1.Controls.Add(panel3);
-        panel1.Location = new Point(-1, -1);
-        panel1.Name = "panel1";
-        panel1.Size = new Size(291, 802);
-        panel1.TabIndex = 0;
+        Sidebarpanel.BackColor = Color.FromArgb(38, 57, 91);
+        Sidebarpanel.Controls.Add(btnProducts);
+        Sidebarpanel.Controls.Add(btnSaleReport);
+        Sidebarpanel.Controls.Add(btnLogout);
+        Sidebarpanel.Controls.Add(btnCategory);
+        Sidebarpanel.Controls.Add(btnUser);
+        Sidebarpanel.Controls.Add(btnStaff);
+        Sidebarpanel.Controls.Add(btnDashboard);
+        Sidebarpanel.Controls.Add(Titlepanel);
+        Sidebarpanel.Location = new Point(-1, -1);
+        Sidebarpanel.Name = "Sidebarpanel";
+        Sidebarpanel.Size = new Size(291, 802);
+        Sidebarpanel.TabIndex = 0;
         // 
         // btnProducts
         // 
@@ -68,13 +69,30 @@ partial class AdminForm
         btnProducts.FlatStyle = FlatStyle.Flat;
         btnProducts.Font = new Font("Sitka Small", 14.2499981F, FontStyle.Bold, GraphicsUnit.Point, 0);
         btnProducts.ForeColor = Color.FromArgb(212, 203, 229);
+        btnProducts.Image = (Image)resources.GetObject("btnProducts.Image");
         btnProducts.ImageAlign = ContentAlignment.MiddleLeft;
-        btnProducts.Location = new Point(32, 287);
+        btnProducts.Location = new Point(50, 286);
         btnProducts.Name = "btnProducts";
         btnProducts.Size = new Size(234, 38);
-        btnProducts.TabIndex = 8;
+        btnProducts.TabIndex = 14;
         btnProducts.Text = "Product";
         btnProducts.UseVisualStyleBackColor = false;
+        // 
+        // btnSaleReport
+        // 
+        btnSaleReport.BackColor = Color.FromArgb(38, 57, 91);
+        btnSaleReport.FlatAppearance.BorderSize = 0;
+        btnSaleReport.FlatStyle = FlatStyle.Flat;
+        btnSaleReport.Font = new Font("Sitka Small", 14.2499981F, FontStyle.Bold, GraphicsUnit.Point, 0);
+        btnSaleReport.ForeColor = Color.FromArgb(212, 203, 229);
+        btnSaleReport.Image = (Image)resources.GetObject("btnSaleReport.Image");
+        btnSaleReport.ImageAlign = ContentAlignment.MiddleLeft;
+        btnSaleReport.Location = new Point(50, 519);
+        btnSaleReport.Name = "btnSaleReport";
+        btnSaleReport.Size = new Size(234, 38);
+        btnSaleReport.TabIndex = 13;
+        btnSaleReport.Text = "Sale Report";
+        btnSaleReport.UseVisualStyleBackColor = false;
         // 
         // btnLogout
         // 
@@ -91,21 +109,6 @@ partial class AdminForm
         btnLogout.Text = "Logout";
         btnLogout.UseVisualStyleBackColor = false;
         // 
-        // btnSaleReport
-        // 
-        btnSaleReport.BackColor = Color.FromArgb(38, 57, 91);
-        btnSaleReport.FlatAppearance.BorderSize = 0;
-        btnSaleReport.FlatStyle = FlatStyle.Flat;
-        btnSaleReport.Font = new Font("Sitka Small", 14.2499981F, FontStyle.Bold, GraphicsUnit.Point, 0);
-        btnSaleReport.ForeColor = Color.FromArgb(212, 203, 229);
-        btnSaleReport.ImageAlign = ContentAlignment.MiddleLeft;
-        btnSaleReport.Location = new Point(32, 520);
-        btnSaleReport.Name = "btnSaleReport";
-        btnSaleReport.Size = new Size(234, 38);
-        btnSaleReport.TabIndex = 5;
-        btnSaleReport.Text = "Sale Report";
-        btnSaleReport.UseVisualStyleBackColor = false;
-        // 
         // btnCategory
         // 
         btnCategory.BackColor = Color.FromArgb(38, 57, 91);
@@ -113,11 +116,12 @@ partial class AdminForm
         btnCategory.FlatStyle = FlatStyle.Flat;
         btnCategory.Font = new Font("Sitka Small", 14.2499981F, FontStyle.Bold, GraphicsUnit.Point, 0);
         btnCategory.ForeColor = Color.FromArgb(212, 203, 229);
+        btnCategory.Image = (Image)resources.GetObject("btnCategory.Image");
         btnCategory.ImageAlign = ContentAlignment.MiddleLeft;
-        btnCategory.Location = new Point(32, 360);
+        btnCategory.Location = new Point(50, 359);
         btnCategory.Name = "btnCategory";
         btnCategory.Size = new Size(234, 38);
-        btnCategory.TabIndex = 4;
+        btnCategory.TabIndex = 12;
         btnCategory.Text = "Category";
         btnCategory.UseVisualStyleBackColor = false;
         // 
@@ -128,11 +132,12 @@ partial class AdminForm
         btnUser.FlatStyle = FlatStyle.Flat;
         btnUser.Font = new Font("Sitka Small", 14.2499981F, FontStyle.Bold, GraphicsUnit.Point, 0);
         btnUser.ForeColor = Color.FromArgb(212, 203, 229);
+        btnUser.Image = (Image)resources.GetObject("btnUser.Image");
         btnUser.ImageAlign = ContentAlignment.MiddleLeft;
-        btnUser.Location = new Point(32, 443);
+        btnUser.Location = new Point(50, 442);
         btnUser.Name = "btnUser";
         btnUser.Size = new Size(234, 38);
-        btnUser.TabIndex = 3;
+        btnUser.TabIndex = 11;
         btnUser.Text = "User";
         btnUser.UseVisualStyleBackColor = false;
         // 
@@ -143,11 +148,12 @@ partial class AdminForm
         btnStaff.FlatStyle = FlatStyle.Flat;
         btnStaff.Font = new Font("Sitka Small", 14.2499981F, FontStyle.Bold, GraphicsUnit.Point, 0);
         btnStaff.ForeColor = Color.FromArgb(212, 203, 229);
+        btnStaff.Image = (Image)resources.GetObject("btnStaff.Image");
         btnStaff.ImageAlign = ContentAlignment.MiddleLeft;
-        btnStaff.Location = new Point(32, 213);
+        btnStaff.Location = new Point(50, 212);
         btnStaff.Name = "btnStaff";
         btnStaff.Size = new Size(234, 38);
-        btnStaff.TabIndex = 2;
+        btnStaff.TabIndex = 10;
         btnStaff.Text = "Staff";
         btnStaff.UseVisualStyleBackColor = false;
         // 
@@ -159,44 +165,24 @@ partial class AdminForm
         btnDashboard.FlatStyle = FlatStyle.Flat;
         btnDashboard.Font = new Font("Sitka Small", 14.2499981F, FontStyle.Bold, GraphicsUnit.Point, 0);
         btnDashboard.ForeColor = Color.FromArgb(212, 203, 229);
+        btnDashboard.Image = (Image)resources.GetObject("btnDashboard.Image");
         btnDashboard.ImageAlign = ContentAlignment.MiddleLeft;
-        btnDashboard.Location = new Point(32, 138);
+        btnDashboard.Location = new Point(50, 137);
         btnDashboard.Name = "btnDashboard";
         btnDashboard.Size = new Size(234, 38);
-        btnDashboard.TabIndex = 1;
+        btnDashboard.TabIndex = 9;
         btnDashboard.Text = "Dashboard";
         btnDashboard.UseVisualStyleBackColor = false;
         // 
-        // panel3
+        // Titlepanel
         // 
-        panel3.BackColor = Color.FromArgb(38, 57, 91);
-        panel3.Controls.Add(label1);
-        panel3.Controls.Add(pictureBox1);
-        panel3.Location = new Point(0, 0);
-        panel3.Name = "panel3";
-        panel3.Size = new Size(291, 100);
-        panel3.TabIndex = 0;
-        // 
-        // label1
-        // 
-        label1.AutoSize = true;
-        label1.BackColor = Color.FromArgb(38, 57, 91);
-        label1.Font = new Font("Sitka Small", 18F, FontStyle.Bold);
-        label1.ForeColor = Color.FromArgb(212, 203, 229);
-        label1.Location = new Point(111, 48);
-        label1.Name = "label1";
-        label1.Size = new Size(178, 35);
-        label1.TabIndex = 0;
-        label1.Text = "Coffee Beans";
-        // 
-        // pictureBox1
-        // 
-        pictureBox1.Location = new Point(13, 23);
-        pictureBox1.Name = "pictureBox1";
-        pictureBox1.Size = new Size(130, 64);
-        pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-        pictureBox1.TabIndex = 1;
-        pictureBox1.TabStop = false;
+        Titlepanel.BackColor = Color.FromArgb(38, 57, 91);
+        Titlepanel.Controls.Add(labelTitle);
+        Titlepanel.Controls.Add(logoImage);
+        Titlepanel.Location = new Point(0, 0);
+        Titlepanel.Name = "Titlepanel";
+        Titlepanel.Size = new Size(291, 100);
+        Titlepanel.TabIndex = 0;
         // 
         // panelcontrolMain
         // 
@@ -206,36 +192,57 @@ partial class AdminForm
         panelcontrolMain.Size = new Size(1092, 802);
         panelcontrolMain.TabIndex = 1;
         // 
+        // logoImage
+        // 
+        logoImage.Image = (Image)resources.GetObject("logoImage.Image");
+        logoImage.Location = new Point(13, 23);
+        logoImage.Name = "logoImage";
+        logoImage.Size = new Size(130, 64);
+        logoImage.SizeMode = PictureBoxSizeMode.Zoom;
+        logoImage.TabIndex = 2;
+        logoImage.TabStop = false;
+        // 
+        // labelTitle
+        // 
+        labelTitle.AutoSize = true;
+        labelTitle.BackColor = Color.FromArgb(38, 57, 91);
+        labelTitle.Font = new Font("Sitka Small", 18F, FontStyle.Bold);
+        labelTitle.ForeColor = Color.FromArgb(212, 203, 229);
+        labelTitle.Location = new Point(113, 48);
+        labelTitle.Name = "labelTitle";
+        labelTitle.Size = new Size(178, 35);
+        labelTitle.TabIndex = 3;
+        labelTitle.Text = "Coffee Beans";
+        // 
         // AdminForm
         // 
         AutoScaleDimensions = new SizeF(7F, 15F);
         AutoScaleMode = AutoScaleMode.Font;
         ClientSize = new Size(1380, 800);
         Controls.Add(panelcontrolMain);
-        Controls.Add(panel1);
+        Controls.Add(Sidebarpanel);
         Name = "AdminForm";
         StartPosition = FormStartPosition.CenterScreen;
         Text = "Admin";
         Load += AdminForm_Load;
-        panel1.ResumeLayout(false);
-        panel3.ResumeLayout(false);
-        panel3.PerformLayout();
-        ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+        Sidebarpanel.ResumeLayout(false);
+        Titlepanel.ResumeLayout(false);
+        Titlepanel.PerformLayout();
+        ((System.ComponentModel.ISupportInitialize)logoImage).EndInit();
         ResumeLayout(false);
     }
 
     #endregion
-
-    private Panel panel1;
-    private Panel panel3;
+    private Panel Sidebarpanel;
+    private Panel Titlepanel;
     private Panel panelcontrolMain;
-    private Button btnDashboard;
-    private Label label1;
     private Button btnLogout;
+    private Button btnProducts;
     private Button btnSaleReport;
     private Button btnCategory;
     private Button btnUser;
     private Button btnStaff;
-    private Button btnProducts;
-    private PictureBox pictureBox1;
+    private Button btnDashboard;
+    private Label labelTitle;
+    private PictureBox logoImage;
 }

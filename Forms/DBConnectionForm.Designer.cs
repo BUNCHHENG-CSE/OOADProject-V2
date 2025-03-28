@@ -30,7 +30,6 @@ partial class DBConnectionForm
     {
         System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DBConnectionForm));
         panel1 = new Panel();
-        pictureBox1 = new PictureBox();
         label1 = new Label();
         labelServerName = new Label();
         labelPassword = new Label();
@@ -44,29 +43,21 @@ partial class DBConnectionForm
         cBAuthentication = new ComboBox();
         btnConnect = new Button();
         btnCancel = new Button();
+        pictureBoxDBLogo = new PictureBox();
         panel1.SuspendLayout();
-        ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+        ((System.ComponentModel.ISupportInitialize)pictureBoxDBLogo).BeginInit();
         SuspendLayout();
         // 
         // panel1
         // 
         panel1.BackColor = Color.White;
-        panel1.Controls.Add(pictureBox1);
+        panel1.Controls.Add(pictureBoxDBLogo);
         panel1.Controls.Add(label1);
         panel1.Location = new Point(0, 1);
         panel1.Name = "panel1";
         panel1.Size = new Size(649, 100);
         panel1.TabIndex = 0;
-        // 
-        // pictureBox1
-        // 
-        pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-        pictureBox1.Location = new Point(60, 22);
-        pictureBox1.Name = "pictureBox1";
-        pictureBox1.Size = new Size(100, 61);
-        pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-        pictureBox1.TabIndex = 13;
-        pictureBox1.TabStop = false;
+       
         // 
         // label1
         // 
@@ -195,6 +186,16 @@ partial class DBConnectionForm
         btnCancel.Text = "Cancel";
         btnCancel.UseVisualStyleBackColor = true;
         // 
+        // pictureBoxDBLogo
+        // 
+        pictureBoxDBLogo.Image = (Image)resources.GetObject("pictureBoxDBLogo.Image");
+        pictureBoxDBLogo.Location = new Point(60, 22);
+        pictureBoxDBLogo.Name = "pictureBoxDBLogo";
+        pictureBoxDBLogo.Size = new Size(100, 61);
+        pictureBoxDBLogo.SizeMode = PictureBoxSizeMode.Zoom;
+        pictureBoxDBLogo.TabIndex = 14;
+        pictureBoxDBLogo.TabStop = false;
+        // 
         // DBConnectionForm
         // 
         AutoScaleDimensions = new SizeF(7F, 15F);
@@ -221,7 +222,7 @@ partial class DBConnectionForm
         Text = "DatabaseConnectionForm";
         panel1.ResumeLayout(false);
         panel1.PerformLayout();
-        ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+        ((System.ComponentModel.ISupportInitialize)pictureBoxDBLogo).EndInit();
         ResumeLayout(false);
         PerformLayout();
     }
@@ -241,6 +242,6 @@ partial class DBConnectionForm
     private ComboBox cBAuthentication;
     private Button btnConnect;
     private Label label1;
-    private PictureBox pictureBox1;
     private Button btnCancel;
+    private PictureBox pictureBoxDBLogo;
 }

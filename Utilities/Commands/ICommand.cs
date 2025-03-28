@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace OOADPROV2.Utilities.Commands;
 
-interface ICommand
+interface ICommand<out T>
 {
-    void Execute();
+    T Execute();
 }

@@ -31,24 +31,15 @@ partial class OrderForm
         DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
         DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
         DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-        btnAddStaff = new Button();
+        System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OrderForm));
         dgvOrder = new DataGridView();
         OrderID = new DataGridViewTextBoxColumn();
         DataOrder = new DataGridViewTextBoxColumn();
         TotalPrice = new DataGridViewTextBoxColumn();
         CustomerID = new DataGridViewTextBoxColumn();
+        btnOrderDetail = new Button();
         ((System.ComponentModel.ISupportInitialize)dgvOrder).BeginInit();
         SuspendLayout();
-        // 
-        // btnAddStaff
-        // 
-        btnAddStaff.FlatStyle = FlatStyle.Flat;
-        btnAddStaff.ForeColor = Color.FromArgb(243, 244, 243);
-        btnAddStaff.Location = new Point(34, 44);
-        btnAddStaff.Name = "btnAddStaff";
-        btnAddStaff.Size = new Size(49, 46);
-        btnAddStaff.TabIndex = 2;
-        btnAddStaff.UseVisualStyleBackColor = true;
         // 
         // dgvOrder
         // 
@@ -114,13 +105,24 @@ partial class OrderForm
         CustomerID.ReadOnly = true;
         CustomerID.Width = 200;
         // 
+        // btnOrderDetail
+        // 
+        btnOrderDetail.FlatStyle = FlatStyle.Flat;
+        btnOrderDetail.ForeColor = Color.FromArgb(243, 244, 243);
+        btnOrderDetail.Image = (Image)resources.GetObject("btnOrderDetail.Image");
+        btnOrderDetail.Location = new Point(34, 47);
+        btnOrderDetail.Name = "btnOrderDetail";
+        btnOrderDetail.Size = new Size(49, 46);
+        btnOrderDetail.TabIndex = 5;
+        btnOrderDetail.UseVisualStyleBackColor = true;
+        // 
         // OrderForm
         // 
         AutoScaleDimensions = new SizeF(7F, 15F);
         AutoScaleMode = AutoScaleMode.Font;
         ClientSize = new Size(1076, 763);
+        Controls.Add(btnOrderDetail);
         Controls.Add(dgvOrder);
-        Controls.Add(btnAddStaff);
         FormBorderStyle = FormBorderStyle.None;
         Name = "OrderForm";
         Text = "OrderForm";
@@ -130,11 +132,10 @@ partial class OrderForm
     }
 
     #endregion
-
-    private Button btnAddStaff;
     private DataGridView dgvOrder;
     private DataGridViewTextBoxColumn OrderID;
     private DataGridViewTextBoxColumn DataOrder;
     private DataGridViewTextBoxColumn TotalPrice;
     private DataGridViewTextBoxColumn CustomerID;
+    private Button btnOrderDetail;
 }

@@ -33,18 +33,18 @@ public static class IDataRecordExtension
     //        Photo = photo,
     //    };
     //}
-    public static Staff ToDisplayStaffID(this IDataReader record)
+    public static Staffs ToDisplayStaffID(this IDataReader record)
     {
         int index = record.GetOrdinal("StaffID");
         int id = record.GetInt32(index);
 
-        return new Staff()
+        return new Staffs()
         {
             StaffID = id,
         };
     }
 
-    public static Staff ToStaffAllData(this IDataReader record)
+    public static Staffs ToStaffAllData(this IDataReader record)
     {
         int index = record.GetOrdinal("StaffID");
         int id = record.GetInt32(index);
@@ -78,7 +78,7 @@ public static class IDataRecordExtension
 
 
 
-        return new Staff()
+        return new Staffs()
         {
             StaffID = id,
             StaffName = staffname,
@@ -93,7 +93,7 @@ public static class IDataRecordExtension
         };
     }
 
-    public static Staff ToStaffNameandPositionPhoto(this IDataReader record)
+    public static Staffs ToStaffNameandPositionPhoto(this IDataReader record)
     {
 
         int index = record.GetOrdinal("StaffName");
@@ -105,7 +105,7 @@ public static class IDataRecordExtension
         index = record.GetOrdinal("Photo");
         byte[] photo = null;
         if (!record.IsDBNull(index)) photo = (byte[])record[index];
-        return new Staff()
+        return new Staffs()
         {
             StaffName = staffname,
             StaffPosition = staffposition,
@@ -126,7 +126,7 @@ public static class IDataRecordExtension
             ProductDescription = record.IsDBNull(record.GetOrdinal("ProductsDescription")) ? null : record.GetString(record.GetOrdinal("ProductsDescription")),
             ProductsStock = record.IsDBNull(record.GetOrdinal("ProductsStock")) ? 0 : record.GetInt32(record.GetOrdinal("ProductsStock")),
             ProductImage = record.IsDBNull(record.GetOrdinal("ProductsImage")) ? null : (byte[])record["ProductsImage"],
-            Category = new Category
+            Category = new Categories
             {
                 CategoryID = record.GetInt32(record.GetOrdinal("CategoryID")),
                 CategoryName = record.IsDBNull(record.GetOrdinal("CategoryName")) ? null : record.GetString(record.GetOrdinal("CategoryName")),
@@ -138,7 +138,7 @@ public static class IDataRecordExtension
     #endregion
 
     #region Get Category INFO. 
-    public static Category ToDisplayCategory(this IDataReader record)
+    public static Categories ToDisplayCategory(this IDataReader record)
     {
         int index = record.GetOrdinal("CategoryID");
         int id = record.GetInt32(index);
@@ -148,18 +148,18 @@ public static class IDataRecordExtension
 
         index = record.GetOrdinal("CategoryDescription");
         string? categoryDescription = record.GetString(index);
-        return new Category()
+        return new Categories()
         {
            CategoryID = id,
            CategoryName = categoryName,
             CategoryDescription = categoryDescription
         };
     }
-    public static Category ToDisplayCategoryID(this IDataReader record)
+    public static Categories ToDisplayCategoryID(this IDataReader record)
     {
         int index = record.GetOrdinal("CategoryID");
         int id = record.GetInt32(index);
-        return new Category()
+        return new Categories()
         {
             CategoryID = id,
         };
@@ -167,22 +167,22 @@ public static class IDataRecordExtension
 
     #endregion
     #region Get User INFO
-    public static User ToDisplayUser(this IDataReader record)
+    public static Users ToDisplayUser(this IDataReader record)
     {
         int index = record.GetOrdinal("UserID");
         int id = record.GetInt32(index);
 
         index = record.GetOrdinal("Username");
         string? username = record.GetString(index);
-        return new User()
+        return new Users()
         {
             UserID = id,
             Username = username,
         };
     }
-    public static User ToUserAllData(this IDataReader record)
+    public static Users ToUserAllData(this IDataReader record)
     {
-        Staff staff = new Staff();
+        Staffs staff = new Staffs();
 
         int index = record.GetOrdinal("UserID");
         int id = record.GetInt32(index);
@@ -206,7 +206,7 @@ public static class IDataRecordExtension
         byte[] photo = null;
         if (!record.IsDBNull(index)) photo = (byte[])record[index];
         staff.Photo = photo;
-        return new User()
+        return new Users()
         {
             UserID = id,
             Username = username,
@@ -214,9 +214,9 @@ public static class IDataRecordExtension
             Staff = staff
         };
     }
-    public static User ToUserAllDataToLogin(this IDataReader record)
+    public static Users ToUserAllDataToLogin(this IDataReader record)
     {
-        Staff staff = new Staff();
+        Staffs staff = new Staffs();
         int index = record.GetOrdinal("UserID");
         int id = record.GetInt32(index);
 
@@ -235,7 +235,7 @@ public static class IDataRecordExtension
         index = record.GetOrdinal("StaffPosition");
         staff.StaffPosition = record.GetString(index);
 
-        return new User()
+        return new Users()
         {
             UserID = id,
             Username = username,
@@ -248,7 +248,7 @@ public static class IDataRecordExtension
     #endregion
 
         #region Order
-    public static Order ToDisplayOrder(this IDataRecord record)
+    public static Orders ToDisplayOrder(this IDataRecord record)
     {
         int index = record.GetOrdinal("OrderID");
         int orderid = record.GetInt32(index);
@@ -262,21 +262,21 @@ public static class IDataRecordExtension
         index = record.GetOrdinal("CustomerID");
         int customerID = record.GetInt32(index);
 
-        return new Order
+        return new Orders
         {
             OrderID = orderid,
             DateOrder = dateorder,
             TotalPrice = totalprice,
-            Customer = new Customer
+            Customer = new Customers
             {
                 CustomerID = customerID
             }   
         };
     }
 
-    public static Order ToOrderBasicInfo(this IDataRecord record)
+    public static Orders ToOrderBasicInfo(this IDataRecord record)
     {
-        return new Order
+        return new Orders
         {
             OrderID = record.GetInt32(record.GetOrdinal("OrderID")),
             DateOrder = record.GetDateTime(record.GetOrdinal("DateOrder"))
@@ -287,14 +287,14 @@ public static class IDataRecordExtension
     #endregion
 
     #region OrderDetail
-    public static OrderDetail ToDisplayOrderDetail(this IDataRecord record)
+    public static OrderDetails ToDisplayOrderDetail(this IDataRecord record)
     {
-        return new OrderDetail
+        return new OrderDetails
         {
             OrderDetailID = record.GetInt32(record.GetOrdinal("OrderDetailID")),
             OrderQty = record.GetInt32(record.GetOrdinal("OrderQty")),
             UnitPrice = record.GetFloat(record.GetOrdinal("UnitPrice")),
-            Order = new Order
+            Order = new Orders
             {
                 OrderID = record.GetInt32(record.GetOrdinal("OrderID"))
             },
@@ -304,7 +304,7 @@ public static class IDataRecordExtension
             }
         };
     }
-    public static OrderDetail ToOrderDetailWithProductInfo(this IDataReader record)
+    public static OrderDetails ToOrderDetailWithProductInfo(this IDataReader record)
     {
         int orderDetailId = record.GetInt32(record.GetOrdinal("OrderDetailID"));
         int orderQty = record.GetInt32(record.GetOrdinal("OrderQty"));
@@ -313,12 +313,12 @@ public static class IDataRecordExtension
         int productId = record.GetInt32(record.GetOrdinal("ProductsID"));
         string? productName = record.IsDBNull(record.GetOrdinal("ProductName")) ? null : record.GetString(record.GetOrdinal("ProductName"));
 
-        return new OrderDetail
+        return new OrderDetails
         {
             OrderDetailID = orderDetailId,
             OrderQty = orderQty,
             UnitPrice = unitPrice,
-            Order = new Order
+            Order = new Orders
             {
                 OrderID = orderId,
             },
@@ -330,12 +330,12 @@ public static class IDataRecordExtension
         };
     }
 
-    public static OrderDetail ToOrderDetailBasicInfo(this IDataReader record)
+    public static OrderDetails ToOrderDetailBasicInfo(this IDataReader record)
     {
-        return new OrderDetail
+        return new OrderDetails
         {
             OrderDetailID = record.GetInt32(record.GetOrdinal("OrderDetailID")),
-            Order = new Order {
+            Order = new Orders {
                 OrderID = record.GetInt32(record.GetOrdinal("OrderID"))
             }
         };

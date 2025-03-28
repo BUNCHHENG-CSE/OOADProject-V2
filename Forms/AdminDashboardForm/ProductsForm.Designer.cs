@@ -28,19 +28,10 @@ partial class ProductsForm
     /// </summary>
     private void InitializeComponent()
     {
-        btnAddProduct = new Button();
+        System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ProductsForm));
         flowLayoutPanelProducts = new FlowLayoutPanel();
+        btnAddProduct = new Button();
         SuspendLayout();
-        // 
-        // btnAddProduct
-        // 
-        btnAddProduct.FlatStyle = FlatStyle.Flat;
-        btnAddProduct.ForeColor = Color.FromArgb(243, 244, 243);
-        btnAddProduct.Location = new Point(36, 36);
-        btnAddProduct.Name = "btnAddProduct";
-        btnAddProduct.Size = new Size(49, 46);
-        btnAddProduct.TabIndex = 2;
-        btnAddProduct.UseVisualStyleBackColor = true;
         // 
         // flowLayoutPanelProducts
         // 
@@ -50,13 +41,24 @@ partial class ProductsForm
         flowLayoutPanelProducts.Size = new Size(1044, 587);
         flowLayoutPanelProducts.TabIndex = 3;
         // 
+        // btnAddProduct
+        // 
+        btnAddProduct.FlatStyle = FlatStyle.Flat;
+        btnAddProduct.ForeColor = Color.FromArgb(243, 244, 243);
+        btnAddProduct.Image = (Image)resources.GetObject("btnAddProduct.Image");
+        btnAddProduct.Location = new Point(36, 36);
+        btnAddProduct.Name = "btnAddProduct";
+        btnAddProduct.Size = new Size(49, 46);
+        btnAddProduct.TabIndex = 3;
+        btnAddProduct.UseVisualStyleBackColor = true;
+        // 
         // ProductsForm
         // 
         AutoScaleDimensions = new SizeF(7F, 15F);
         AutoScaleMode = AutoScaleMode.Font;
         ClientSize = new Size(1092, 802);
-        Controls.Add(flowLayoutPanelProducts);
         Controls.Add(btnAddProduct);
+        Controls.Add(flowLayoutPanelProducts);
         FormBorderStyle = FormBorderStyle.None;
         Name = "ProductsForm";
         Text = "ProductsForm";
@@ -65,7 +67,6 @@ partial class ProductsForm
     }
 
     #endregion
-
-    private Button btnAddProduct;
     private FlowLayoutPanel flowLayoutPanelProducts;
+    private Button btnAddProduct;
 }

@@ -19,7 +19,7 @@ public partial class DBConnectionForm : Form
         cBAuthentication.DataSource = authentication;
         cBAuthentication.SelectedIndex = -1;
         cBAuthentication.SelectedValueChanged += Select_Handling_Authentication;
-        Helper.Instance.LoadConfiguration("DBConnectionFormat.json");
+        Helper.Instance.LoadConfiguration("appSettings.json");
         btnConnect.Click += DoClickConnect;
         btnCancel.Click += DoClickCancel;
         labelUser.Enabled = false;
@@ -63,6 +63,8 @@ public partial class DBConnectionForm : Form
         dBConnection.DBConnectionString = ConnectionStringToDatabase;
         string dbJsonData = JsonConvert.SerializeObject(dBConnection);
         File.WriteAllText($"{Environment.CurrentDirectory}/appSettings.json", dbJsonData);
+
+        Helper.Instance.LoadConfiguration("appSettings.json");
 
         LoginForm loginForm = new LoginForm(loadingFormReference, this);
         loginForm.Show();

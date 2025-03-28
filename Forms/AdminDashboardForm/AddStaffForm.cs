@@ -8,18 +8,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace OOADPROV2.Forms.AdminDashboardForm
+namespace OOADPROV2.Forms.AdminDashboardForm;
+
+public partial class AddStaffForm : Form
 {
-    public partial class AddStaffForm : Form
+    public AddStaffForm(StaffForm staffForm)
     {
-        public AddStaffForm()
-        {
-            InitializeComponent();
-        }
-
-        private void AddStaffForm_Load(object sender, EventArgs e)
-        {
-
-        }
+        InitializeComponent();
     }
+
+    private void AddStaffForm_Load(object sender, EventArgs e)
+    {
+
+    }
+    public event LoadingEventHandler? StaffLoadingChanged;
 }

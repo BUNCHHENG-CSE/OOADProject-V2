@@ -27,7 +27,6 @@ public partial class LoadingForm : Form
             }
             else
             {
-
                 databaseConnectionForm.Show();
             }
         }

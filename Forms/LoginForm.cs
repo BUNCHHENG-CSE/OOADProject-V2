@@ -1,19 +1,18 @@
 ﻿using OOADPROV2.Models;
 using OOADPROV2.Utilities;
-using OOADPROV2.Utilities.Function;
 
 namespace OOADPROV2.Forms;
 
 public partial class LoginForm : Form
 {
-    public static User userVerify = null;
+    public static Users userVerify = null;
     private LoadingForm loadingFormReference;
     private DBConnectionForm databaseConnectionFormReference;
     public LoginForm(LoadingForm loadingForm, DBConnectionForm databaseConnectionForm)
     {
         InitializeComponent();
         var connection = Helper.Instance.Connection;
-        connection.Open();
+        //connection.Open();
         btnLogin.Click += DoClickLogin;
         this.loadingFormReference = loadingForm;
         this.databaseConnectionFormReference = databaseConnectionForm;
@@ -49,38 +48,40 @@ public partial class LoginForm : Form
 
     private void DoClickLogin(object? sender, EventArgs e)
     {
-        if (txtUsername.Text == "" && txtPassword.Text == "")
-        {
-            MessageBox.Show("Invalid Username and Password");
-        }
-        Login login = new Login();
-        login._username = txtUsername.Text;
-        login._password = txtPassword.Text;
-        if (login._username != "" && login._password != "")
-            userVerify = LoginFunc.VerifiedCredentials(Helper.Instance.Connection, login);
-        if (userVerify != null)
-        {
-            if (userVerify.Staff.StaffPosition == "Administrator")
-            {
-                AdminForm adminForm = new AdminForm(this.loadingFormReference, this.databaseConnectionFormReference, this);
-                adminForm.Show();
-
-            }
-            else
-            {
-                CashierForm cashierForm = new CashierForm(this.loadingFormReference, this.databaseConnectionFormReference, this, userVerify);
-                cashierForm.Show();
-            }
-            txtUsername.Clear();
-            txtPassword.Clear();
-            this.Hide();
-        }
-        else
-        {
-            txtPassword.Clear();
-            labelShowMessage.ForeColor = Color.Red;
-            labelShowMessage.Text = "The username or password you entered is incorrect. Please try again";
-        }
+        AdminForm adminForm = new AdminForm(this.loadingFormReference, this.databaseConnectionFormReference, this);
+        adminForm.Show();
+        //if (txtUsername.Text == "" && txtPassword.Text == "")
+        //{
+        //    MessageBox.Show("Invalid Username and Password");
+        //}
+        //Login login = new Login();
+        //login._username = txtUsername.Text;
+        //login._password = txtPassword.Text;
+        //if (login._username != "" && login._password != "")
+        //    userVerify = LoginFunc.VerifiedCredentials(Helper.Instance.Connection, login);
+        //if (userVerify != null)
+        //{
+        //    if (userVerify.Staff.StaffPosition == "Administrator")
+        //    {
+        //        AdminForm adminForm = new AdminForm(this.loadingFormReference, this.databaseConnectionFormReference, this);
+        //        adminForm.Show();
+        //    }
+        //    else
+        //    {
+        //        CashierForm cashierForm = new CashierForm(this.loadingFormReference, this.databaseConnectionFormReference, this, userVerify);
+        //        cashierForm.Show();
+        //    }
+        //    txtUsername.Clear();
+        //    txtPassword.Clear();
+        //    this.Hide();
+        //}
+        //else
+        //{
+        //    txtPassword.Clear();
+        //    labelShowMessage.ForeColor = Color.Red;
+        //    labelShowMessage.Text = "The username or password you entered is incorrect. Please try again";
+        //}
+        this.Hide();
     }
 
 }

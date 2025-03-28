@@ -11,7 +11,7 @@ namespace OOADPROV2.Utilities.Function;
 
 public static class OrderFunc
 {
-    public static IEnumerable<Order> GetAllOrder(SqlConnection con)
+    public static IEnumerable<Orders> GetAllOrder(SqlConnection con)
     {
         SqlCommand cmd = new SqlCommand("spReadAllOrder", con);
         SqlDataReader? reader = null;
@@ -39,7 +39,7 @@ public static class OrderFunc
     }
 
     
-    public static bool InsertOrderDetail(SqlConnection con, OrderDetail order)
+    public static bool InsertOrderDetail(SqlConnection con, OrderDetails order)
     {
         SqlCommand cmd = new SqlCommand("spInsertOrderDetail", con);
         cmd.CommandType = CommandType.StoredProcedure;

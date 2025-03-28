@@ -33,8 +33,8 @@ partial class LoadingForm
         progressBarLoading = new ProgressBar();
         labelTitle = new Label();
         timerLoading = new System.Windows.Forms.Timer(components);
-        pictureBox1 = new PictureBox();
-        ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+        pictureBoxMainLogo = new PictureBox();
+        ((System.ComponentModel.ISupportInitialize)pictureBoxMainLogo).BeginInit();
         SuspendLayout();
         // 
         // progressBarLoading
@@ -57,15 +57,15 @@ partial class LoadingForm
         labelTitle.TabIndex = 1;
         labelTitle.Text = "Coffee Beans Management System";
         // 
-        // pictureBox1
+        // pictureBoxMainLogo
         // 
-        pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-        pictureBox1.Location = new Point(12, 35);
-        pictureBox1.Name = "pictureBox1";
-        pictureBox1.Size = new Size(186, 165);
-        pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-        pictureBox1.TabIndex = 2;
-        pictureBox1.TabStop = false;
+        pictureBoxMainLogo.Image = (Image)resources.GetObject("pictureBoxMainLogo.Image");
+        pictureBoxMainLogo.Location = new Point(12, 35);
+        pictureBoxMainLogo.Name = "pictureBoxMainLogo";
+        pictureBoxMainLogo.Size = new Size(186, 165);
+        pictureBoxMainLogo.SizeMode = PictureBoxSizeMode.Zoom;
+        pictureBoxMainLogo.TabIndex = 3;
+        pictureBoxMainLogo.TabStop = false;
         // 
         // LoadingForm
         // 
@@ -73,14 +73,14 @@ partial class LoadingForm
         AutoScaleMode = AutoScaleMode.Font;
         BackColor = Color.FromArgb(38, 57, 91);
         ClientSize = new Size(642, 248);
-        Controls.Add(pictureBox1);
+        Controls.Add(pictureBoxMainLogo);
         Controls.Add(labelTitle);
         Controls.Add(progressBarLoading);
         FormBorderStyle = FormBorderStyle.None;
         Name = "LoadingForm";
         StartPosition = FormStartPosition.CenterScreen;
         Text = "Form1";
-        ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+        ((System.ComponentModel.ISupportInitialize)pictureBoxMainLogo).EndInit();
         ResumeLayout(false);
         PerformLayout();
     }
@@ -90,5 +90,5 @@ partial class LoadingForm
     private ProgressBar progressBarLoading;
     private Label labelTitle;
     private System.Windows.Forms.Timer timerLoading;
-    private PictureBox pictureBox1;
+    private PictureBox pictureBoxMainLogo;
 }

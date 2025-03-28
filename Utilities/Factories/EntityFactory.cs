@@ -2,7 +2,7 @@
 
 namespace OOADPROV2.Utilities.Factories;
 
-class ProductFactory
+public static class EntityFactory
 {
     public static Products CreateProduct(
             int id,
@@ -11,7 +11,7 @@ class ProductFactory
             string description,
             int stock,
             byte[]? image,
-            Category category)
+            int category)
     {
         return new Products
         {
@@ -21,8 +21,21 @@ class ProductFactory
             ProductDescription = description,
             ProductsStock = stock,
             ProductImage = image,
-            Category = category
+            Category = new Categories { CategoryID = category }
         };
     }
+    public static Categories CreateCategory(
+            int id,
+            string name,
+            string description)
+    {
+        return new Categories
+        {
+            CategoryID = id,
+            CategoryName = name,
+            CategoryDescription = description
+        };
+    }
+
 
 }

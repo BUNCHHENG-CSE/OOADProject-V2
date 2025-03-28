@@ -11,7 +11,7 @@ namespace OOADPROV2.Utilities.Function;
 
 public class LoginFunc
 {
-    public static User VerifiedCredentials(SqlConnection con, Login login)
+    public static Users VerifiedCredentials(SqlConnection con, Login login)
     {
         SqlCommand cmd = new SqlCommand("spVerifiedUserCredential", con);
         cmd.CommandType = CommandType.StoredProcedure;
@@ -30,7 +30,7 @@ public class LoginFunc
         {
             cmd.Dispose();
         }
-        User? verify = null;
+        Users? verify = null;
         if (reader != null && reader.HasRows == true)
         {
             if (reader.Read() == true)

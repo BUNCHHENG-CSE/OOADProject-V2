@@ -17,7 +17,7 @@ namespace OOADPROV2.Forms
         private LoginForm loginFormReference;
         private DBConnectionForm databaseConnectionFormReference;
 
-        public CashierForm(LoadingForm loadingForm, DBConnectionForm databaseConnectionForm, LoginForm login, User user)
+        public CashierForm(LoadingForm loadingForm, DBConnectionForm databaseConnectionForm, LoginForm login, Users user)
         {
             InitializeComponent();
             loadingFormReference = loadingForm;

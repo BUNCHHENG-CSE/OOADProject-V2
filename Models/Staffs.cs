@@ -1,6 +1,6 @@
 ﻿namespace OOADPROV2.Models;
 
-public class Staff
+public class Staffs
 {
     public int StaffID { get; set; }
     public string? StaffName { get; set; }

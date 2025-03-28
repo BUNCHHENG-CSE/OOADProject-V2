@@ -14,6 +14,6 @@ public class Products
     public string? ProductDescription { get; set; }
     public int ProductsStock { get; set; }
     public byte[]? ProductImage { get; set; }
-    public Category? Category { get; set; }
+    public Categories? Category { get; set; }
 
 }

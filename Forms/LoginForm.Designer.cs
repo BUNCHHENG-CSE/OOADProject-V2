@@ -37,11 +37,11 @@ partial class LoginForm
         chBShowPassword = new CheckBox();
         panel1 = new Panel();
         labelUserLogin = new Label();
-        pictureBox1 = new PictureBox();
         labelShowMessage = new Label();
         btnBack = new Button();
+        pictureBoxLoginLogo = new PictureBox();
         panel1.SuspendLayout();
-        ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+        ((System.ComponentModel.ISupportInitialize)pictureBoxLoginLogo).BeginInit();
         SuspendLayout();
         // 
         // labelUsernameLogin
@@ -113,8 +113,8 @@ partial class LoginForm
         // panel1
         // 
         panel1.BackColor = Color.White;
+        panel1.Controls.Add(pictureBoxLoginLogo);
         panel1.Controls.Add(labelUserLogin);
-        panel1.Controls.Add(pictureBox1);
         panel1.Location = new Point(0, -1);
         panel1.Margin = new Padding(0);
         panel1.Name = "panel1";
@@ -131,16 +131,6 @@ partial class LoginForm
         labelUserLogin.Size = new Size(121, 28);
         labelUserLogin.TabIndex = 80;
         labelUserLogin.Text = "User Login";
-        // 
-        // pictureBox1
-        // 
-        pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-        pictureBox1.Location = new Point(40, 25);
-        pictureBox1.Name = "pictureBox1";
-        pictureBox1.Size = new Size(99, 44);
-        pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-        pictureBox1.TabIndex = 78;
-        pictureBox1.TabStop = false;
         // 
         // labelShowMessage
         // 
@@ -164,6 +154,16 @@ partial class LoginForm
         btnBack.TabIndex = 80;
         btnBack.Text = "Back";
         btnBack.UseVisualStyleBackColor = false;
+        // 
+        // pictureBoxLoginLogo
+        // 
+        pictureBoxLoginLogo.Image = (Image)resources.GetObject("pictureBoxLoginLogo.Image");
+        pictureBoxLoginLogo.Location = new Point(40, 25);
+        pictureBoxLoginLogo.Name = "pictureBoxLoginLogo";
+        pictureBoxLoginLogo.Size = new Size(99, 44);
+        pictureBoxLoginLogo.SizeMode = PictureBoxSizeMode.Zoom;
+        pictureBoxLoginLogo.TabIndex = 81;
+        pictureBoxLoginLogo.TabStop = false;
         // 
         // LoginForm
         // 
@@ -189,7 +189,7 @@ partial class LoginForm
         Text = "LoginForm";
         panel1.ResumeLayout(false);
         panel1.PerformLayout();
-        ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+        ((System.ComponentModel.ISupportInitialize)pictureBoxLoginLogo).EndInit();
         ResumeLayout(false);
         PerformLayout();
     }
@@ -203,8 +203,8 @@ partial class LoginForm
     private Button btnLogin;
     private CheckBox chBShowPassword;
     private Panel panel1;
-    private PictureBox pictureBox1;
     private Label labelShowMessage;
     private Label labelUserLogin;
     private Button btnBack;
+    private PictureBox pictureBoxLoginLogo;
 }
