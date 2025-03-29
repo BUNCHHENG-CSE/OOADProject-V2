@@ -39,5 +39,5 @@ class UpdateCommand(Products product) : ICommand<bool>
         {
             cmd.Dispose();
         }
-    };
+    }
 }

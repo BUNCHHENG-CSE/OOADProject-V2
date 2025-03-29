@@ -3,22 +3,21 @@ using OOADPROV2.Models;
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OOADPROV2.Utilities.Commands.Category.Action;
+namespace OOADPROV2.Utilities.Commands.User.Action;
 
-public class GetOneCommand(int categoryID) : ICommand<Categories>
+public class GetOneCommand(Login login) : ICommand<Users>
 {
-    public Categories Execute()
+    public Users Execute()
     {
-        SqlCommand cmd = new("spReadOneCategory", Helper.Instance.OpenConnection())
+        SqlCommand cmd = new("spReadOneUser", Helper.Instance.OpenConnection())
         {
             CommandType = CommandType.StoredProcedure
         };
-        cmd.Parameters.AddWithValue("@id", categoryID);
+        cmd.Parameters.AddWithValue("@unname", login._username);
         SqlDataReader? reader = null;
         try
         {
@@ -26,21 +25,22 @@ public class GetOneCommand(int categoryID) : ICommand<Categories>
         }
         catch (Exception ex)
         {
-            throw new Exception($"Error in getting category with id, {categoryID} > {ex.Message}");
+            throw new Exception($"Error in getting user with username, {login._username} > {ex.Message}");
         }
         finally
         {
             cmd.Dispose();
         }
-        Categories? result = null;
+        Users? result = null;
         if (reader != null && reader.HasRows == true)
         {
             if (reader.Read() == true)
             {
-                result = reader.ToDisplayCategory();
+                result = reader.ToUserOneData();
             }
         }
         reader?.Close();
         return result;
     }
 }
+

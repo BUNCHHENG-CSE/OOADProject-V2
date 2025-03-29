@@ -15,8 +15,6 @@ internal static class Program
         ApplicationConfiguration.Initialize();
         Application.Run(new LoadingForm());
     }
-    public static string[] Genders { get; set; } = new string[] { "Female", "Male" };
-
 }
 public delegate void AmountCountEventHandler(object? sender, bool result);
 public delegate void LoadingEventHandler(object? sender, bool result);

@@ -3,6 +3,7 @@ using OOADPROV2.Utilities.Builder.Product;
 using OOADPROV2.Utilities.Commands.Category;
 using OOADPROV2.Utilities.Commands.Product;
 using OOADPROV2.Utilities.Function;
+using ScottPlot.Renderable;
 using System.Drawing.Imaging;
 
 
@@ -12,7 +13,6 @@ public partial class AddProductsForm : Form
 {
     string? imgLocation = "";
     int productCount = 0;
-    private readonly int indexOfUpdateProduct;
     Products? effectedProduct = null;
     public AddProductsForm(ProductsForm productsForm)
     {
@@ -25,52 +25,37 @@ public partial class AddProductsForm : Form
 
     private void DoClickUpdateProduct(object? sender, EventArgs e)
     {
-        byte[] ProductImages = null;
-        if (txtProductName.Text == "" || txtProductName.Text.Trim().Length > 100)
-        {
-            MessageBox.Show("Product is required or name too long", "Creating",
-            MessageBoxButtons.OK, MessageBoxIcon.Stop);
-            return;
-        }
-        if (cBCategoryID.SelectedItem == null)
-        {
-            MessageBox.Show("Category is required", "Creating",
-            MessageBoxButtons.OK, MessageBoxIcon.Stop);
-            return;
-        }
-        if (rtxtProductDescription.Text == "" || rtxtProductDescription.Text.Trim().Length > 1000)
-        {
-            MessageBox.Show("Staff Address is required or address too long", "Creating",
-            MessageBoxButtons.OK, MessageBoxIcon.Stop);
-            return;
-        }
-        if (decimal.TryParse(txtPrice.Text.ToString(), out decimal productPrice) == false)
-        {
-            MessageBox.Show("Product price is required or something wrong", "Creating",
-            MessageBoxButtons.OK, MessageBoxIcon.Stop);
-            return;
-        }
-        if (int.TryParse(txtProductStock.Text.ToString(), out int productStock) == false)
-        {
-            MessageBox.Show("Product stock is required or something wrong", "Creating",
-            MessageBoxButtons.OK, MessageBoxIcon.Stop);
-            return;
-        }
-        effectedProduct.ProductName = txtProductName.Text.Trim();
-        effectedProduct.ProductsPrice = productPrice;
-        effectedProduct.ProductDescription = rtxtProductDescription.Text.Trim();
-        effectedProduct.ProductsStock = productStock;
-        effectedProduct.Category.CategoryID = int.Parse(cBCategoryID.SelectedItem.ToString());
+        byte[] productImages = null;
 
+        effectedProduct.ProductName = txtProductName.Text.Trim();
+        effectedProduct.ProductDescription = rtxtProductDescription.Text.Trim();
+
+        if (decimal.TryParse(txtPrice.Text, out decimal productPrice))
+            effectedProduct.ProductsPrice = productPrice;
+
+        if (int.TryParse(txtProductStock.Text, out int productStock))
+            effectedProduct.ProductsStock = productStock;
+
+        if (cBCategoryID.SelectedItem != null)
+            effectedProduct.Category = new Categories { CategoryID = int.Parse(cBCategoryID.SelectedItem.ToString()) };
 
         if (picProduct.Image != null)
         {
-            Image image = picProduct.Image;
-            MemoryStream ms = new MemoryStream();
-            image.Save(ms, ImageFormat.Png);
-            ProductImages = ms.ToArray();
+            using var ms = new MemoryStream();
+            picProduct.Image.Save(ms, ImageFormat.Png);
+            productImages = ms.ToArray();
         }
-        effectedProduct.ProductImage = ProductImages;
+        effectedProduct.ProductImage = productImages;
+
+        var (isValid, errorMessage) = ProductValidatorBuilder.Create().Build().Validate(effectedProduct);
+
+        if (!isValid)
+        {
+            MessageBox.Show(errorMessage, "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            return;
+        }
+
+
         try
         {
 
@@ -93,24 +78,26 @@ public partial class AddProductsForm : Form
     {
 
         byte[]? productImage = null;
+        //if (!string.IsNullOrEmpty(imgLocation) && File.Exists(imgLocation))
+
+        //{
+        //    FileStream stream = new(imgLocation, FileMode.Open, FileAccess.Read);
+        //    BinaryReader reader = new(stream);
+        //    productImage = reader.ReadBytes((int)stream.Length);
+        //}
+
         if (!string.IsNullOrEmpty(imgLocation) && File.Exists(imgLocation))
+            productImage = File.ReadAllBytes(imgLocation);
 
+        if (cBCategoryID.SelectedItem == null ||
+            !int.TryParse(cBCategoryID.SelectedItem.ToString(), out int categoryId))
         {
-            FileStream stream = new(imgLocation, FileMode.Open, FileAccess.Read);
-            BinaryReader reader = new(stream);
-            productImage = reader.ReadBytes((int)stream.Length);
-        }
-        if (cBCategoryID.SelectedItem == null)
-        {
-            throw new InvalidOperationException("No category selected. Please choose a category.");
-        }
-
-        if (!int.TryParse(cBCategoryID.SelectedItem.ToString(), out int categoryId))
-        {
-            throw new InvalidOperationException("Invalid category ID. Please choose a valid category.");
+            MessageBox.Show("No valid category selected. Please choose a category.",
+                "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            return;
         }
 
-        Products newproduct = ProductBuilder.Create()
+        var newProduct = ProductBuilder.Create()
                     .WithName(txtProductName.Text)
                     .WithPrice(decimal.Parse(txtPrice.Text))
                     .WithDescription(rtxtProductDescription.Text)
@@ -120,18 +107,18 @@ public partial class AddProductsForm : Form
                     .Build();
         try
         {
-            var result = ProductCommands.AddProduct(newproduct);
+            var result = ProductCommands.AddProduct(newProduct);
             if (result)
             {
-
-                MessageBox.Show($"Product created successfully: {newproduct.ProductName}", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show($"Product '{newProduct.ProductName}' created successfully!",
+                    "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                ClearFormInput();
             }
             else
             {
-                MessageBox.Show($"Failed to create product: {newproduct.ProductName}", "Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Failed to create product '{newProduct.ProductName}'.",
+                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-            ClearFormInput();
         }
         catch (Exception ex)
         {

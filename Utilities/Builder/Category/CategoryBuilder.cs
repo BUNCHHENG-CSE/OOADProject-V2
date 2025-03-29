@@ -1,40 +1,41 @@
 ﻿using OOADPROV2.Models;
 using OOADPROV2.Utilities.Factories;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 
 namespace OOADPROV2.Utilities.Builder.Category;
 
 public class CategoryBuilder : IBuilder<Categories>
 {
-    private string? _categoryname;
-    private string? _categorydescription;
+   private readonly Categories _category = new();
     private CategoryBuilder() { }
 
     public static CategoryBuilder Create() => new();
 
     public CategoryBuilder WithCategoryName(string categoryname)
     {
-        _categoryname = categoryname;
+        _category.CategoryName = categoryname;
         return this;
     }
 
     public CategoryBuilder WithCategoryDescription(string categorydescription)
     {
-        _categorydescription = categorydescription;
+        _category.CategoryDescription = categorydescription;
         return this;
     }
 
     public Categories Build()
     {
+
+        var (isValid, errorMessage) = CategoryValidatorBuilder.Create().Build().Validate(_category);
+        if (!isValid)
+        
+            throw new InvalidOperationException(errorMessage);
+        
+
         return EntityFactory.CreateCategory(
             0,
-            _categoryname ?? throw new InvalidOperationException("Category Name is required"),
-            _categorydescription ?? throw new InvalidOperationException("Category Description is required")
+            _category.CategoryName,
+            _category.CategoryDescription
         );
     }
 }

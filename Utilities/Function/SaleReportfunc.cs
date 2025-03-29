@@ -46,9 +46,9 @@ public static class SaleReportfunc
     }
     public static List<(DateTime Date, double Sales)> GetDailySales()
     {
-        List<(DateTime, double)> dailySales = new List<(DateTime, double)>();
+        List<(DateTime, double)> dailySales = [];
 
-            SqlCommand cmd = new SqlCommand("spGetDailySales", Helper.Instance.Connection)
+            SqlCommand cmd = new("spGetDailySales", Helper.Instance.OpenConnection())
             {
                 CommandType = CommandType.StoredProcedure
             };

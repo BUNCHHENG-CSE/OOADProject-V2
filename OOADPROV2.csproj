@@ -42,7 +42,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Utilities\Commands\Order\Action\" />
+    <Folder Include="Utilities\Oberserver\" />
   </ItemGroup>
 
 </Project>

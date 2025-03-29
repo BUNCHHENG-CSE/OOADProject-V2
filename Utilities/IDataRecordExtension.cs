@@ -214,6 +214,36 @@ public static class IDataRecordExtension
             Staff = staff
         };
     }
+    public static Users ToUserOneData(this IDataReader record)
+    {
+        Staffs staff = new();
+
+        int index = record.GetOrdinal("UserID");
+        int id = record.GetInt32(index);
+
+        index = record.GetOrdinal("Username");
+        string? username = record.GetString(index);
+
+        index = record.GetOrdinal("Password");
+        string? password = record.GetString(index);
+
+        index = record.GetOrdinal("StaffID");
+        staff.StaffID = record.GetInt32(index);
+
+        index = record.GetOrdinal("StaffName");
+        staff.StaffName = record.GetString(index);
+
+        index = record.GetOrdinal("StaffPosition");
+        staff.StaffPosition = record.GetString(index);
+
+        return new Users()
+        {
+            UserID = id,
+            Username = username,
+            Password = password,
+            Staff = staff
+        };
+    }
     public static Users ToUserAllDataToLogin(this IDataReader record)
     {
         Staffs staff = new Staffs();
