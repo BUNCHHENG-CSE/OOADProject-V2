@@ -38,6 +38,7 @@ class UpdateCommand(Products product) : ICommand<bool>
         finally
         {
             cmd.Dispose();
+            Helper.Instance.CloseConnection();
         }
     }
 }

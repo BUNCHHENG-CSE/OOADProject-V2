@@ -26,6 +26,7 @@ public class DeleteCommand(int staffID) : ICommand<bool>
         finally
         {
             cmd.Dispose();
+            Helper.Instance.CloseConnection();
         }
     }
 }

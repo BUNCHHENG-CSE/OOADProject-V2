@@ -26,7 +26,7 @@ public partial class LoginForm : Form
         File.Delete($"{Environment.CurrentDirectory}/appSettings.json");
         databaseConnectionFormReference.Show();
         Helper.Instance.CloseConnection();
-        Helper.Instance.LoadConfiguration("DBConnectionFormat.json");    
+        Helper.Instance.LoadConfiguration("DBConnectionFormat.json");
         this.Hide();
     }
     private void LoginForm_FormClosed(object sender, FormClosedEventArgs e)
@@ -51,8 +51,6 @@ public partial class LoginForm : Form
         /* using when Don't have user account uncomments this code to create user account*/
         //AdminForm adminForm = new AdminForm(this.loadingFormReference, this.databaseConnectionFormReference, this);
         //adminForm.Show();
-
-
         if (txtUsername.Text == "" && txtPassword.Text == "")
         {
             MessageBox.Show("Invalid Username and Password");
@@ -73,20 +71,20 @@ public partial class LoginForm : Form
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-
             if (userVerify.Staff.StaffPosition == "Administrator")
             {
-                AdminForm adminForm = new AdminForm(this.loadingFormReference, this.databaseConnectionFormReference, this);
+                AdminForm adminForm = new(this.loadingFormReference, this.databaseConnectionFormReference, this);
                 adminForm.Show();
             }
             else
             {
-                CashierForm cashierForm = new CashierForm(this.loadingFormReference, this.databaseConnectionFormReference, this, userVerify);
+                CashierForm cashierForm = new(this.loadingFormReference, this.databaseConnectionFormReference, this, userVerify);
                 cashierForm.Show();
             }
             txtUsername.Clear();
             txtPassword.Clear();
             this.Hide();
+            Helper.Instance.CloseConnection();
         }
         else
         {
@@ -94,7 +92,7 @@ public partial class LoginForm : Form
             labelShowMessage.ForeColor = Color.Red;
             labelShowMessage.Text = "The username or password you entered is incorrect. Please try again";
         }
-        this.Hide();
+
     }
 
 }

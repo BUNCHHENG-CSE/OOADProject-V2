@@ -36,6 +36,7 @@ public class AddCommand(Categories categories) : ICommand<bool>
         {
 
             cmd.Dispose();
+            Helper.Instance.CloseConnection();
         }
     }
 }

@@ -31,6 +31,7 @@ public class GetOneCommand(int categoryID) : ICommand<Categories>
         finally
         {
             cmd.Dispose();
+            
         }
         Categories? result = null;
         if (reader != null && reader.HasRows == true)
@@ -41,6 +42,7 @@ public class GetOneCommand(int categoryID) : ICommand<Categories>
             }
         }
         reader?.Close();
+        Helper.Instance.CloseConnection();
         return result;
     }
 }

@@ -14,8 +14,10 @@ public class AddCommand(Staffs staff) : ICommand<bool>
 {
     public bool Execute()
     {
-        SqlCommand cmd = new SqlCommand("spInsertStaff", Helper.Instance.OpenConnection());
-        cmd.CommandType = CommandType.StoredProcedure;
+        SqlCommand cmd = new("spInsertStaff", Helper.Instance.OpenConnection())
+        {
+            CommandType = CommandType.StoredProcedure
+        };
         cmd.Parameters.AddWithValue("@sn", staff.StaffName);
         cmd.Parameters.AddWithValue("@gen", staff.Gender);
         cmd.Parameters.AddWithValue("@bd", staff.BirthDate);
@@ -37,6 +39,7 @@ public class AddCommand(Staffs staff) : ICommand<bool>
         finally
         {
             cmd.Dispose();
+            Helper.Instance.CloseConnection();
         }
     }
 }

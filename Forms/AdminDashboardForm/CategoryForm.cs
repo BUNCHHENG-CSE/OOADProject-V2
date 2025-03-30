@@ -1,4 +1,6 @@
-﻿using OOADPROV2.Models;
+﻿using Microsoft.IdentityModel.Tokens;
+using OOADPROV2.Models;
+using OOADPROV2.Utilities;
 using OOADPROV2.Utilities.Commands.Category;
 using System;
 using System.Collections.Generic;
@@ -85,13 +87,14 @@ public partial class CategoryForm : Form
         try
         {
             var result = CategoryCommands.GetAllCategories();
-
+            Console.WriteLine(result);
             dgvCategory.Rows.Clear();
             foreach (var category in result)
             {
+                
                 dgvCategory.Rows.Add(category.CategoryID, category.CategoryName, category.CategoryDescription);
             }
-
+            Helper.Instance.CloseConnection();
         }
         catch (Exception ex)
         {

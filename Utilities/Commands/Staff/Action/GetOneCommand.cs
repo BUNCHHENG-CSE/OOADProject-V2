@@ -31,6 +31,7 @@ public class GetOneCommand (int staffID) : ICommand<Staffs>
         finally
         {
             cmd.Dispose();
+            
         }
         Staffs? result = null;
         if (reader != null && reader.HasRows == true)
@@ -41,6 +42,7 @@ public class GetOneCommand (int staffID) : ICommand<Staffs>
             }
         }
         reader?.Close();
+        Helper.Instance.CloseConnection();
         return result;
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualBasic.ApplicationServices;
 using OOADPROV2.Models;
+using OOADPROV2.Utilities;
 using OOADPROV2.Utilities.Commands.User;
 using OOADPROV2.Utilities.Function;
 using System;
@@ -112,6 +113,7 @@ public partial class UserForm : Form
                 userPanel.Controls.Add(userPosition);
                 flowLayoutPanelUser.Controls.Add(userPanel);
             }
+            Helper.Instance.CloseConnection();
         }
         catch (Exception ex)
         {

@@ -1,7 +1,5 @@
-﻿using Microsoft.Data.SqlClient;
+﻿using Microsoft.IdentityModel.Tokens;
 using OOADPROV2.Models;
-using ScottPlot;
-using System;
 using System.Data;
 
 namespace OOADPROV2.Utilities;
@@ -148,10 +146,12 @@ public static class IDataRecordExtension
 
         index = record.GetOrdinal("CategoryDescription");
         string? categoryDescription = record.GetString(index);
+        if (categoryDescription.IsNullOrEmpty())
+            categoryDescription = "N/A";
         return new Categories()
         {
-           CategoryID = id,
-           CategoryName = categoryName,
+            CategoryID = id,
+            CategoryName = categoryName,
             CategoryDescription = categoryDescription
         };
     }
@@ -274,10 +274,10 @@ public static class IDataRecordExtension
         };
 
     }
-        
+
     #endregion
 
-        #region Order
+    #region Order
     public static Orders ToDisplayOrder(this IDataRecord record)
     {
         int index = record.GetOrdinal("OrderID");
@@ -300,7 +300,7 @@ public static class IDataRecordExtension
             Customer = new Customers
             {
                 CustomerID = customerID
-            }   
+            }
         };
     }
 
@@ -313,7 +313,7 @@ public static class IDataRecordExtension
         };
     }
 
-    
+
     #endregion
 
     #region OrderDetail
@@ -355,7 +355,7 @@ public static class IDataRecordExtension
             Products = new Products
             {
                 ProductsID = productId,
-            
+
             }
         };
     }
@@ -365,7 +365,8 @@ public static class IDataRecordExtension
         return new OrderDetails
         {
             OrderDetailID = record.GetInt32(record.GetOrdinal("OrderDetailID")),
-            Order = new Orders {
+            Order = new Orders
+            {
                 OrderID = record.GetInt32(record.GetOrdinal("OrderID"))
             }
         };

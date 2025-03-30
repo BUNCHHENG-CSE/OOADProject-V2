@@ -1,4 +1,5 @@
 ﻿using OOADPROV2.Models;
+using OOADPROV2.Utilities;
 using OOADPROV2.Utilities.Commands.Product;
 using OOADPROV2.Utilities.Function;
 using System;
@@ -118,7 +119,7 @@ public partial class ProductsForm : Form
                 productPanel.Controls.Add(productStockLabel);
                 flowLayoutPanelProducts.Controls.Add(productPanel);
             }
-
+            Helper.Instance.CloseConnection();
         }
         catch (Exception ex)
         {

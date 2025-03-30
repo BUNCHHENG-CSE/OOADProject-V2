@@ -31,6 +31,7 @@ public class UpdateCommand(Categories categories) : ICommand<bool>
         finally
         {
             cmd.Dispose();
+            Helper.Instance.CloseConnection();
         }
     }
 }

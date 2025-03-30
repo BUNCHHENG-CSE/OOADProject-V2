@@ -29,6 +29,7 @@ public class DelectCommand(int categoryID) : ICommand<bool>
         finally
         {
             cmd.Dispose();
+            Helper.Instance.CloseConnection();
         }
     }
 }

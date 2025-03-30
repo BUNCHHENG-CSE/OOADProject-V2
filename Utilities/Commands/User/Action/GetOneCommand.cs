@@ -30,6 +30,7 @@ public class GetOneCommand(Login login) : ICommand<Users>
         finally
         {
             cmd.Dispose();
+           
         }
         Users? result = null;
         if (reader != null && reader.HasRows == true)
@@ -40,6 +41,7 @@ public class GetOneCommand(Login login) : ICommand<Users>
             }
         }
         reader?.Close();
+        Helper.Instance.CloseConnection();
         return result;
     }
 }

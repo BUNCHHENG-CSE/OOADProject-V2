@@ -27,6 +27,7 @@ public class GetAllCommand : ICommand<IEnumerable<Staffs>>
         finally
         {
             cmd.Dispose();
+            
         }
         if (reader != null && reader.HasRows == true)
         {
@@ -37,5 +38,6 @@ public class GetAllCommand : ICommand<IEnumerable<Staffs>>
             }
         }
         reader?.Close();
+        Helper.Instance.CloseConnection();
     }
 }

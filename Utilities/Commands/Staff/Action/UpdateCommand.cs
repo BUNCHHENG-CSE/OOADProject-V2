@@ -39,6 +39,7 @@ public class UpdateCommand(Staffs staff) : ICommand<bool>
         finally
         {
             cmd.Dispose();
+            Helper.Instance.CloseConnection();
         }
     }
 }

@@ -31,6 +31,7 @@ public class DeleteCommand(int userID) : ICommand<bool>
         finally
         {
             cmd.Dispose();
+            Helper.Instance.CloseConnection();
         }
     }
 }

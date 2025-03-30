@@ -22,7 +22,9 @@ class GetAllCommand : ICommand<IEnumerable<Products>>
         }
         finally
         {
+
             cmd.Dispose();
+            
         }
         if (reader != null && reader.HasRows == true)
         {
@@ -33,5 +35,6 @@ class GetAllCommand : ICommand<IEnumerable<Products>>
             }
         }
         reader?.Close();
+        Helper.Instance.CloseConnection();
     }
 }

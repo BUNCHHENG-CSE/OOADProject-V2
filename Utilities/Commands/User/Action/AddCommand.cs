@@ -36,6 +36,7 @@ public class AddCommand(Users user) : ICommand<bool>
         finally
         {
             cmd.Dispose();
+            Helper.Instance.CloseConnection();
         }
     }
 }

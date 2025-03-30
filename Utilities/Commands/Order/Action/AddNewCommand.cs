@@ -30,6 +30,7 @@ public class AddNewCommand : ICommand<int>
         finally
         {
             cmd.Dispose();
+            Helper.Instance.CloseConnection();
         }
     }
 }

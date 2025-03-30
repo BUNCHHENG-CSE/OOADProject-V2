@@ -1,4 +1,5 @@
 ﻿using OOADPROV2.Models;
+using OOADPROV2.Utilities;
 using OOADPROV2.Utilities.Commands.Staff;
 using OOADPROV2.Utilities.Function;
 using System;
@@ -15,7 +16,6 @@ namespace OOADPROV2.Forms.AdminDashboardForm
 {
     public partial class StaffForm : Form
     {
-        private int staffCount = 0;
         private readonly System.Windows.Forms.Timer clickTimer;
         private const int DoubleClick = 300;
         private  Staffs _selectedStaff;
@@ -53,6 +53,8 @@ namespace OOADPROV2.Forms.AdminDashboardForm
             {
                 flowLayoutPanelStaff.Padding = new Padding(20, 20, 20, 20);
                 var result = StaffCommands.GetAllStaffs();
+
+                
                 foreach (var staff in result)
                 {
                     Panel productPanel = new()
@@ -112,7 +114,7 @@ namespace OOADPROV2.Forms.AdminDashboardForm
                     productPanel.Controls.Add(staffPosition);
                     flowLayoutPanelStaff.Controls.Add(productPanel);
                 }
-
+                Helper.Instance.CloseConnection();
             }
             catch (Exception ex)
             {

@@ -25,6 +25,7 @@ public class DeleteCommand(int productID) : ICommand<bool>
         finally
         {
             cmd.Dispose();
+            Helper.Instance.CloseConnection();
         }
     }
 

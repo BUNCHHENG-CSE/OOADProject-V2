@@ -32,6 +32,7 @@ public class AddCommand(Products product) : ICommand<bool>
         finally
         {
             cmd.Dispose();
+            Helper.Instance.CloseConnection();
         }
     }
 }
