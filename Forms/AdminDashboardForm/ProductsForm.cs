@@ -15,8 +15,7 @@ namespace OOADPROV2.Forms.AdminDashboardForm;
 
 public partial class ProductsForm : Form
 {
-    int productCount = 0;
-    private System.Windows.Forms.Timer clickTimer;
+    private readonly System.Windows.Forms.Timer clickTimer;
     private new const int DoubleClick = 300;
     private Products _selectedProducts;
     public ProductsForm()
@@ -31,7 +30,7 @@ public partial class ProductsForm : Form
     }
     private void DoClickAddProducts(object? sender, EventArgs e)
     {
-        AddProductsForm productsAddForm = new AddProductsForm(this);
+        AddProductsForm productsAddForm = new(this);
         productsAddForm.ProductLoadingChanged += (sender, result) =>
         {
             if (result)
@@ -51,15 +50,15 @@ public partial class ProductsForm : Form
             foreach (var product in result)
             {
 
-                Panel productPanel = new Panel
+                Panel productPanel = new()
                 {
                     Width = 185,
                     Height = 270,
                     BorderStyle = BorderStyle.FixedSingle,
-                    Padding = new Padding(20)
+                    Padding = new Padding(20),
+                    Margin = new Padding(20, 20, 20, 20)
                 };
-                productPanel.Margin = new Padding(20, 20, 20, 20);
-                PictureBox pictureBox = new PictureBox
+                PictureBox pictureBox = new()
                 {
                     Width = 180,
                     Height = 180,
@@ -67,7 +66,7 @@ public partial class ProductsForm : Form
                     Image = product.ProductImage != null ? ConvertImageClass.ConvertByteArrayToImage(product.ProductImage) : null
                 };
 
-                Label productNameLabel = new Label
+                Label productNameLabel = new()
                 {
                     Text = $"Name: {product.ProductName}",
                     Font = new Font("Arial", 12, FontStyle.Bold),
@@ -87,7 +86,7 @@ public partial class ProductsForm : Form
 
                     Location = new Point(5, 240)
                 };
-                Label categoryNameLabel = new Label
+                Label categoryNameLabel = new()
                 {
                     Text = $"Category: {product.Category.CategoryName}",
                     Font = new Font("Arial", 9, FontStyle.Bold),
@@ -138,7 +137,7 @@ public partial class ProductsForm : Form
 
     private void LoadProductForUpdate(Products products)
     {
-        AddProductsForm updateForm = new AddProductsForm(this);
+        AddProductsForm updateForm = new(this);
         updateForm.LoadProductDetails(products);
         updateForm.ShowDialog();
         flowLayoutPanelProducts.Controls.Clear();
