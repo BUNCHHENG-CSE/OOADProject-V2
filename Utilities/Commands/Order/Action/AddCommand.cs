@@ -20,7 +20,7 @@ public class AddCommand(OrderDetails orderDetails) : ICommand<bool>
         };
         cmd.Parameters.AddWithValue("@oid", orderDetails.Order.OrderID);
         cmd.Parameters.AddWithValue("@pid", orderDetails.Products.ProductsID);
-        cmd.Parameters.AddWithValue("@oq", orderDetails.OrderQty);
+        cmd.Parameters.AddWithValue("@qty", orderDetails.OrderQty);
         cmd.Parameters.AddWithValue("@up", orderDetails.UnitPrice);
 
         try

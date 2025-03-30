@@ -17,7 +17,7 @@ public class GetOneCommand(Login login) : ICommand<Users>
         {
             CommandType = CommandType.StoredProcedure
         };
-        cmd.Parameters.AddWithValue("@unname", login._username);
+        cmd.Parameters.AddWithValue("@uname", login._username);
         SqlDataReader? reader = null;
         try
         {

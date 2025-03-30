@@ -126,7 +126,7 @@ partial class OrderForm
         FormBorderStyle = FormBorderStyle.None;
         Name = "OrderForm";
         Text = "OrderForm";
-        Load += OrderForm_Load;
+
         ((System.ComponentModel.ISupportInitialize)dgvOrder).EndInit();
         ResumeLayout(false);
     }

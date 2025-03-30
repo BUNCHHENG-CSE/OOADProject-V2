@@ -7,4 +7,6 @@ public class Orders
     public decimal TotalPrice { get; set; }
     public Customers? Customer { get; set; }
 
+    public int StaffID { get; set; }
+
 }

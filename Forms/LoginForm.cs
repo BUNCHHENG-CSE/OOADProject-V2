@@ -71,6 +71,7 @@ public partial class LoginForm : Form
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+
             if (userVerify.Staff.StaffPosition == "Administrator")
             {
                 AdminForm adminForm = new(this.loadingFormReference, this.databaseConnectionFormReference, this);
@@ -80,6 +81,7 @@ public partial class LoginForm : Form
             {
                 CashierForm cashierForm = new(this.loadingFormReference, this.databaseConnectionFormReference, this, userVerify);
                 cashierForm.Show();
+                AppSession.CurrentStaffID = userVerify.Staff.StaffID;
             }
             txtUsername.Clear();
             txtPassword.Clear();

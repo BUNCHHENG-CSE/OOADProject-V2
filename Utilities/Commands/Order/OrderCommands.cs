@@ -22,5 +22,9 @@ public class OrderCommands
     {
         return new AddNewCommand().Execute();
     }
-    
+    public static int AddOrderAndReturnId(Orders order)
+    {
+        return new AddOrderCommand(order).Execute();
+    }
+
 }
