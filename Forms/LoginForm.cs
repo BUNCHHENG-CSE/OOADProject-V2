@@ -25,6 +25,8 @@ public partial class LoginForm : Form
     {
         File.Delete($"{Environment.CurrentDirectory}/appSettings.json");
         databaseConnectionFormReference.Show();
+        Helper.Instance.CloseConnection();
+        Helper.Instance.LoadConfiguration("DBConnectionFormat.json");    
         this.Hide();
     }
     private void LoginForm_FormClosed(object sender, FormClosedEventArgs e)
