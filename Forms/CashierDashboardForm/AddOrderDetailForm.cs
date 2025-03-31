@@ -4,6 +4,7 @@ using OOADPROV2.Utilities.Builder.Order;
 using OOADPROV2.Utilities.Commands.Order;
 using OOADPROV2.Utilities.Commands.Product;
 using OOADPROV2.Utilities.Function;
+using OOADPROV2.Utilities.Strategies.Search;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -14,35 +15,27 @@ namespace OOADPROV2.Forms.CashierDashboardForm
 {
     public partial class AddOrderDetailForm : Form
     {
-        private List<Products> availableProducts;
         private List<OrderDetails> currentCart = new();
+        private SearchContext searchContext = new(new SearchByTextStrategy());
 
         public AddOrderDetailForm()
         {
             InitializeComponent();
-            LoadProducts();
             txtProductName.TextChanged += TxtProductName_TextChanged;
             buttonpay.Click += Buttonpay_Click;
             btnClear.Click += btnClear_Click;
-        }
-
-        private void LoadProducts()
-        {
-            availableProducts = ProductCommands.GetAllProducts().ToList();
-            RefreshProductGrid();
+            LoadProducts("");
         }
 
         private void TxtProductName_TextChanged(object sender, EventArgs e)
         {
-            RefreshProductGrid();
+            string searchText = txtProductName.Text.Trim();
+            LoadProducts(searchText);
         }
 
-        private void RefreshProductGrid()
+        private void LoadProducts(string filter)
         {
-            string filter = txtProductName.Text.ToLower();
-            var filtered = availableProducts
-                .Where(p => p.ProductName.ToLower().Contains(filter))
-                .ToList();
+            var filtered = searchContext.ExecuteSearch(filter);
 
             flowLayoutPanel1.Controls.Clear();
 
@@ -54,14 +47,14 @@ namespace OOADPROV2.Forms.CashierDashboardForm
                     Height = 270,
                     BorderStyle = BorderStyle.FixedSingle,
                     Padding = new Padding(10),
-                    Margin = new Padding(10)
+                    Margin = new Padding(30)
                 };
 
                 PictureBox pictureBox = new()
                 {
                     Width = 160,
                     Height = 160,
-                    SizeMode = PictureBoxSizeMode.StretchImage,
+                    SizeMode = PictureBoxSizeMode.Zoom,
                     Image = product.ProductImage != null
                         ? ConvertImageClass.ConvertByteArrayToImage(product.ProductImage)
                         : null
@@ -73,7 +66,7 @@ namespace OOADPROV2.Forms.CashierDashboardForm
                     Font = new Font("Arial", 10, FontStyle.Bold),
                     Size = new Size(160, 25),
                     TextAlign = ContentAlignment.MiddleCenter,
-                    Location = new Point(10, 170)
+                    Location = new Point(10, 210)
                 };
 
                 Label priceLabel = new()
@@ -82,13 +75,13 @@ namespace OOADPROV2.Forms.CashierDashboardForm
                     Font = new Font("Arial", 9),
                     Size = new Size(160, 20),
                     TextAlign = ContentAlignment.MiddleCenter,
-                    Location = new Point(10, 195)
+                    Location = new Point(10, 245)
                 };
 
-                productPanel.Click += (s, e) => Product_Click(product);
-                pictureBox.Click += (s, e) => Product_Click(product);
-                nameLabel.Click += (s, e) => Product_Click(product);
-                priceLabel.Click += (s, e) => Product_Click(product);
+                foreach (Control c in new Control[] { productPanel, pictureBox, nameLabel, priceLabel })
+                {
+                    c.Click += (s, e) => Product_Click(product);
+                }
 
                 productPanel.Controls.Add(pictureBox);
                 productPanel.Controls.Add(nameLabel);
@@ -131,13 +124,13 @@ namespace OOADPROV2.Forms.CashierDashboardForm
 
             RefreshCart();
         }
+
         private void btnClear_Click(object sender, EventArgs e)
         {
             currentCart.Clear();
             dataGridView1.Rows.Clear();
             txtTotal.Text = "Total: $ 0.00";
         }
-
 
         private void RefreshCart()
         {
