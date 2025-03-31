@@ -2,10 +2,10 @@
 
 public class NameSearchStrategy : IProductSearchStrategy
 {
-    public List<Products> Search(List<Products> products, string filter)
+    public IEnumerable<Products> Search(IEnumerable<Products> products, string keyword)
     {
-        return products
-            .Where(p => p.ProductName.ToLower().Contains(filter.ToLower()))
-            .ToList();
+        return products.Where(p =>
+            !string.IsNullOrEmpty(p.ProductName) &&
+            p.ProductName.Contains(keyword, StringComparison.OrdinalIgnoreCase));
     }
 }

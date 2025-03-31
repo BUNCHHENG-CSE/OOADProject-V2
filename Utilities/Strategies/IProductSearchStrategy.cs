@@ -2,5 +2,5 @@
 
 public interface IProductSearchStrategy
 {
-    List<Products> Search(List<Products> products, string filter);
+    IEnumerable<Products> Search(IEnumerable<Products> products, string filter);
 }

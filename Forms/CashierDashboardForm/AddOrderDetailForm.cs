@@ -120,7 +120,7 @@ namespace OOADPROV2.Forms.CashierDashboardForm
                     return;
                 }
 
-                var newDetail = new OrderBuilder()
+                var newDetail = OrderBuilder.Create()
                     .SetProduct(product)
                     .SetQuantity(1)
                     .SetPrice((float)product.ProductsPrice)
@@ -183,7 +183,7 @@ namespace OOADPROV2.Forms.CashierDashboardForm
 
             foreach (var item in currentCart)
             {
-                var finalDetail = new OrderBuilder()
+                var finalDetail = OrderBuilder().Create()
                     .SetProduct(item.Products!)
                     .SetQuantity(item.OrderQty)
                     .SetPrice(item.UnitPrice)

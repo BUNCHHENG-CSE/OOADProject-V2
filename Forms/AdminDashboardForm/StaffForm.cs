@@ -129,7 +129,6 @@ namespace OOADPROV2.Forms.AdminDashboardForm
                 LoadStaffForUpdate(_selectedStaff);
             }
         }
-
         private void LoadStaffForUpdate(Staffs staff)
         {
             AddStaffForm updateForm = new (this);

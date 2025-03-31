@@ -8,6 +8,8 @@ namespace OOADPROV2.Utilities.Builder.Order
         private float _unitPrice;
         private Customers? _customer;
         private Products? _product;
+        private OrderBuilder() { }
+        public static OrderBuilder Create() => new();
 
         public OrderBuilder SetProduct(Products product)
         {
