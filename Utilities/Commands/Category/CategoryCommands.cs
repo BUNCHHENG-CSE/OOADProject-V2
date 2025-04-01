@@ -16,7 +16,6 @@ public class CategoryCommands
     }
     public static IEnumerable<Categories> GetAllCategories()
     {
-       
        return new GetAllCommand().Execute();
     }
     public static bool AddCategory(Categories category)

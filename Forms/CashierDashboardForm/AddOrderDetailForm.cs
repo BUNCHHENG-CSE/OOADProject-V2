@@ -176,7 +176,7 @@ namespace OOADPROV2.Forms.CashierDashboardForm
 
             foreach (var item in currentCart)
             {
-                var finalDetail = OrderBuilder().Create()
+                var finalDetail = OrderBuilder.Create()
                     .SetProduct(item.Products!)
                     .SetQuantity(item.OrderQty)
                     .SetPrice(item.UnitPrice)

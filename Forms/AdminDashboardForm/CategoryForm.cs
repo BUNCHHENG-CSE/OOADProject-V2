@@ -87,7 +87,6 @@ public partial class CategoryForm : Form
         try
         {
             var result = CategoryCommands.GetAllCategories();
-            Console.WriteLine(result);
             dgvCategory.Rows.Clear();
             foreach (var category in result)
             {

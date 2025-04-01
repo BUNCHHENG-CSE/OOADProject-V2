@@ -28,19 +28,22 @@ partial class AddOrderDetailForm
     /// </summary>
     private void InitializeComponent()
     {
+        DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+        DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+        DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
         flowLayoutPanel1 = new FlowLayoutPanel();
         buttonpay = new Button();
         txtTotal = new Label();
         dataGridView1 = new DataGridView();
+        txtProductName = new TextBox();
+        labelOverview = new Label();
+        btnClear = new Button();
         ProductsID = new DataGridViewTextBoxColumn();
         ProductsName = new DataGridViewTextBoxColumn();
         Qty = new DataGridViewTextBoxColumn();
         UnitPrice = new DataGridViewTextBoxColumn();
         Amount = new DataGridViewTextBoxColumn();
         OrderDetailID = new DataGridViewTextBoxColumn();
-        txtProductName = new TextBox();
-        labelOverview = new Label();
-        btnClear = new Button();
         ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
         SuspendLayout();
         // 
@@ -76,53 +79,37 @@ partial class AddOrderDetailForm
         // 
         dataGridView1.AllowUserToAddRows = false;
         dataGridView1.AllowUserToDeleteRows = false;
+        dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+        dataGridViewCellStyle1.BackColor = SystemColors.Control;
+        dataGridViewCellStyle1.Font = new Font("Sitka Small", 11.249999F, FontStyle.Bold, GraphicsUnit.Point, 0);
+        dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+        dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+        dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+        dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+        dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
         dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
         dataGridView1.Columns.AddRange(new DataGridViewColumn[] { ProductsID, ProductsName, Qty, UnitPrice, Amount, OrderDetailID });
-        dataGridView1.Location = new Point(598, 48);
+        dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+        dataGridViewCellStyle2.BackColor = SystemColors.Window;
+        dataGridViewCellStyle2.Font = new Font("Sitka Small", 11.249999F, FontStyle.Bold, GraphicsUnit.Point, 0);
+        dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
+        dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+        dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+        dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+        dataGridView1.DefaultCellStyle = dataGridViewCellStyle2;
+        dataGridView1.Location = new Point(588, 48);
         dataGridView1.Name = "dataGridView1";
         dataGridView1.ReadOnly = true;
-        dataGridView1.Size = new Size(434, 412);
+        dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft;
+        dataGridViewCellStyle3.BackColor = SystemColors.Control;
+        dataGridViewCellStyle3.Font = new Font("Sitka Small", 11.249999F, FontStyle.Bold, GraphicsUnit.Point, 0);
+        dataGridViewCellStyle3.ForeColor = SystemColors.WindowText;
+        dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
+        dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+        dataGridViewCellStyle3.WrapMode = DataGridViewTriState.True;
+        dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+        dataGridView1.Size = new Size(460, 412);
         dataGridView1.TabIndex = 79;
-        // 
-        // ProductsID
-        // 
-        ProductsID.HeaderText = "ID";
-        ProductsID.Name = "ProductsID";
-        ProductsID.ReadOnly = true;
-        ProductsID.Width = 35;
-        // 
-        // ProductsName
-        // 
-        ProductsName.HeaderText = "Product";
-        ProductsName.Name = "ProductsName";
-        ProductsName.ReadOnly = true;
-        // 
-        // Qty
-        // 
-        Qty.HeaderText = "Qty";
-        Qty.Name = "Qty";
-        Qty.ReadOnly = true;
-        Qty.Width = 30;
-        // 
-        // UnitPrice
-        // 
-        UnitPrice.HeaderText = "Unit Price";
-        UnitPrice.Name = "UnitPrice";
-        UnitPrice.ReadOnly = true;
-        // 
-        // Amount
-        // 
-        Amount.HeaderText = "Total";
-        Amount.Name = "Amount";
-        Amount.ReadOnly = true;
-        Amount.Width = 125;
-        // 
-        // OrderDetailID
-        // 
-        OrderDetailID.HeaderText = "SR";
-        OrderDetailID.Name = "OrderDetailID";
-        OrderDetailID.ReadOnly = true;
-        OrderDetailID.Visible = false;
         // 
         // txtProductName
         // 
@@ -152,7 +139,49 @@ partial class AddOrderDetailForm
         btnClear.Text = "Clear";
         btnClear.UseVisualStyleBackColor = true;
         // 
-        // OrderDetailAddForm
+        // ProductsID
+        // 
+        ProductsID.HeaderText = "ID";
+        ProductsID.Name = "ProductsID";
+        ProductsID.ReadOnly = true;
+        ProductsID.Width = 35;
+        // 
+        // ProductsName
+        // 
+        ProductsName.HeaderText = "Product";
+        ProductsName.Name = "ProductsName";
+        ProductsName.ReadOnly = true;
+        ProductsName.Width = 90;
+        // 
+        // Qty
+        // 
+        Qty.HeaderText = "Qty";
+        Qty.Name = "Qty";
+        Qty.ReadOnly = true;
+        Qty.Width = 40;
+        // 
+        // UnitPrice
+        // 
+        UnitPrice.HeaderText = "Unit Price";
+        UnitPrice.Name = "UnitPrice";
+        UnitPrice.ReadOnly = true;
+        UnitPrice.Width = 120;
+        // 
+        // Amount
+        // 
+        Amount.HeaderText = "Total";
+        Amount.Name = "Amount";
+        Amount.ReadOnly = true;
+        Amount.Width = 125;
+        // 
+        // OrderDetailID
+        // 
+        OrderDetailID.HeaderText = "SR";
+        OrderDetailID.Name = "OrderDetailID";
+        OrderDetailID.ReadOnly = true;
+        OrderDetailID.Visible = false;
+        // 
+        // AddOrderDetailForm
         // 
         AutoScaleDimensions = new SizeF(7F, 15F);
         AutoScaleMode = AutoScaleMode.Font;
@@ -164,7 +193,7 @@ partial class AddOrderDetailForm
         Controls.Add(dataGridView1);
         Controls.Add(txtProductName);
         Controls.Add(labelOverview);
-        Name = "OrderDetailAddForm";
+        Name = "AddOrderDetailForm";
         StartPosition = FormStartPosition.CenterScreen;
         Text = "Order Products";
         ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
@@ -180,11 +209,11 @@ partial class AddOrderDetailForm
     private DataGridView dataGridView1;
     private TextBox txtProductName;
     private Label labelOverview;
+    private Button btnClear;
     private DataGridViewTextBoxColumn ProductsID;
     private DataGridViewTextBoxColumn ProductsName;
     private DataGridViewTextBoxColumn Qty;
     private DataGridViewTextBoxColumn UnitPrice;
     private DataGridViewTextBoxColumn Amount;
     private DataGridViewTextBoxColumn OrderDetailID;
-    private Button btnClear;
 }

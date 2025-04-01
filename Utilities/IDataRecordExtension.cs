@@ -145,9 +145,8 @@ public static class IDataRecordExtension
         string? categoryName = record.GetString(index);
 
         index = record.GetOrdinal("CategoryDescription");
-        string? categoryDescription = record.GetString(index);
-        if (categoryDescription.IsNullOrEmpty())
-            categoryDescription = "N/A";
+        
+        string? categoryDescription = record.IsDBNull(index)? "N/A" : record.GetString(index);
         return new Categories()
         {
             CategoryID = id,

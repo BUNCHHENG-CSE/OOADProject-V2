@@ -13,8 +13,10 @@ public class DelectCommand(int categoryID) : ICommand<bool>
 {
     public bool Execute()
     {
-        SqlCommand cmd = new SqlCommand("spDeleteCategory", Helper.Instance.OpenConnection());
-        cmd.CommandType = CommandType.StoredProcedure;
+        SqlCommand cmd = new("spDeleteCategory", Helper.Instance.OpenConnection())
+        {
+            CommandType = CommandType.StoredProcedure
+        };
         cmd.Parameters.AddWithValue("@id", categoryID);
 
         try
