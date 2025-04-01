@@ -2,6 +2,8 @@
 using OOADPROV2.Models;
 using OOADPROV2.Utilities;
 using OOADPROV2.Utilities.Commands.Category;
+using OOADPROV2.Utilities.Observer;
+using OOADPROV2.Utilities.Observer.Category;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,9 +16,10 @@ using System.Windows.Forms;
 
 namespace OOADPROV2.Forms.AdminDashboardForm;
 
-public partial class CategoryForm : Form
+public partial class CategoryForm : Form, IObservers<Categories> 
 {
     Categories? effectedCategory = null;
+    private readonly CatgoryNotifier _categoryNotifier = new();
     public CategoryForm()
     {
         InitializeComponent();
@@ -24,6 +27,7 @@ public partial class CategoryForm : Form
         btnClickDelete.Click += DoClickDeleteCategory;
         btnClickUpdate.Click += DoClickUpdateCategory;
         dgvCategory.CellClick += Select_Handling_Category;
+        _categoryNotifier.Attach(this);
     }
 
     private void Select_Handling_Category(object? sender, EventArgs e)
@@ -42,19 +46,13 @@ public partial class CategoryForm : Form
 
     private void DoClickUpdateCategory(object? sender, EventArgs e)
     {
-        AddCategoryForm categoryAddForm = new ();
-        categoryAddForm.LoadCategoryToUpdate(effectedCategory);
-        categoryAddForm.CategoryHanlder += (sender, result) =>
-        {
-            if (result)
-                LoadingDataCategory();
-        };
+        AddCategoryForm categoryAddForm = new (_categoryNotifier);
         categoryAddForm.Show();
     }
 
     private void DoClickDeleteCategory(object? sender, EventArgs e)
     {
-        int.TryParse(effectedCategory.CategoryID.ToString(), out int id);
+        _ = int.TryParse(effectedCategory.CategoryID.ToString(), out int id);
         bool isDeleted = CategoryCommands.DeleteCategory(id);
         if (isDeleted)
         {
@@ -101,4 +99,8 @@ public partial class CategoryForm : Form
         }
     }
 
+    public void Update(Categories data)
+    {
+        LoadingDataCategory();
+    }
 }

@@ -5,6 +5,8 @@ using OOADPROV2.Utilities.Builder.User;
 using OOADPROV2.Utilities.Commands.Staff;
 using OOADPROV2.Utilities.Commands.User;
 using OOADPROV2.Utilities.Function;
+using OOADPROV2.Utilities.Observer;
+using OOADPROV2.Utilities.Observer.User;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -24,7 +26,8 @@ public partial class AddUserForm : Form
 
     private int userCount = 0;
     private readonly int indexOfUpdateUser;
-    public AddUserForm(UserForm userform)
+    private readonly UserNotifier _userNotifier = new();
+    public AddUserForm(UserNotifier notifier)
     {
         InitializeComponent();
         btnClear.Click += DoClickClearFormInput;
@@ -32,6 +35,7 @@ public partial class AddUserForm : Form
         btnUpdate.Click += DoClickUpdateUser;
         cBStaffID.SelectedValueChanged += Select_Handling_StaffID;
         chBShowPass.CheckedChanged += CheckedShowPassword;
+        _userNotifier = notifier;
     }
 
     private void CheckedShowPassword(object? sender, EventArgs e)
@@ -83,7 +87,7 @@ public partial class AddUserForm : Form
             if (result == true)
             {
                 MessageBox.Show($"Successfully updated an existing staff with the id {txtUserID.Text}");
-                UserLoadingChanged?.Invoke(this, result);
+                _userNotifier.Notify(effectedUser);
             }
 
         }
@@ -117,7 +121,7 @@ public partial class AddUserForm : Form
             if (result)
             {
                 MessageBox.Show($"Successfully inserted user: {newUser.Username}");
-                UserLoadingChanged?.Invoke(this, result);
+               _userNotifier.Notify(newUser);
             }
             else
             {
@@ -239,5 +243,5 @@ public partial class AddUserForm : Form
         //txtPassword.Text = user.Password;
         effectedUser = user;
     }
-    public event LoadingEventHandler? UserLoadingChanged;
+   
 }

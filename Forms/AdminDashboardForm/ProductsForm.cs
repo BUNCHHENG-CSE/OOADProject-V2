@@ -2,6 +2,8 @@
 using OOADPROV2.Utilities;
 using OOADPROV2.Utilities.Commands.Product;
 using OOADPROV2.Utilities.Function;
+using OOADPROV2.Utilities.Observer;
+using OOADPROV2.Utilities.Observer.Product;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,13 +16,16 @@ using System.Windows.Forms;
 
 namespace OOADPROV2.Forms.AdminDashboardForm;
 
-public partial class ProductsForm : Form
+public partial class ProductsForm : Form, IObservers<Products>
 {
+    private readonly ProductNotifier _productNotifier = new();
+
     private readonly System.Windows.Forms.Timer clickTimer;
     private new const int DoubleClick = 300;
     private Products _selectedProducts;
     public ProductsForm()
     {
+        _productNotifier.Attach(this);
         InitializeComponent();
         btnAddProduct.Click += DoClickAddProducts;
         clickTimer = new System.Windows.Forms.Timer
@@ -28,18 +33,11 @@ public partial class ProductsForm : Form
             Interval = DoubleClick
         };
         clickTimer.Tick += ClickTimer_Tick;
+        
     }
     private void DoClickAddProducts(object? sender, EventArgs e)
     {
-        AddProductsForm productsAddForm = new(this);
-        productsAddForm.ProductLoadingChanged += (sender, result) =>
-        {
-            if (result)
-            {
-                flowLayoutPanelProducts.Controls.Clear();
-                LoadingDataProducts();
-            }
-        };
+        AddProductsForm productsAddForm = new(this,_productNotifier);
         productsAddForm.Show();
     }
     private void LoadingDataProducts()
@@ -138,7 +136,7 @@ public partial class ProductsForm : Form
 
     private void LoadProductForUpdate(Products products)
     {
-        AddProductsForm updateForm = new(this);
+        AddProductsForm updateForm = new(this,_productNotifier);
         updateForm.LoadProductDetails(products);
         updateForm.ShowDialog();
         flowLayoutPanelProducts.Controls.Clear();
@@ -184,5 +182,9 @@ public partial class ProductsForm : Form
     {
         LoadingDataProducts();
     }
-    
+    public void Update(Products data)
+    {
+        flowLayoutPanelProducts.Controls.Clear();
+        LoadingDataProducts();
+    }
 }

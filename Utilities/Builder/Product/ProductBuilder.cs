@@ -17,7 +17,12 @@ public class ProductBuilder : IBuilder<Products>
 
     public ProductBuilder WithCategoryId(int categoryId)
     {
-        _product.Category.CategoryID = categoryId;
+        _product.Category = new()
+        {
+            CategoryID = categoryId
+        };
+
+
         return this;
     }
     public ProductBuilder WithDescription(string? description)

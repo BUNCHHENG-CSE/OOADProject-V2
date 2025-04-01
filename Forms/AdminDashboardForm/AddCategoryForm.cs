@@ -1,6 +1,7 @@
 ﻿using OOADPROV2.Models;
 using OOADPROV2.Utilities.Builder.Category;
 using OOADPROV2.Utilities.Commands.Category;
+using OOADPROV2.Utilities.Observer.Category;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -18,9 +19,11 @@ public partial class AddCategoryForm : Form
 {
     int categoryCount = 0;
     Categories? effectedCategory = null;
-    public AddCategoryForm()
+    private readonly CatgoryNotifier _catgoryNotifier;
+    public AddCategoryForm(CatgoryNotifier notifier)
     {
         InitializeComponent();
+        _catgoryNotifier = notifier;
         btnClear.Click += DoClickClearFormInput;
         btnInsert.Click += DoClickInsertCategory;
         btnUpdate.Click += DoClickUpdateCategory;
@@ -44,7 +47,7 @@ public partial class AddCategoryForm : Form
             if (result == true)
             {
                 MessageBox.Show($"Successfully updated category with the id {txtCategoryID.Text}");
-                CategoryHanlder?.Invoke(this, result);
+               _catgoryNotifier.Notify(effectedCategory);
             }
         }
         catch (Exception ex) { MessageBox.Show(ex.Message, "Submitting", MessageBoxButtons.OK, MessageBoxIcon.Error); }
@@ -63,7 +66,7 @@ public partial class AddCategoryForm : Form
             if (result == true)
             {
                 MessageBox.Show($"Successfully inserted category with the id {txtCategoryID.Text}");
-                CategoryHanlder?.Invoke(this, result);
+                _catgoryNotifier.Notify(newcategory);
             }
         }
         catch (Exception ex) { MessageBox.Show(ex.Message, "Submitting", MessageBoxButtons.OK, MessageBoxIcon.Error); }
@@ -111,5 +114,4 @@ public partial class AddCategoryForm : Form
         rtxtCategoryDescription.Text = category.CategoryDescription;
         effectedCategory = category;
     }
-    public event LoadingEventHandler? CategoryHanlder;
 }

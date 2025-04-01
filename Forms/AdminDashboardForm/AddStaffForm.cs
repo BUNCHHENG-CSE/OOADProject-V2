@@ -2,6 +2,7 @@
 using OOADPROV2.Utilities.Builder.Staff;
 using OOADPROV2.Utilities.Commands.Staff;
 using OOADPROV2.Utilities.Function;
+using OOADPROV2.Utilities.Observer.Staff;
 using ScottPlot.Renderable;
 using System.Drawing.Imaging;
 
@@ -16,10 +17,11 @@ public partial class AddStaffForm : Form
     private readonly int indexOfUpdateStaff;
     private string[] StaffPosition { get; set; } = ["Administrator", "Cashier", "Cleaner", "Waiter"];
     private static string[] Genders { get; set; } = ["Female", "Male"];
-    public AddStaffForm(StaffForm staffForm)
+    private readonly StaffNotifier _staffNotifier = new(); 
+    public AddStaffForm(StaffNotifier notifier)
     {
         InitializeComponent();
-
+        _staffNotifier = notifier;
         cBStaffGender.DataSource = Genders;
         btnClear.Click += DoClickClearFormInput;
         btnInsert.Click += DoClickInsertStaff;
@@ -80,7 +82,7 @@ public partial class AddStaffForm : Form
             if (result == true)
             {
                 MessageBox.Show($"Successfully updated an existing staff with the id {txtStaffID.Text}");
-                StaffLoadingChanged?.Invoke(this, result);
+                _staffNotifier.Notify(effectedStaff);
             }
 
         }
@@ -95,13 +97,6 @@ public partial class AddStaffForm : Form
     private void DoClickInsertStaff(object? sender, EventArgs e)
     {
         byte[]? staffImages = null;
-        
-        //if (!string.IsNullOrEmpty(imgLocation) && File.Exists(imgLocation))
-        //{
-        //    FileStream stream = new(imgLocation, FileMode.Open, FileAccess.Read);
-        //    BinaryReader reader = new(stream);
-        //    staffImages = reader.ReadBytes((int)stream.Length);
-        //}
         if (!string.IsNullOrEmpty(imgLocation) && File.Exists(imgLocation))
             staffImages = File.ReadAllBytes(imgLocation);
 
@@ -122,7 +117,7 @@ public partial class AddStaffForm : Form
             if (result)
             {
                 MessageBox.Show("Successfully inserted new staff member.");
-                StaffLoadingChanged?.Invoke(this, result);
+                _staffNotifier.Notify(newStaff);
             }
         }
         catch (Exception ex)
@@ -196,5 +191,5 @@ public partial class AddStaffForm : Form
 
         effectedStaff = staff;
     }
-    public event LoadingEventHandler? StaffLoadingChanged;
 }
+

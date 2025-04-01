@@ -35,15 +35,15 @@ partial class AddOrderDetailForm
         buttonpay = new Button();
         txtTotal = new Label();
         dataGridView1 = new DataGridView();
-        txtProductName = new TextBox();
-        labelOverview = new Label();
-        btnClear = new Button();
         ProductsID = new DataGridViewTextBoxColumn();
         ProductsName = new DataGridViewTextBoxColumn();
         Qty = new DataGridViewTextBoxColumn();
         UnitPrice = new DataGridViewTextBoxColumn();
         Amount = new DataGridViewTextBoxColumn();
         OrderDetailID = new DataGridViewTextBoxColumn();
+        txtProductName = new TextBox();
+        labelOverview = new Label();
+        btnClear = new Button();
         ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
         SuspendLayout();
         // 
@@ -57,10 +57,10 @@ partial class AddOrderDetailForm
         // 
         // buttonpay
         // 
-        buttonpay.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+        buttonpay.Font = new Font("Sitka Small", 14.2499981F, FontStyle.Bold, GraphicsUnit.Point, 0);
         buttonpay.Location = new Point(626, 582);
         buttonpay.Name = "buttonpay";
-        buttonpay.Size = new Size(111, 42);
+        buttonpay.Size = new Size(181, 42);
         buttonpay.TabIndex = 83;
         buttonpay.Text = "Pay Order";
         buttonpay.UseVisualStyleBackColor = true;
@@ -68,10 +68,10 @@ partial class AddOrderDetailForm
         // txtTotal
         // 
         txtTotal.AutoSize = true;
-        txtTotal.Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-        txtTotal.Location = new Point(862, 463);
+        txtTotal.Font = new Font("Sitka Banner", 15.7499981F, FontStyle.Bold, GraphicsUnit.Point, 0);
+        txtTotal.Location = new Point(875, 485);
         txtTotal.Name = "txtTotal";
-        txtTotal.Size = new Size(52, 25);
+        txtTotal.Size = new Size(57, 30);
         txtTotal.TabIndex = 80;
         txtTotal.Text = "Total";
         // 
@@ -110,34 +110,6 @@ partial class AddOrderDetailForm
         dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
         dataGridView1.Size = new Size(460, 412);
         dataGridView1.TabIndex = 79;
-        // 
-        // txtProductName
-        // 
-        txtProductName.Font = new Font("Sitka Small", 12F, FontStyle.Bold);
-        txtProductName.Location = new Point(118, 7);
-        txtProductName.Name = "txtProductName";
-        txtProductName.Size = new Size(211, 28);
-        txtProductName.TabIndex = 78;
-        // 
-        // labelOverview
-        // 
-        labelOverview.AutoSize = true;
-        labelOverview.Font = new Font("Sitka Small Semibold", 14F, FontStyle.Bold);
-        labelOverview.Location = new Point(19, 5);
-        labelOverview.Name = "labelOverview";
-        labelOverview.Size = new Size(94, 28);
-        labelOverview.TabIndex = 77;
-        labelOverview.Text = "Search :";
-        // 
-        // btnClear
-        // 
-        btnClear.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-        btnClear.Location = new Point(884, 582);
-        btnClear.Name = "btnClear";
-        btnClear.Size = new Size(111, 42);
-        btnClear.TabIndex = 87;
-        btnClear.Text = "Clear";
-        btnClear.UseVisualStyleBackColor = true;
         // 
         // ProductsID
         // 
@@ -180,6 +152,34 @@ partial class AddOrderDetailForm
         OrderDetailID.Name = "OrderDetailID";
         OrderDetailID.ReadOnly = true;
         OrderDetailID.Visible = false;
+        // 
+        // txtProductName
+        // 
+        txtProductName.Font = new Font("Sitka Small", 12F, FontStyle.Bold);
+        txtProductName.Location = new Point(118, 7);
+        txtProductName.Name = "txtProductName";
+        txtProductName.Size = new Size(211, 28);
+        txtProductName.TabIndex = 78;
+        // 
+        // labelOverview
+        // 
+        labelOverview.AutoSize = true;
+        labelOverview.Font = new Font("Sitka Small Semibold", 14F, FontStyle.Bold);
+        labelOverview.Location = new Point(19, 5);
+        labelOverview.Name = "labelOverview";
+        labelOverview.Size = new Size(94, 28);
+        labelOverview.TabIndex = 77;
+        labelOverview.Text = "Search :";
+        // 
+        // btnClear
+        // 
+        btnClear.Font = new Font("Sitka Small", 14.2499981F, FontStyle.Bold, GraphicsUnit.Point, 0);
+        btnClear.Location = new Point(843, 582);
+        btnClear.Name = "btnClear";
+        btnClear.Size = new Size(186, 42);
+        btnClear.TabIndex = 87;
+        btnClear.Text = "Clear";
+        btnClear.UseVisualStyleBackColor = true;
         // 
         // AddOrderDetailForm
         // 

@@ -35,12 +35,12 @@ partial class CashierProductForm
         // 
         // txtSearch
         // 
-        txtSearch.Font = new Font("Sitka Small", 10F);
-        txtSearch.Location = new Point(136, 12);
+        txtSearch.Font = new Font("Sitka Small", 11.249999F, FontStyle.Regular, GraphicsUnit.Point, 0);
+        txtSearch.Location = new Point(136, 20);
         txtSearch.Multiline = true;
         txtSearch.Name = "txtSearch";
         txtSearch.PlaceholderText = "Search products...";
-        txtSearch.Size = new Size(323, 38);
+        txtSearch.Size = new Size(323, 30);
         txtSearch.TabIndex = 70;
         // 
         // label1

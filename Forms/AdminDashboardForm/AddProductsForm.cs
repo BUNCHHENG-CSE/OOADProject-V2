@@ -3,6 +3,7 @@ using OOADPROV2.Utilities.Builder.Product;
 using OOADPROV2.Utilities.Commands.Category;
 using OOADPROV2.Utilities.Commands.Product;
 using OOADPROV2.Utilities.Function;
+using OOADPROV2.Utilities.Observer.Product;
 using ScottPlot.Renderable;
 using System.Drawing.Imaging;
 
@@ -14,13 +15,25 @@ public partial class AddProductsForm : Form
     string? imgLocation = "";
     int productCount = 0;
     Products? effectedProduct = null;
-    public AddProductsForm(ProductsForm productsForm)
+    private readonly ProductNotifier _productNotifier;
+    public AddProductsForm(ProductNotifier notifier)
     {
         InitializeComponent();
+        _productNotifier = notifier;
         btnClear.Click += DoClickClearFormInput;
         btnInsert.Click += DoClickInsertProduct;
         btnUpdate.Click += DoClickUpdateProduct;
         btnUploadPhoto.Click += DoClickUploadProductPhoto;
+        if(effectedProduct == null)
+        {
+            btnUpdate.Enabled = false;
+            btnInsert.Enabled = true;
+        }
+        else
+        {
+            btnUpdate.Enabled = true;
+            btnInsert.Enabled = false;
+        }
     }
 
     private void DoClickUpdateProduct(object? sender, EventArgs e)
@@ -62,9 +75,9 @@ public partial class AddProductsForm : Form
             var result = ProductCommands.UpdateProduct(effectedProduct);
             if (result == true)
             {
-
+                _productNotifier.Notify(effectedProduct);
                 MessageBox.Show($"Successfully updated an existing product with the id {txtProductID.Text}");
-                ProductLoadingChanged?.Invoke(this, result);
+                //ProductLoadingChanged?.Invoke(this, result);
             }
 
         }
@@ -78,13 +91,6 @@ public partial class AddProductsForm : Form
     {
 
         byte[]? productImage = null;
-        //if (!string.IsNullOrEmpty(imgLocation) && File.Exists(imgLocation))
-
-        //{
-        //    FileStream stream = new(imgLocation, FileMode.Open, FileAccess.Read);
-        //    BinaryReader reader = new(stream);
-        //    productImage = reader.ReadBytes((int)stream.Length);
-        //}
 
         if (!string.IsNullOrEmpty(imgLocation) && File.Exists(imgLocation))
             productImage = File.ReadAllBytes(imgLocation);
@@ -110,6 +116,7 @@ public partial class AddProductsForm : Form
             var result = ProductCommands.AddProduct(newProduct);
             if (result)
             {
+                _productNotifier.Notify(newProduct);
                 MessageBox.Show($"Product '{newProduct.ProductName}' created successfully!",
                     "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 ClearFormInput();
@@ -220,6 +227,22 @@ public partial class AddProductsForm : Form
         }
 
         effectedProduct = products;
+
+        ToggleInsertUpdateButtons();
     }
-    public event LoadingEventHandler? ProductLoadingChanged;
+    private void ToggleInsertUpdateButtons()
+    {
+        if (effectedProduct == null)
+        {
+            btnUpdate.Enabled = false;
+            btnInsert.Enabled = true;
+        }
+        else
+        {
+            btnUpdate.Enabled = true;
+            btnInsert.Enabled = false;
+        }
+    }
+
+   // public event LoadingEventHandler? ProductLoadingChanged;
 }

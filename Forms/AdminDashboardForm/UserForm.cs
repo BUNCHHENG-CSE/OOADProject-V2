@@ -3,6 +3,8 @@ using OOADPROV2.Models;
 using OOADPROV2.Utilities;
 using OOADPROV2.Utilities.Commands.User;
 using OOADPROV2.Utilities.Function;
+using OOADPROV2.Utilities.Observer;
+using OOADPROV2.Utilities.Observer.User;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,12 +17,12 @@ using System.Windows.Forms;
 
 namespace OOADPROV2.Forms.AdminDashboardForm;
 
-public partial class UserForm : Form
+public partial class UserForm : Form,IObservers<Users>
 {
-    int userCount = 0;
     private System.Windows.Forms.Timer clickTimer;
     private const int DoubleClick = 300;
     private Users _selectedUser;
+    private readonly UserNotifier _userNotifier = new();
     public UserForm()
     {
         InitializeComponent();
@@ -28,19 +30,13 @@ public partial class UserForm : Form
         clickTimer = new System.Windows.Forms.Timer();
         clickTimer.Interval = DoubleClick;
         clickTimer.Tick += ClickTimer_Tick;
+        _userNotifier.Attach(this);
     }
 
     private void DoClickAddUser(object? sender, EventArgs e)
     {
-        AddUserForm userAddForm = new (this);
-        userAddForm.UserLoadingChanged += (sender, result) =>
-        {
-            if (result)
-            {
-                flowLayoutPanelUser.Controls.Clear();
-                LoadingDataUser();
-            }
-        };
+        AddUserForm userAddForm = new (_userNotifier);
+        
         userAddForm.Show();
     }
 
@@ -131,7 +127,7 @@ public partial class UserForm : Form
 
     private void LoadUserForUpdate(Users user)
     {
-        AddUserForm updateForm = new(this);
+        AddUserForm updateForm = new(_userNotifier);
         updateForm.LoadUserDetails(user);
         updateForm.ShowDialog();
         flowLayoutPanelUser.Controls.Clear();
@@ -172,5 +168,10 @@ public partial class UserForm : Form
         {
             MessageBox.Show($"Error deleting user: {ex.Message}");
         }
+    }
+    public void Update(Users user)
+    {
+        flowLayoutPanelUser.Controls.Clear();
+        LoadingDataUser();
     }
 }
