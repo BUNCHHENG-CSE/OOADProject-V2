@@ -30,6 +30,7 @@ public partial class AddStaffForm : Form
         dtpDOB.Format = DateTimePickerFormat.Custom;
         dtpHiredDate.Format = DateTimePickerFormat.Custom;
         listBoxStaff.Clear();
+        CheckButtons.Check(effectedStaff, btnInsert, btnUpdate);
     }
 
     private void DoClickUploadStaffPhoto(object? sender, EventArgs e)
@@ -189,6 +190,8 @@ public partial class AddStaffForm : Form
         }
 
         effectedStaff = staff;
+
+        CheckButtons.Check(effectedStaff, btnInsert, btnUpdate);
     }
 }
 

@@ -48,6 +48,7 @@ public partial class CategoryForm : Form, IObservers<Categories>
     private void DoClickUpdateCategory(object? sender, EventArgs e)
     {
         AddCategoryForm categoryAddForm = new (_categoryNotifier);
+        categoryAddForm.LoadCategoryToUpdate(effectedCategory);
         categoryAddForm.Show();
     }
 
@@ -69,6 +70,7 @@ public partial class CategoryForm : Form, IObservers<Categories>
     private void DoClickAddCategory(object? sender, EventArgs e)
     {
         AddCategoryForm categoryAddForm = new(_categoryNotifier);
+        
         categoryAddForm.Show();
     }
 

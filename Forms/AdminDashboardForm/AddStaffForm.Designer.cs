@@ -76,7 +76,7 @@ partial class AddStaffForm
         btnClear.Font = new Font("Microsoft Sans Serif", 14F, FontStyle.Bold);
         btnClear.Location = new Point(19, 346);
         btnClear.Name = "btnClear";
-        btnClear.Size = new Size(121, 49);
+        btnClear.Size = new Size(230, 49);
         btnClear.TabIndex = 2;
         btnClear.Text = "Clear";
         btnClear.UseVisualStyleBackColor = true;
@@ -206,9 +206,9 @@ partial class AddStaffForm
         // btnInsert
         // 
         btnInsert.Font = new Font("Microsoft Sans Serif", 14F, FontStyle.Bold);
-        btnInsert.Location = new Point(324, 346);
+        btnInsert.Location = new Point(280, 346);
         btnInsert.Name = "btnInsert";
-        btnInsert.Size = new Size(121, 49);
+        btnInsert.Size = new Size(230, 49);
         btnInsert.TabIndex = 60;
         btnInsert.Text = "Insert";
         btnInsert.UseVisualStyleBackColor = true;
@@ -216,9 +216,9 @@ partial class AddStaffForm
         // btnUpdate
         // 
         btnUpdate.Font = new Font("Microsoft Sans Serif", 14F, FontStyle.Bold);
-        btnUpdate.Location = new Point(597, 346);
+        btnUpdate.Location = new Point(537, 346);
         btnUpdate.Name = "btnUpdate";
-        btnUpdate.Size = new Size(121, 49);
+        btnUpdate.Size = new Size(230, 49);
         btnUpdate.TabIndex = 61;
         btnUpdate.Text = "Update";
         btnUpdate.UseVisualStyleBackColor = true;

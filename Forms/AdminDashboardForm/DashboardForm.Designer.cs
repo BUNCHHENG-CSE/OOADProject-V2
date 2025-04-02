@@ -222,40 +222,40 @@ partial class DashboardForm
         // lblTodaySales
         // 
         lblTodaySales.AutoSize = true;
-        lblTodaySales.Font = new Font("Segoe UI", 13F);
+        lblTodaySales.Font = new Font("Sitka Small", 12.7499981F, FontStyle.Bold, GraphicsUnit.Point, 0);
         lblTodaySales.Location = new Point(729, 695);
         lblTodaySales.Name = "lblTodaySales";
-        lblTodaySales.Size = new Size(64, 25);
+        lblTodaySales.Size = new Size(70, 24);
         lblTodaySales.TabIndex = 9;
         lblTodaySales.Text = "Today ";
         // 
         // lblYesterdaySales
         // 
         lblYesterdaySales.AutoSize = true;
-        lblYesterdaySales.Font = new Font("Segoe UI", 13F);
+        lblYesterdaySales.Font = new Font("Sitka Small", 12.7499981F, FontStyle.Bold, GraphicsUnit.Point, 0);
         lblYesterdaySales.Location = new Point(729, 732);
         lblYesterdaySales.Name = "lblYesterdaySales";
-        lblYesterdaySales.Size = new Size(44, 25);
+        lblYesterdaySales.Size = new Size(100, 24);
         lblYesterdaySales.TabIndex = 10;
-        lblYesterdaySales.Text = "YTD";
+        lblYesterdaySales.Text = "Yesterday";
         // 
         // lblLastWeekSales
         // 
         lblLastWeekSales.AutoSize = true;
-        lblLastWeekSales.Font = new Font("Segoe UI", 13F);
+        lblLastWeekSales.Font = new Font("Sitka Small", 12.7499981F, FontStyle.Bold, GraphicsUnit.Point, 0);
         lblLastWeekSales.Location = new Point(99, 732);
         lblLastWeekSales.Name = "lblLastWeekSales";
-        lblLastWeekSales.Size = new Size(91, 25);
+        lblLastWeekSales.Size = new Size(102, 24);
         lblLastWeekSales.TabIndex = 12;
         lblLastWeekSales.Text = "Last Week";
         // 
         // lblThisWeekSales
         // 
         lblThisWeekSales.AutoSize = true;
-        lblThisWeekSales.Font = new Font("Segoe UI", 13F);
+        lblThisWeekSales.Font = new Font("Sitka Small", 12.7499981F, FontStyle.Bold, GraphicsUnit.Point, 0);
         lblThisWeekSales.Location = new Point(99, 695);
         lblThisWeekSales.Name = "lblThisWeekSales";
-        lblThisWeekSales.Size = new Size(91, 25);
+        lblThisWeekSales.Size = new Size(103, 24);
         lblThisWeekSales.TabIndex = 11;
         lblThisWeekSales.Text = "This Week";
         // 

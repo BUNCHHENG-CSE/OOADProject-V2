@@ -36,6 +36,7 @@ public partial class AddUserForm : Form
         cBStaffID.SelectedValueChanged += Select_Handling_StaffID;
         chBShowPass.CheckedChanged += CheckedShowPassword;
         _userNotifier = notifier;
+        CheckButtons.Check(effectedUser, btnInsert, btnUpdate);
     }
 
     private void CheckedShowPassword(object? sender, EventArgs e)
@@ -242,6 +243,7 @@ public partial class AddUserForm : Form
         txtUsername.Text = user.Username;
         //txtPassword.Text = user.Password;
         effectedUser = user;
+        CheckButtons.Check(effectedUser, btnInsert, btnUpdate);
     }
    
 }

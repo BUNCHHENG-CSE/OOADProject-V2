@@ -24,16 +24,7 @@ public partial class AddProductsForm : Form
         btnInsert.Click += DoClickInsertProduct;
         btnUpdate.Click += DoClickUpdateProduct;
         btnUploadPhoto.Click += DoClickUploadProductPhoto;
-        if(effectedProduct == null)
-        {
-            btnUpdate.Enabled = false;
-            btnInsert.Enabled = true;
-        }
-        else
-        {
-            btnUpdate.Enabled = true;
-            btnInsert.Enabled = false;
-        }
+        CheckButtons.Check(effectedProduct, btnInsert, btnUpdate);
     }
 
     private void DoClickUpdateProduct(object? sender, EventArgs e)
@@ -86,7 +77,6 @@ public partial class AddProductsForm : Form
             MessageBox.Show($"Failed to update an existing product > {ex.Message}");
         }
     }
-
     private void DoClickInsertProduct(object? sender, EventArgs e)
     {
 
@@ -133,7 +123,6 @@ public partial class AddProductsForm : Form
         }
 
     }
-
     private void DoClickClearFormInput(object? sender, EventArgs e)
     {
         ClearFormInput();
@@ -228,20 +217,8 @@ public partial class AddProductsForm : Form
 
         effectedProduct = products;
 
-        ToggleInsertUpdateButtons();
+       CheckButtons.Check(effectedProduct, btnInsert, btnUpdate);
     }
-    private void ToggleInsertUpdateButtons()
-    {
-        if (effectedProduct == null)
-        {
-            btnUpdate.Enabled = false;
-            btnInsert.Enabled = true;
-        }
-        else
-        {
-            btnUpdate.Enabled = true;
-            btnInsert.Enabled = false;
-        }
-    }
+  
 
 }

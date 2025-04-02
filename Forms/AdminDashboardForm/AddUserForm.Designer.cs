@@ -51,9 +51,9 @@ partial class AddUserForm
         // btnUpdate
         // 
         btnUpdate.Font = new Font("Microsoft Sans Serif", 14F, FontStyle.Bold);
-        btnUpdate.Location = new Point(612, 307);
+        btnUpdate.Location = new Point(547, 307);
         btnUpdate.Name = "btnUpdate";
-        btnUpdate.Size = new Size(121, 49);
+        btnUpdate.Size = new Size(230, 49);
         btnUpdate.TabIndex = 99;
         btnUpdate.Text = "Update";
         btnUpdate.UseVisualStyleBackColor = true;
@@ -61,9 +61,9 @@ partial class AddUserForm
         // btnInsert
         // 
         btnInsert.Font = new Font("Microsoft Sans Serif", 14F, FontStyle.Bold);
-        btnInsert.Location = new Point(318, 307);
+        btnInsert.Location = new Point(294, 307);
         btnInsert.Name = "btnInsert";
-        btnInsert.Size = new Size(121, 49);
+        btnInsert.Size = new Size(230, 49);
         btnInsert.TabIndex = 98;
         btnInsert.Text = "Insert";
         btnInsert.UseVisualStyleBackColor = true;
@@ -149,7 +149,7 @@ partial class AddUserForm
         btnClear.Font = new Font("Microsoft Sans Serif", 14F, FontStyle.Bold);
         btnClear.Location = new Point(30, 307);
         btnClear.Name = "btnClear";
-        btnClear.Size = new Size(121, 49);
+        btnClear.Size = new Size(230, 49);
         btnClear.TabIndex = 87;
         btnClear.Text = "Clear";
         btnClear.UseVisualStyleBackColor = true;

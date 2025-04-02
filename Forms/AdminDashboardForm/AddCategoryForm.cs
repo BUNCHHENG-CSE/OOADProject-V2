@@ -28,8 +28,8 @@ public partial class AddCategoryForm : Form
         btnClear.Click += DoClickClearFormInput;
         btnInsert.Click += DoClickInsertCategory;
         btnUpdate.Click += DoClickUpdateCategory;
+        CheckButtons.Check(effectedCategory, btnInsert, btnUpdate);
     }
-
     private void DoClickUpdateCategory(object? sender, EventArgs e)
     {
        
@@ -53,7 +53,6 @@ public partial class AddCategoryForm : Form
         }
         catch (Exception ex) { MessageBox.Show(ex.Message, "Submitting", MessageBoxButtons.OK, MessageBoxIcon.Error); }
     }
-
     private void DoClickInsertCategory(object? sender, EventArgs e)
     {
         
@@ -74,7 +73,6 @@ public partial class AddCategoryForm : Form
 
         ClearFormInput();
     }
-
     private void DoClickClearFormInput(object? sender, EventArgs e)
     {
         ClearFormInput();
@@ -107,12 +105,16 @@ public partial class AddCategoryForm : Form
     }
     public void LoadCategoryToUpdate(Categories category)
     {
-        if (category == null)
+        if (category == null) {
             MessageBox.Show("Category is null");
+            return;
+        }
         txtCategoryID.Clear();
         txtCategoryID.Text = category.CategoryID.ToString();
         txtCategoryName.Text = category.CategoryName;
         rtxtCategoryDescription.Text = category.CategoryDescription;
         effectedCategory = category;
+
+        CheckButtons.Check(effectedCategory, btnInsert, btnUpdate);
     }
 }

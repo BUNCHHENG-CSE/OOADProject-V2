@@ -50,9 +50,9 @@ partial class AddCategoryForm
         // btnUpdate
         // 
         btnUpdate.Font = new Font("Microsoft Sans Serif", 14F, FontStyle.Bold);
-        btnUpdate.Location = new Point(600, 251);
+        btnUpdate.Location = new Point(519, 251);
         btnUpdate.Name = "btnUpdate";
-        btnUpdate.Size = new Size(121, 49);
+        btnUpdate.Size = new Size(230, 49);
         btnUpdate.TabIndex = 82;
         btnUpdate.Text = "Update";
         btnUpdate.UseVisualStyleBackColor = true;
@@ -60,9 +60,9 @@ partial class AddCategoryForm
         // btnInsert
         // 
         btnInsert.Font = new Font("Microsoft Sans Serif", 14F, FontStyle.Bold);
-        btnInsert.Location = new Point(303, 251);
+        btnInsert.Location = new Point(269, 251);
         btnInsert.Name = "btnInsert";
-        btnInsert.Size = new Size(121, 49);
+        btnInsert.Size = new Size(230, 49);
         btnInsert.TabIndex = 81;
         btnInsert.Text = "Insert";
         btnInsert.UseVisualStyleBackColor = true;
@@ -100,7 +100,7 @@ partial class AddCategoryForm
         btnClear.Font = new Font("Microsoft Sans Serif", 14F, FontStyle.Bold);
         btnClear.Location = new Point(23, 251);
         btnClear.Name = "btnClear";
-        btnClear.Size = new Size(121, 49);
+        btnClear.Size = new Size(230, 49);
         btnClear.TabIndex = 65;
         btnClear.Text = "Clear";
         btnClear.UseVisualStyleBackColor = true;

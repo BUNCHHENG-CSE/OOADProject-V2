@@ -51,9 +51,9 @@ partial class AddProductsForm
         // btnInsert
         // 
         btnInsert.Font = new Font("Microsoft Sans Serif", 14F, FontStyle.Bold);
-        btnInsert.Location = new Point(324, 340);
+        btnInsert.Location = new Point(292, 340);
         btnInsert.Name = "btnInsert";
-        btnInsert.Size = new Size(121, 49);
+        btnInsert.Size = new Size(230, 49);
         btnInsert.TabIndex = 83;
         btnInsert.Text = "Insert";
         btnInsert.UseVisualStyleBackColor = true;
@@ -139,7 +139,7 @@ partial class AddProductsForm
         btnClear.Font = new Font("Microsoft Sans Serif", 14F, FontStyle.Bold);
         btnClear.Location = new Point(25, 340);
         btnClear.Name = "btnClear";
-        btnClear.Size = new Size(121, 49);
+        btnClear.Size = new Size(230, 49);
         btnClear.TabIndex = 64;
         btnClear.Text = "Clear";
         btnClear.UseVisualStyleBackColor = true;
@@ -166,9 +166,9 @@ partial class AddProductsForm
         // btnUpdate
         // 
         btnUpdate.Font = new Font("Microsoft Sans Serif", 14F, FontStyle.Bold);
-        btnUpdate.Location = new Point(618, 340);
+        btnUpdate.Location = new Point(548, 340);
         btnUpdate.Name = "btnUpdate";
-        btnUpdate.Size = new Size(121, 49);
+        btnUpdate.Size = new Size(230, 49);
         btnUpdate.TabIndex = 84;
         btnUpdate.Text = "Update";
         btnUpdate.UseVisualStyleBackColor = true;

@@ -19,7 +19,7 @@ namespace OOADPROV2.Forms.AdminDashboardForm;
 public partial class StaffForm : Form , IObservers<Staffs>
 {
     private readonly System.Windows.Forms.Timer clickTimer;
-    private const int DoubleClick = 300;
+    private new const int DoubleClick = 300;
     private  Staffs _selectedStaff;
     private readonly StaffNotifier _staffNotifier = new();
     public StaffForm()
