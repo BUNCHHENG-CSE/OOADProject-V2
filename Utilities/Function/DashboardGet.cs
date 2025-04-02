@@ -8,11 +8,11 @@ using Microsoft.Data.SqlClient;
 
 namespace OOADPROV2.Utilities.Function;
 
-public static class DashboardFunc
+public static class DashboardGet
 {
-    public static double GetTotalSalesAllTime(SqlConnection con)
+    public static double TotalSalesAllTime()
     {
-        SqlCommand cmd = new("spGetTotalSalesAllTime", con)
+        SqlCommand cmd = new("spGetTotalSalesAllTime", Helper.Instance.OpenConnection())
         {
             CommandType = CommandType.StoredProcedure
         };
@@ -36,9 +36,9 @@ public static class DashboardFunc
         }
     }
 
-    public static double GetOrderQuantityToday(SqlConnection con)
+    public static double OrderQuantityToday()
     {
-        SqlCommand cmd = new("spGetOrderQuantityToday", con)
+        SqlCommand cmd = new("spGetOrderQuantityToday", Helper.Instance.OpenConnection())
         {
             CommandType = CommandType.StoredProcedure
         };
@@ -61,9 +61,9 @@ public static class DashboardFunc
             throw new Exception($"Failed to retrieve  quantity for today> {ex.Message}");
         }
     }
-    public static int GetTotalUsers(SqlConnection con)
+    public static int TotalUsers()
     {
-        SqlCommand cmd = new("spGetTotalUsers", con)
+        SqlCommand cmd = new("spGetTotalUsers", Helper.Instance.OpenConnection())
         {
             CommandType = CommandType.StoredProcedure
         };

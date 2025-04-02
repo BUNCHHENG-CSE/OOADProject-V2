@@ -181,7 +181,7 @@ public partial class AddUserForm : Form
     {
         try
         {
-            var result = UserCommands.GetAllUsers();
+            var result = UserGet.All();
             if (result.LastOrDefault() != null) { userCount = result.LastOrDefault().UserID; }
             else { userCount = 0; }
 
@@ -200,7 +200,7 @@ public partial class AddUserForm : Form
 
             try
             {
-                effectedStaff = StaffCommands.GetOneStaff(int.Parse(staffID.Trim()));
+                effectedStaff = StaffGet.One(int.Parse(staffID.Trim()));
                 txtStaffName.Text = effectedStaff.StaffName;
                 txtStaffPosition.Text = effectedStaff.StaffPosition;
                 picStaff.Image = effectedStaff.Photo != null ? ConvertImageClass.ConvertByteArrayToImage(effectedStaff.Photo) : null;
@@ -218,7 +218,7 @@ public partial class AddUserForm : Form
     {
         try
         {
-            var result = StaffCommands.GetIDStaff();
+            var result = StaffGet.ID();
             List<string> ls = [];
             foreach (var staff in result)
             {

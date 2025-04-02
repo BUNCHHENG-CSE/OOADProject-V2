@@ -49,7 +49,7 @@ public partial class UserForm : Form,IObservers<Users>
         try
         {
             flowLayoutPanelUser.Padding = new Padding(20, 20, 20, 20);
-            var result = UserCommands.GetAllUsers();
+            var result = UserGet.All();
             foreach (var user in result)
             {
                 Panel userPanel = new()
@@ -146,7 +146,7 @@ public partial class UserForm : Form,IObservers<Users>
 
             if (dialogResult == DialogResult.Yes)
             {
-                var result = UserCommands.GetAllUsers();
+                var result = UserGet.All();
                 bool isDeleted = UserCommands.DeleteUser(userID);
                 if (isDeleted)
                 {

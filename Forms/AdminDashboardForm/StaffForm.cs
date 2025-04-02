@@ -49,7 +49,7 @@ public partial class StaffForm : Form , IObservers<Staffs>
         try
         {
             flowLayoutPanelStaff.Padding = new Padding(20, 20, 20, 20);
-            var result = StaffCommands.GetAllStaffs();
+            var result = StaffGet.All();
 
             
             foreach (var staff in result)
@@ -147,7 +147,7 @@ public partial class StaffForm : Form , IObservers<Staffs>
 
             if (dialogResult == DialogResult.Yes)
             {
-                var result = StaffCommands.GetAllStaffs();
+                var result = StaffGet.All();
                 bool isDeleted = StaffCommands.DeleteStaff(staffid);
                 if (isDeleted)
                 {

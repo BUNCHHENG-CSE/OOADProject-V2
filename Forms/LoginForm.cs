@@ -1,6 +1,7 @@
 ﻿using OOADPROV2.Models;
 using OOADPROV2.Utilities;
 using OOADPROV2.Utilities.Commands.User;
+using OOADPROV2.Utilities.Function;
 
 namespace OOADPROV2.Forms;
 
@@ -61,7 +62,7 @@ public partial class LoginForm : Form
             _password = txtPassword.Text
         };
         if (login._username != "" && login._password != "")
-            userVerify = UserCommands.GetOneUser(login);
+            userVerify = UserGet.One(login);
 
         if (userVerify?.Password == null) return;
         if (userVerify != null)

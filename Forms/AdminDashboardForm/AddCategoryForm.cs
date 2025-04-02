@@ -1,6 +1,7 @@
 ﻿using OOADPROV2.Models;
 using OOADPROV2.Utilities.Builder.Category;
 using OOADPROV2.Utilities.Commands.Category;
+using OOADPROV2.Utilities.Function;
 using OOADPROV2.Utilities.Observer.Category;
 using System;
 using System.Collections.Generic;
@@ -88,7 +89,7 @@ public partial class AddCategoryForm : Form
     {
         try
         {
-            var result = CategoryCommands.GetAllCategories();
+            var result = CategoryGet.All();
 
             if (result.LastOrDefault() != null) { categoryCount = result.LastOrDefault().CategoryID; }
             else { categoryCount = 0; }

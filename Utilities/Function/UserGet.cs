@@ -1,4 +1,5 @@
 ﻿using Microsoft.Data.SqlClient;
+using Microsoft.VisualBasic.Logging;
 using OOADPROV2.Models;
 using System;
 using System.Collections.Generic;
@@ -7,11 +8,39 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OOADPROV2.Utilities.Commands.User.Action;
+namespace OOADPROV2.Utilities.Function;
 
-public class GetOneCommand(Login login) : ICommand<Users>
+public class UserGet
 {
-    public Users Execute()
+    public static IEnumerable<Users> All()
+    {
+        SqlCommand cmd = new("spReadAllUser", Helper.Instance.OpenConnection());
+        SqlDataReader? reader = null;
+        try
+        {
+            reader = cmd.ExecuteReader();
+        }
+        catch (Exception ex)
+        {
+            throw new Exception($"Error in getting all User > {ex.Message}");
+        }
+        finally
+        {
+            cmd.Dispose();
+
+        }
+        if (reader != null && reader.HasRows == true)
+        {
+            var queryAbles = reader.Cast<IDataRecord>().AsQueryable();
+            foreach (var record in queryAbles)
+            {
+                yield return reader.ToUserAllData();
+            }
+        }
+        reader?.Close();
+        Helper.Instance.CloseConnection();
+    }
+    public static Users One(Login login)
     {
         SqlCommand cmd = new("spReadOneUser", Helper.Instance.OpenConnection())
         {
@@ -30,7 +59,7 @@ public class GetOneCommand(Login login) : ICommand<Users>
         finally
         {
             cmd.Dispose();
-           
+
         }
         Users? result = null;
         if (reader != null && reader.HasRows == true)
@@ -45,4 +74,3 @@ public class GetOneCommand(Login login) : ICommand<Users>
         return result;
     }
 }
-

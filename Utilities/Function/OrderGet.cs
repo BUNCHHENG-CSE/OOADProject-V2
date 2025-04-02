@@ -3,18 +3,17 @@ using OOADPROV2.Models;
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OOADPROV2.Utilities.Commands.Category.Action;
+namespace OOADPROV2.Utilities.Function;
 
-public class GetAllCommand : ICommand<IEnumerable<Categories>>
+public class OrderGet
 {
-    public IEnumerable<Categories> Execute()
+    public static IEnumerable<Orders> All()
     {
-        SqlCommand cmd = new("spReadAllCategory", Helper.Instance.OpenConnection());
+        SqlCommand cmd = new("spReadAllOrder", Helper.Instance.OpenConnection());
         SqlDataReader? reader = null;
         try
         {
@@ -22,19 +21,19 @@ public class GetAllCommand : ICommand<IEnumerable<Categories>>
         }
         catch (Exception ex)
         {
-            throw new Exception($"Error in getting all Category > {ex.Message}");
+            throw new Exception($"Error in getting all Order > {ex.Message}");
         }
         finally
         {
             cmd.Dispose();
-            
+
         }
         if (reader != null && reader.HasRows == true)
         {
             var queryAbles = reader.Cast<IDataRecord>().AsQueryable();
             foreach (var record in queryAbles)
             {
-                yield return reader.ToDisplayCategory();
+                yield return reader.ToDisplayOrder();
             }
         }
         reader?.Close();

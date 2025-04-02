@@ -2,6 +2,7 @@
 using OOADPROV2.Models;
 using OOADPROV2.Utilities;
 using OOADPROV2.Utilities.Commands.Category;
+using OOADPROV2.Utilities.Function;
 using OOADPROV2.Utilities.Observer;
 using OOADPROV2.Utilities.Observer.Category;
 using System;
@@ -36,7 +37,7 @@ public partial class CategoryForm : Form, IObservers<Categories>
         int no = (int)dgvCategory.CurrentRow.Cells["CategoryID"].Value;
         try
         {
-            effectedCategory = CategoryCommands.GetOneCategory(no);
+            effectedCategory = CategoryGet.One(no);
         }
         catch (Exception ex)
         {
@@ -79,7 +80,7 @@ public partial class CategoryForm : Form, IObservers<Categories>
     {
         try
         {
-            var result = CategoryCommands.GetAllCategories();
+            var result = CategoryGet.All();
             dgvCategory.Rows.Clear();
             foreach (var category in result)
             {

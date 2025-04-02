@@ -5,11 +5,6 @@ namespace OOADPROV2.Utilities.Commands.Product;
 
 public class ProductCommands
 {
-    public static IEnumerable<Products> GetAllProducts()
-    {
-        return new GetAllCommand().Execute();
-    }
-
     public static bool AddProduct(Products product)
     {
         return new AddCommand(product).Execute();

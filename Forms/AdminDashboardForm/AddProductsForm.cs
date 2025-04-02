@@ -162,7 +162,7 @@ public partial class AddProductsForm : Form
     {
         try
         {
-            var result = CategoryCommands.GetCategoriesID();
+            var result = CategoryGet.ID();
             List<string> ls = [];
             foreach (var category in result)
             {
@@ -180,7 +180,7 @@ public partial class AddProductsForm : Form
     {
         try
         {
-            var result = ProductCommands.GetAllProducts();
+            var result = ProductGet.All();
             if (result.LastOrDefault() != null) { productCount = result.LastOrDefault().ProductsID; }
             else { productCount = 0; }
         }

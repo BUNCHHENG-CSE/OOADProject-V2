@@ -155,7 +155,7 @@ public partial class AddStaffForm : Form
     {
         try
         {
-            var result = StaffCommands.GetAllStaffs();
+            var result = StaffGet.All();
             if (result.LastOrDefault() != null) { staffCount = result.LastOrDefault().StaffID; }
             else { staffCount = 0; }
         }

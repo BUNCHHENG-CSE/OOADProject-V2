@@ -10,14 +10,6 @@ namespace OOADPROV2.Utilities.Commands.Category;
 
 public class CategoryCommands
 {
-    public static Categories GetOneCategory(int categoryID)
-    {
-        return new GetOneCommand(categoryID).Execute();
-    }
-    public static IEnumerable<Categories> GetAllCategories()
-    {
-       return new GetAllCommand().Execute();
-    }
     public static bool AddCategory(Categories category)
     {
         return new AddCommand(category).Execute();
@@ -30,9 +22,5 @@ public class CategoryCommands
     {
         return new DelectCommand(categoryID).Execute();
     }
-    public static IEnumerable<Categories> GetCategoriesID()
-    {
-        return new GetIDCommand().Execute();
-    }
-
+ 
 }

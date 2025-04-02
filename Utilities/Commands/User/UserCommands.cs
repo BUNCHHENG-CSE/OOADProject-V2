@@ -9,17 +9,10 @@ namespace OOADPROV2.Utilities.Commands.User;
 
 public class UserCommands
 {
-    public static IEnumerable<Users> GetAllUsers()
-    {
-        return new GetAllCommand().Execute();
-    }
+   
     public static bool AddUser(Users user)
     {
         return new AddCommand(user).Execute();
-    }
-    public static Users GetOneUser(Login login)
-    {
-        return new GetOneCommand(login).Execute();
     }
     public static bool UpdateUser(Users user)
     {

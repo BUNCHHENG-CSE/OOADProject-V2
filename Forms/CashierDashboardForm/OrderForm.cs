@@ -1,5 +1,6 @@
 ﻿using OOADPROV2.Models;
 using OOADPROV2.Utilities.Commands.Order;
+using OOADPROV2.Utilities.Function;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,7 +22,7 @@ namespace OOADPROV2.Forms.CashierDashboardForm
             dgvOrder.AutoGenerateColumns = false;
             dgvOrder.Rows.Clear();
 
-            var orders = OrderCommands.GetAllOrder().ToList();
+            var orders = OrderGet.All().ToList();
             foreach (var order in orders)
             {
                 dgvOrder.Rows.Add(

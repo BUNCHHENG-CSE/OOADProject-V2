@@ -45,7 +45,7 @@ public partial class ProductsForm : Form, IObservers<Products>
         try
         {
             flowLayoutPanelProducts.Padding = new Padding(20, 20, 20, 20);
-            var result = ProductCommands.GetAllProducts();
+            var result = ProductGet.All();
             foreach (var product in result)
             {
 
@@ -155,7 +155,7 @@ public partial class ProductsForm : Form, IObservers<Products>
 
             if (dialogResult == DialogResult.Yes)
             {
-                var result = ProductCommands.GetAllProducts();
+                var result = ProductGet.All();
                 bool isDeleted = ProductCommands.DeleteProduct(productID);
                 if (isDeleted)
                 {

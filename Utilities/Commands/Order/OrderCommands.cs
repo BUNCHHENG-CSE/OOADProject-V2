@@ -10,10 +10,6 @@ namespace OOADPROV2.Utilities.Commands.Order;
 
 public class OrderCommands
 {
-    public static IEnumerable<Orders> GetAllOrder()
-    {
-        return new GetAllCommand().Execute();
-    }
     public static bool AddNewOrder(OrderDetails orderDetails)
     {
         return new AddCommand(orderDetails).Execute();
