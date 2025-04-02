@@ -15,8 +15,8 @@ namespace OOADPROV2.Forms.CashierDashboardForm
 {
     public partial class AddOrderDetailForm : Form
     {
-        private List<OrderDetails> currentCart = new();
-        private SearchContext searchContext = new(new SearchByTextStrategy());
+        private readonly List<OrderDetails> currentCart = [];
+        private readonly SearchContext searchContext = new(new SearchByTextStrategy());
 
         public AddOrderDetailForm()
         {
@@ -27,7 +27,7 @@ namespace OOADPROV2.Forms.CashierDashboardForm
             LoadProducts("");
         }
 
-        private void TxtProductName_TextChanged(object sender, EventArgs e)
+        private void TxtProductName_TextChanged(object? sender, EventArgs e)
         {
             string searchText = txtProductName.Text.Trim();
             LoadProducts(searchText);
@@ -125,7 +125,7 @@ namespace OOADPROV2.Forms.CashierDashboardForm
             RefreshCart();
         }
 
-        private void btnClear_Click(object sender, EventArgs e)
+        private void btnClear_Click(object? sender, EventArgs e)
         {
             currentCart.Clear();
             dataGridView1.Rows.Clear();
@@ -152,7 +152,7 @@ namespace OOADPROV2.Forms.CashierDashboardForm
             txtTotal.Text = $"Total: {currentCart.Sum(d => d.OrderQty * d.UnitPrice):C2}";
         }
 
-        private void Buttonpay_Click(object sender, EventArgs e)
+        private void Buttonpay_Click(object? sender, EventArgs e)
         {
             if (currentCart.Count == 0)
             {

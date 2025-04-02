@@ -6,9 +6,9 @@ namespace OOADPROV2.Forms;
 
 public partial class LoginForm : Form
 {
-    public static Users userVerify = null;
-    private LoadingForm loadingFormReference;
-    private DBConnectionForm databaseConnectionFormReference;
+    private static Users? userVerify = null;
+    private readonly LoadingForm loadingFormReference;
+    private readonly DBConnectionForm databaseConnectionFormReference;
     public LoginForm(LoadingForm loadingForm, DBConnectionForm databaseConnectionForm)
     {
         InitializeComponent();
@@ -29,7 +29,7 @@ public partial class LoginForm : Form
         Helper.Instance.LoadConfiguration("DBConnectionFormat.json");
         this.Hide();
     }
-    private void LoginForm_FormClosed(object sender, FormClosedEventArgs e)
+    private void LoginForm_FormClosed(object? sender, FormClosedEventArgs e)
     {
         databaseConnectionFormReference.Close();
         loadingFormReference.Close();
@@ -63,6 +63,7 @@ public partial class LoginForm : Form
         if (login._username != "" && login._password != "")
             userVerify = UserCommands.GetOneUser(login);
 
+        if (userVerify?.Password == null) return;
         if (userVerify != null)
         {
             if (!SecurityHelper.VerifyPassword(login._password, userVerify.Password))
@@ -72,7 +73,7 @@ public partial class LoginForm : Form
                 return;
             }
 
-            if (userVerify.Staff.StaffPosition == "Administrator")
+            if (userVerify.Staff?.StaffPosition == "Administrator")
             {
                 AdminForm adminForm = new(this.loadingFormReference, this.databaseConnectionFormReference, this);
                 adminForm.Show();
@@ -81,7 +82,7 @@ public partial class LoginForm : Form
             {
                 CashierForm cashierForm = new(this.loadingFormReference, this.databaseConnectionFormReference, this, userVerify);
                 cashierForm.Show();
-                AppSession.CurrentStaffID = userVerify.Staff.StaffID;
+                AppSession.CurrentStaffID = userVerify.Staff?.StaffID;
             }
             txtUsername.Clear();
             txtPassword.Clear();

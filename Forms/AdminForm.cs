@@ -26,7 +26,7 @@ namespace OOADPROV2.Forms
             btnLogout.Click += (_, _) => { this.Hide(); loginFormReference.Show(); };
 
         }
-        private void AdminForm_FormClosed(object sender, FormClosedEventArgs e)
+        private void AdminForm_FormClosed(object? sender, FormClosedEventArgs e)
         {
             loadingFormReference.Close();
             loginFormReference.Close();

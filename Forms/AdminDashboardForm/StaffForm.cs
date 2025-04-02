@@ -35,7 +35,7 @@ public partial class StaffForm : Form , IObservers<Staffs>
     }
     private void DoClickAddStaff(object? sender, EventArgs e)
     {
-        AddStaffForm staffAddForm = new(this,_staffNotifier);
+        AddStaffForm staffAddForm = new(_staffNotifier);
         
         staffAddForm.Show();
 
@@ -128,7 +128,7 @@ public partial class StaffForm : Form , IObservers<Staffs>
     }
     private void LoadStaffForUpdate(Staffs staff)
     {
-        AddStaffForm updateForm = new (this);
+        AddStaffForm updateForm = new (_staffNotifier);
         updateForm.LoadStaffDetails(staff);
         updateForm.ShowDialog();
         flowLayoutPanelStaff.Controls.Clear();

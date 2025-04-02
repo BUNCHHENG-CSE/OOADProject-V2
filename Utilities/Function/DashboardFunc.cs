@@ -12,7 +12,7 @@ public static class DashboardFunc
 {
     public static double GetTotalSalesAllTime(SqlConnection con)
     {
-        SqlCommand cmd = new SqlCommand("spGetTotalSalesAllTime", con)
+        SqlCommand cmd = new("spGetTotalSalesAllTime", con)
         {
             CommandType = CommandType.StoredProcedure
         };
@@ -38,7 +38,7 @@ public static class DashboardFunc
 
     public static double GetOrderQuantityToday(SqlConnection con)
     {
-        SqlCommand cmd = new SqlCommand("spGetOrderQuantityToday", con)
+        SqlCommand cmd = new("spGetOrderQuantityToday", con)
         {
             CommandType = CommandType.StoredProcedure
         };
@@ -63,7 +63,7 @@ public static class DashboardFunc
     }
     public static int GetTotalUsers(SqlConnection con)
     {
-        SqlCommand cmd = new SqlCommand("spGetTotalUsers", con)
+        SqlCommand cmd = new("spGetTotalUsers", con)
         {
             CommandType = CommandType.StoredProcedure
         };

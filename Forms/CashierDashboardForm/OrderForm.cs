@@ -33,7 +33,7 @@ namespace OOADPROV2.Forms.CashierDashboardForm
             }
         }
 
-        private void btnOrderDetail_Click(object sender, EventArgs e)
+        private void btnOrderDetail_Click(object? sender, EventArgs e)
         {
             var addForm = new AddOrderDetailForm();
             addForm.ShowDialog();

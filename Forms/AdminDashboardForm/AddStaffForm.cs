@@ -14,7 +14,6 @@ public partial class AddStaffForm : Form
     private Staffs? effectedStaff = null;
     private readonly List<string> listBoxStaff = [];
     private int staffCount = 0;
-    private readonly int indexOfUpdateStaff;
     private string[] StaffPosition { get; set; } = ["Administrator", "Cashier", "Cleaner", "Waiter"];
     private static string[] Genders { get; set; } = ["Female", "Male"];
     private readonly StaffNotifier _staffNotifier = new(); 

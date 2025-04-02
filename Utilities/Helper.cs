@@ -62,6 +62,4 @@ sealed class Helper
 
     public string GetDBConnectionSetting(string authType)
         => Configuration[$"DBConnectionString{authType}"] ?? "";
-
-
 }

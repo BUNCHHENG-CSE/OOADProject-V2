@@ -37,17 +37,18 @@ partial class SaleReportForm
         // 
         // formsPlotOverallIncome
         // 
-        formsPlotOverallIncome.Location = new Point(112, 84);
-        formsPlotOverallIncome.Margin = new Padding(4, 3, 4, 3);
+        formsPlotOverallIncome.Font = new Font("Sitka Small", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+        formsPlotOverallIncome.Location = new Point(128, 101);
+        formsPlotOverallIncome.Margin = new Padding(5, 4, 5, 4);
         formsPlotOverallIncome.Name = "formsPlotOverallIncome";
-        formsPlotOverallIncome.Size = new Size(697, 490);
+        formsPlotOverallIncome.Size = new Size(897, 508);
         formsPlotOverallIncome.TabIndex = 10;
         // 
         // labelOverallIncome
         // 
         labelOverallIncome.AutoSize = true;
         labelOverallIncome.Font = new Font("Sitka Small Semibold", 14F, FontStyle.Bold);
-        labelOverallIncome.Location = new Point(383, 32);
+        labelOverallIncome.Location = new Point(478, 32);
         labelOverallIncome.Name = "labelOverallIncome";
         labelOverallIncome.Size = new Size(170, 28);
         labelOverallIncome.TabIndex = 14;
@@ -56,30 +57,30 @@ partial class SaleReportForm
         // txtDailyIncome
         // 
         txtDailyIncome.AutoSize = true;
-        txtDailyIncome.Font = new Font("Segoe UI", 14F);
+        txtDailyIncome.Font = new Font("Sitka Small", 14.2499981F, FontStyle.Bold, GraphicsUnit.Point, 0);
         txtDailyIncome.Location = new Point(170, 613);
         txtDailyIncome.Name = "txtDailyIncome";
-        txtDailyIncome.Size = new Size(54, 25);
+        txtDailyIncome.Size = new Size(65, 28);
         txtDailyIncome.TabIndex = 15;
         txtDailyIncome.Text = "Daily";
         // 
         // txtMonthlyIncome
         // 
         txtMonthlyIncome.AutoSize = true;
-        txtMonthlyIncome.Font = new Font("Segoe UI", 14F);
+        txtMonthlyIncome.Font = new Font("Sitka Small", 14.2499981F, FontStyle.Bold, GraphicsUnit.Point, 0);
         txtMonthlyIncome.Location = new Point(170, 672);
         txtMonthlyIncome.Name = "txtMonthlyIncome";
-        txtMonthlyIncome.Size = new Size(82, 25);
+        txtMonthlyIncome.Size = new Size(96, 28);
         txtMonthlyIncome.TabIndex = 16;
         txtMonthlyIncome.Text = "Monthly";
         // 
         // txtYearlyIncome
         // 
         txtYearlyIncome.AutoSize = true;
-        txtYearlyIncome.Font = new Font("Segoe UI", 14F);
+        txtYearlyIncome.Font = new Font("Sitka Small", 14.2499981F, FontStyle.Bold, GraphicsUnit.Point, 0);
         txtYearlyIncome.Location = new Point(170, 736);
         txtYearlyIncome.Name = "txtYearlyIncome";
-        txtYearlyIncome.Size = new Size(62, 25);
+        txtYearlyIncome.Size = new Size(76, 28);
         txtYearlyIncome.TabIndex = 17;
         txtYearlyIncome.Text = "Yearly";
         // 

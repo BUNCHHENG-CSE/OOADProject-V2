@@ -22,7 +22,7 @@ namespace OOADPROV2.Forms.CashierDashboardForm
             LoadProducts("");
         }
 
-        private void txtSearch_TextChanged(object sender, EventArgs e)
+        private void txtSearch_TextChanged(object? sender, EventArgs e)
         {
             string filter = txtSearch.Text.Trim();
             LoadProducts(filter);

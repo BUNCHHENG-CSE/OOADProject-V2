@@ -67,12 +67,7 @@ public partial class CategoryForm : Form, IObservers<Categories>
 
     private void DoClickAddCategory(object? sender, EventArgs e)
     {
-        AddCategoryForm categoryAddForm = new();
-        categoryAddForm.CategoryHanlder += (sender, result) =>
-        {
-            if (result)
-                LoadingDataCategory();
-        };
+        AddCategoryForm categoryAddForm = new(_categoryNotifier);
         categoryAddForm.Show();
     }
 

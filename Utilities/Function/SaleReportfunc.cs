@@ -13,7 +13,7 @@ public static class SaleReportfunc
     
     public static (decimal DailySales, decimal MonthlySales, decimal YearlySales) GetOverallIncome(SqlConnection con)
     {
-        SqlCommand cmd = new SqlCommand("spGetOverallIncome", con)
+        SqlCommand cmd = new("spGetOverallIncome", con)
         {
             CommandType = CommandType.StoredProcedure
         };

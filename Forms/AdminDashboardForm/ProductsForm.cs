@@ -37,7 +37,7 @@ public partial class ProductsForm : Form, IObservers<Products>
     }
     private void DoClickAddProducts(object? sender, EventArgs e)
     {
-        AddProductsForm productsAddForm = new(this,_productNotifier);
+        AddProductsForm productsAddForm = new(_productNotifier);
         productsAddForm.Show();
     }
     private void LoadingDataProducts()
@@ -136,7 +136,7 @@ public partial class ProductsForm : Form, IObservers<Products>
 
     private void LoadProductForUpdate(Products products)
     {
-        AddProductsForm updateForm = new(this,_productNotifier);
+        AddProductsForm updateForm = new(_productNotifier);
         updateForm.LoadProductDetails(products);
         updateForm.ShowDialog();
         flowLayoutPanelProducts.Controls.Clear();

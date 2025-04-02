@@ -17,4 +17,3 @@ internal static class Program
     }
 }
 public delegate void AmountCountEventHandler(object? sender, bool result);
-public delegate void LoadingEventHandler(object? sender, bool result);

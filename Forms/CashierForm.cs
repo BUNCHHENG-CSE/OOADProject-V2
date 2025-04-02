@@ -33,7 +33,7 @@ namespace OOADPROV2.Forms
             if (user != null)
                 LabelUser.Text += $" {user.Username?.ToUpper()}";
         }
-        private void CashierForm_FormClosed(object sender, FormClosedEventArgs e)
+        private void CashierForm_FormClosed(object? sender, FormClosedEventArgs e)
         {
             loadingFormReference.Close();
             loginFormReference.Close();

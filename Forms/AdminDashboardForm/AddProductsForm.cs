@@ -244,5 +244,4 @@ public partial class AddProductsForm : Form
         }
     }
 
-   // public event LoadingEventHandler? ProductLoadingChanged;
 }

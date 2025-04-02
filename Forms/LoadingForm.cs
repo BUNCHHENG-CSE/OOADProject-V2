@@ -18,7 +18,7 @@ public partial class LoadingForm : Form
             progressBarLoading.Value = 0;
             timerLoading.Stop();
             this.Hide();
-            DBConnectionForm databaseConnectionForm = new DBConnectionForm(this);
+            DBConnectionForm databaseConnectionForm = new(this);
             if (File.Exists($"{Environment.CurrentDirectory}/appSettings.json"))
             {
                 databaseConnectionForm.Hide();
