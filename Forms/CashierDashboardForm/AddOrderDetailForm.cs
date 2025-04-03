@@ -5,38 +5,42 @@ using OOADPROV2.Utilities.Commands.Order;
 using OOADPROV2.Utilities.Commands.Product;
 using OOADPROV2.Utilities.Function;
 using OOADPROV2.Utilities.Strategies.Search;
+using OOADPROV2.Utilities.Observer.Product;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
+using OOADPROV2.Utilities.Observer;
 
 namespace OOADPROV2.Forms.CashierDashboardForm
 {
-    public partial class AddOrderDetailForm : Form
+    public partial class AddOrderDetailForm : Form, IObservers<Products>
     {
         private readonly List<OrderDetails> currentCart = [];
         private readonly SearchContext searchContext = new(new SearchByTextStrategy());
+        private readonly ProductNotifier _productNotifier = ProductNotifier.Instance;
 
         public AddOrderDetailForm()
         {
             InitializeComponent();
+            _productNotifier.Attach(this);
+            this.FormClosed += AddOrderDetailForm_FormClosed;
             txtProductName.TextChanged += TxtProductName_TextChanged;
             buttonpay.Click += Buttonpay_Click;
             btnClear.Click += btnClear_Click;
+
             LoadProducts("");
         }
 
         private void TxtProductName_TextChanged(object? sender, EventArgs e)
         {
-            string searchText = txtProductName.Text.Trim();
-            LoadProducts(searchText);
+            LoadProducts(txtProductName.Text.Trim());
         }
 
         private void LoadProducts(string filter)
         {
             var filtered = searchContext.ExecuteSearch(filter);
-
             flowLayoutPanel1.Controls.Clear();
 
             foreach (var product in filtered)
@@ -66,7 +70,16 @@ namespace OOADPROV2.Forms.CashierDashboardForm
                     Font = new Font("Arial", 10, FontStyle.Bold),
                     Size = new Size(160, 25),
                     TextAlign = ContentAlignment.MiddleCenter,
-                    Location = new Point(10, 210)
+                    Location = new Point(10, 205)
+                };
+
+                Label stockLabel = new()
+                {
+                    Text = $"Stock: {product.ProductsStock}",
+                    Font = new Font("Arial", 9),
+                    Size = new Size(160, 20),
+                    TextAlign = ContentAlignment.MiddleCenter,
+                    Location = new Point(10, 225)
                 };
 
                 Label priceLabel = new()
@@ -85,8 +98,8 @@ namespace OOADPROV2.Forms.CashierDashboardForm
 
                 productPanel.Controls.Add(pictureBox);
                 productPanel.Controls.Add(nameLabel);
+                productPanel.Controls.Add(stockLabel);
                 productPanel.Controls.Add(priceLabel);
-
                 flowLayoutPanel1.Controls.Add(productPanel);
             }
         }
@@ -123,6 +136,7 @@ namespace OOADPROV2.Forms.CashierDashboardForm
             }
 
             RefreshCart();
+          
         }
 
         private void btnClear_Click(object? sender, EventArgs e)
@@ -130,6 +144,16 @@ namespace OOADPROV2.Forms.CashierDashboardForm
             currentCart.Clear();
             dataGridView1.Rows.Clear();
             txtTotal.Text = "Total: $ 0.00";
+        }
+
+        private void AddOrderDetailForm_FormClosed(object? sender, FormClosedEventArgs e)
+        {
+            _productNotifier.Detach(this);
+        }
+
+        public void Update(Products data)
+        {
+            LoadProducts(txtProductName.Text.Trim());
         }
 
         private void RefreshCart()
@@ -154,6 +178,7 @@ namespace OOADPROV2.Forms.CashierDashboardForm
 
         private void Buttonpay_Click(object? sender, EventArgs e)
         {
+            Products product = new Products();
             if (currentCart.Count == 0)
             {
                 MessageBox.Show("No items in the cart.");
@@ -184,12 +209,12 @@ namespace OOADPROV2.Forms.CashierDashboardForm
                     .Build();
 
                 finalDetail.Order = order;
-
                 OrderCommands.AddNewOrder(finalDetail);
             }
 
             MessageBox.Show("Order added successfully.");
             currentCart.Clear();
+            _productNotifier.Notify(product);
             RefreshCart();
         }
     }

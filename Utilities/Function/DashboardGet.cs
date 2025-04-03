@@ -25,10 +25,11 @@ public static class DashboardGet
             {
                 if (reader.Read())
                 {
-                    totalSales = Convert.ToDouble(reader["TotalSales"]);
+                    var value = reader["TotalSales"];
+                    return (value != DBNull.Value) ? Convert.ToDouble(value) : 0.0;
                 }
             }
-            return totalSales;
+            return 0.0;
         }
         catch (Exception ex)
         {

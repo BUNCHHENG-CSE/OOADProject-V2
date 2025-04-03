@@ -10,6 +10,8 @@ namespace OOADPROV2.Utilities.Observer.Product;
 public class ProductNotifier : ISubjects<Products>
 {
     private readonly List<IObservers<Products>> _observers = [];
+    private static ProductNotifier? _instance;
+    public static ProductNotifier Instance => _instance ??= new ProductNotifier();
 
     public void Attach(IObservers<Products> observer) => _observers.Add(observer);
     public void Detach(IObservers<Products> observer) => _observers.Remove(observer);

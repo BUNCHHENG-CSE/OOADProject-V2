@@ -1,18 +1,24 @@
 ﻿using OOADPROV2.Models;
 using OOADPROV2.Utilities.Commands.Order;
 using OOADPROV2.Utilities.Function;
+using OOADPROV2.Utilities.Facade.Dashboard;
+using OOADPROV2.Utilities.Observer.Product;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
+using OOADPROV2.Utilities.Observer;
 
 namespace OOADPROV2.Forms.CashierDashboardForm
 {
-    public partial class OrderForm : Form
+    public partial class OrderForm : Form, IObservers<Products>
     {
         public OrderForm()
         {
             InitializeComponent();
+            ProductNotifier.Instance.Attach(this); 
+            this.FormClosed += OrderForm_FormClosed;
+
             LoadOrders();
             btnOrderDetail.Click += btnOrderDetail_Click;
         }
@@ -36,9 +42,25 @@ namespace OOADPROV2.Forms.CashierDashboardForm
 
         private void btnOrderDetail_Click(object? sender, EventArgs e)
         {
-            var addForm = new AddOrderDetailForm();
-            addForm.ShowDialog();
-            LoadOrders();
+            this.WindowState = FormWindowState.Minimized;
+            AddOrderDetailForm addOrderForm = new AddOrderDetailForm();
+
+            addOrderForm.FormClosed += (s, args) =>
+            {
+                this.WindowState = FormWindowState.Normal;
+                this.Activate();
+            };
+            addOrderForm.Show();
+        }
+
+        public void Update(Products updatedProduct)
+        {
+            LoadOrders(); 
+        }
+
+        private void OrderForm_FormClosed(object? sender, FormClosedEventArgs e)
+        {
+            ProductNotifier.Instance.Detach(this);
         }
     }
 }

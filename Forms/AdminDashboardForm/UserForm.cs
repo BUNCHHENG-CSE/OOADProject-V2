@@ -85,7 +85,7 @@ public partial class UserForm : Form,IObservers<Users>
                     Size = new Size(180, 30),
                     TextAlign = ContentAlignment.MiddleCenter,
                     AutoSize = false,
-                    Location = new Point(5, 210)
+                    Location = new Point(5, 215)
                 };
 
 
