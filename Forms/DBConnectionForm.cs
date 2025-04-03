@@ -61,7 +61,3 @@ public partial class DBConnectionForm : Form
         this.Close();
     }
 }
-class DBConnection
-{
-    public string? DBConnectionString { get; set; }
-}
