@@ -44,5 +44,6 @@ namespace OOADPROV2.Forms
         {
             displayFacade.OpenForm<CashierProductForm>();
         }
+     
     }
 }
