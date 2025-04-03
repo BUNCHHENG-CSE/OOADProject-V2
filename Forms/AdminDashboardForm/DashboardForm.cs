@@ -77,9 +77,13 @@ public partial class DashboardForm : Form
             }
 
         }
+        catch (InvalidCastException)
+        {
+            MessageBox.Show("Sales data is unavailable or contains invalid types.", "No Data", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        }
         catch (Exception ex)
         {
-            MessageBox.Show("error TodayVsYesterdaySales", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBox.Show($"Unexpected error in TodayVsYesterdaySales: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
         finally
         {
@@ -135,10 +139,15 @@ public partial class DashboardForm : Form
                 lblLastWeekSales.Text = $"Last Week = {values[0]:C2}";
             }
         }
+        catch (InvalidCastException)
+        {
+            MessageBox.Show("Weekly sales data is incomplete or invalid.", "No Data", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        }
         catch (Exception ex)
         {
-            MessageBox.Show("error WeeklySale", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBox.Show($"Unexpected error in WeeklySale: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
+
         finally
         {
             OnLoadingChanged(false);
