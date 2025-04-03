@@ -2,6 +2,7 @@
 using OOADPROV2.Utilities;
 using OOADPROV2.Utilities.Commands.User;
 using OOADPROV2.Utilities.Function;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace OOADPROV2.Forms;
 
@@ -49,54 +50,79 @@ public partial class LoginForm : Form
 
     private void DoClickLogin(object? sender, EventArgs e)
     {
-        /* using when Don't have user account uncomments this code to create user account*/
-        AdminForm adminForm = new AdminForm(this.loadingFormReference, this.databaseConnectionFormReference, this);
-        adminForm.Show();
-        //if (txtUsername.Text == "" && txtPassword.Text == "")
-        //{
-        //    MessageBox.Show("Invalid Username and Password");
-        //}
-        //Login login = new()
-        //{
-        //    _username = txtUsername.Text,
-        //    _password = txtPassword.Text
-        //};
-        //if (login._username != "" && login._password != "")
-        //    userVerify = UserGet.One(login);
+        if (txtUsername.Text == "" && txtPassword.Text == "")
+        {
+            MessageBox.Show("Invalid Username and Password");
+            return;
+        }
 
-        //if (userVerify?.Password == null) return;
-        //if (userVerify != null)
-        //{
-        //    if (!SecurityHelper.VerifyPassword(login._password, userVerify.Password))
-        //    {
-        //        MessageBox.Show("Incorrect password.", "Login Failed",
-        //            MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //        return;
-        //    }
+        string username = txtUsername.Text.Trim();
+        string password = txtPassword.Text;
 
-        //    if (userVerify.Staff?.StaffPosition == "Administrator")
-        //    {
-        //        AdminForm adminForm = new(this.loadingFormReference, this.databaseConnectionFormReference, this);
-        //        adminForm.Show();
-        //    }
-        //    else
-        //    {
-        //        CashierForm cashierForm = new(this.loadingFormReference, this.databaseConnectionFormReference, this, userVerify);
-        //        cashierForm.Show();
-        //        AppSession.CurrentStaffID = userVerify.Staff?.StaffID;
-        //    }
-        //    txtUsername.Clear();
-        //    txtPassword.Clear();
-        //    this.Hide();
-        //    Helper.Instance.CloseConnection();
-        //}
-        //else
-        //{
-        //    txtPassword.Clear();
-        //    labelShowMessage.ForeColor = Color.Red;
-        //    labelShowMessage.Text = "The username or password you entered is incorrect. Please try again";
-        //}
+        if (username == "defaultadmin" && password == "admin123" && !AppSession.DefaultUsed)
+        {
+            AppSession.DefaultUsed = true;
+            File.WriteAllText("default-used.flag", "used");
 
+            MessageBox.Show("Default login used. Please create your real account now.", "Welcome!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            this.Hide();
+            AdminForm adminForm = new(this.loadingFormReference, this.databaseConnectionFormReference, this);
+            adminForm.Show();
+            return;
+        }
+        if (username == "defaultadmin")
+        {
+            MessageBox.Show("This default account has already been used and is now disabled.", "Login Blocked", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            return;
+        }
+        Login login = new()
+        {
+            _username = username,
+            _password = password
+        };
+
+        if (login._username != "" && login._password != "")
+            userVerify = UserGet.One(login);
+
+        if (userVerify?.Password == null)
+        {
+            MessageBox.Show("Account does not exist or has no password.");
+            return;
+        }
+
+        if (userVerify != null)
+        {
+            if (!SecurityHelper.VerifyPassword(login._password, userVerify.Password))
+            {
+                MessageBox.Show("Incorrect password.", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (userVerify.Staff?.StaffPosition == "Administrator")
+            {
+                AdminForm adminForm = new(this.loadingFormReference, this.databaseConnectionFormReference, this);
+                adminForm.Show();
+            }
+            else
+            {
+                CashierForm cashierForm = new(this.loadingFormReference, this.databaseConnectionFormReference, this, userVerify);
+                cashierForm.Show();
+                AppSession.CurrentStaffID = userVerify.Staff?.StaffID;
+            }
+
+            txtUsername.Clear();
+            txtPassword.Clear();
+            this.Hide();
+            Helper.Instance.CloseConnection();
+        }
+        else
+        {
+            txtPassword.Clear();
+            labelShowMessage.ForeColor = Color.Red;
+            labelShowMessage.Text = "The username or password you entered is incorrect. Please try again";
+        }
     }
+
 
 }
