@@ -123,6 +123,4 @@ public partial class LoginForm : Form
             labelShowMessage.Text = "The username or password you entered is incorrect. Please try again";
         }
     }
-
-
 }
