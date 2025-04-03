@@ -56,7 +56,7 @@ partial class DashboardForm
         // 
         // formsPlotTodayvsYTD
         // 
-        formsPlotTodayvsYTD.Location = new Point(614, 417);
+        formsPlotTodayvsYTD.Location = new Point(614, 359);
         formsPlotTodayvsYTD.Margin = new Padding(4, 3, 4, 3);
         formsPlotTodayvsYTD.Name = "formsPlotTodayvsYTD";
         formsPlotTodayvsYTD.Size = new Size(450, 286);
@@ -193,7 +193,7 @@ partial class DashboardForm
         // formsPlotWeeklySale
         // 
         formsPlotWeeklySale.AutoScroll = true;
-        formsPlotWeeklySale.Location = new Point(31, 417);
+        formsPlotWeeklySale.Location = new Point(31, 358);
         formsPlotWeeklySale.Margin = new Padding(4, 3, 4, 3);
         formsPlotWeeklySale.Name = "formsPlotWeeklySale";
         formsPlotWeeklySale.Size = new Size(450, 286);
@@ -203,7 +203,7 @@ partial class DashboardForm
         // 
         labelWeeklySale.AutoSize = true;
         labelWeeklySale.Font = new Font("Sitka Small Semibold", 14F, FontStyle.Bold);
-        labelWeeklySale.Location = new Point(198, 374);
+        labelWeeklySale.Location = new Point(198, 315);
         labelWeeklySale.Name = "labelWeeklySale";
         labelWeeklySale.Size = new Size(132, 28);
         labelWeeklySale.TabIndex = 7;
@@ -213,7 +213,7 @@ partial class DashboardForm
         // 
         labelTodayvsYTD.AutoSize = true;
         labelTodayvsYTD.Font = new Font("Sitka Small Semibold", 14F, FontStyle.Bold);
-        labelTodayvsYTD.Location = new Point(710, 374);
+        labelTodayvsYTD.Location = new Point(710, 315);
         labelTodayvsYTD.Name = "labelTodayvsYTD";
         labelTodayvsYTD.Size = new Size(287, 28);
         labelTodayvsYTD.TabIndex = 8;
@@ -223,7 +223,7 @@ partial class DashboardForm
         // 
         lblTodaySales.AutoSize = true;
         lblTodaySales.Font = new Font("Sitka Small", 12.7499981F, FontStyle.Bold, GraphicsUnit.Point, 0);
-        lblTodaySales.Location = new Point(729, 695);
+        lblTodaySales.Location = new Point(725, 657);
         lblTodaySales.Name = "lblTodaySales";
         lblTodaySales.Size = new Size(70, 24);
         lblTodaySales.TabIndex = 9;
@@ -233,7 +233,7 @@ partial class DashboardForm
         // 
         lblYesterdaySales.AutoSize = true;
         lblYesterdaySales.Font = new Font("Sitka Small", 12.7499981F, FontStyle.Bold, GraphicsUnit.Point, 0);
-        lblYesterdaySales.Location = new Point(729, 732);
+        lblYesterdaySales.Location = new Point(725, 694);
         lblYesterdaySales.Name = "lblYesterdaySales";
         lblYesterdaySales.Size = new Size(100, 24);
         lblYesterdaySales.TabIndex = 10;
@@ -243,7 +243,7 @@ partial class DashboardForm
         // 
         lblLastWeekSales.AutoSize = true;
         lblLastWeekSales.Font = new Font("Sitka Small", 12.7499981F, FontStyle.Bold, GraphicsUnit.Point, 0);
-        lblLastWeekSales.Location = new Point(99, 732);
+        lblLastWeekSales.Location = new Point(142, 694);
         lblLastWeekSales.Name = "lblLastWeekSales";
         lblLastWeekSales.Size = new Size(102, 24);
         lblLastWeekSales.TabIndex = 12;
@@ -253,7 +253,7 @@ partial class DashboardForm
         // 
         lblThisWeekSales.AutoSize = true;
         lblThisWeekSales.Font = new Font("Sitka Small", 12.7499981F, FontStyle.Bold, GraphicsUnit.Point, 0);
-        lblThisWeekSales.Location = new Point(99, 695);
+        lblThisWeekSales.Location = new Point(142, 657);
         lblThisWeekSales.Name = "lblThisWeekSales";
         lblThisWeekSales.Size = new Size(103, 24);
         lblThisWeekSales.TabIndex = 11;

@@ -87,7 +87,7 @@ public partial class StaffForm : Form , IObservers<Staffs>
                     Size = new Size(180, 30),
                     TextAlign = ContentAlignment.MiddleCenter,
                     AutoSize = false,
-                    Location = new Point(5, 210)
+                    Location = new Point(5, 215)
                 };
                 staffPosition.TextAlign = ContentAlignment.MiddleCenter;
 

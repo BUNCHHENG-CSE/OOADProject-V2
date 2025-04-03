@@ -22,7 +22,7 @@ namespace OOADPROV2.Forms
             btnProducts.Click += (object? sender, EventArgs e) => displayFacade.OpenForm<ProductsForm>();
             btnCategory.Click += (object? sender, EventArgs e) => displayFacade.OpenForm<CategoryForm>();
             btnUser.Click += (object? sender, EventArgs e) => displayFacade.OpenForm<UserForm>();
-            btnSaleReport.Click += (object? sender, EventArgs e) => displayFacade.OpenForm<SaleReportForm>();
+            btnSaleReport.Click += (object? sender, EventArgs e) => displayFacade.OpenForm<SaleReportForm>();            
             btnLogout.Click += (_, _) => { this.Hide(); loginFormReference.Show(); };
 
         }

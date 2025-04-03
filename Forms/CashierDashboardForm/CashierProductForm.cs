@@ -6,12 +6,13 @@ using System.Windows.Forms;
 using OOADPROV2.Models;
 using OOADPROV2.Utilities;
 using OOADPROV2.Utilities.Function;
+using OOADPROV2.Utilities.Observer;
 using OOADPROV2.Utilities.Strategies;
 using OOADPROV2.Utilities.Strategies.Search;
-
+using OOADPROV2.Utilities.Observer.Product;
 namespace OOADPROV2.Forms.CashierDashboardForm
 {
-    public partial class CashierProductForm : Form
+    public partial class CashierProductForm : Form ,IObservers<Products>
     {
         private SearchContext searchContext = new(new SearchByTextStrategy());
 
@@ -19,6 +20,8 @@ namespace OOADPROV2.Forms.CashierDashboardForm
         {
             InitializeComponent();
             txtSearch.TextChanged += txtSearch_TextChanged;
+            this.FormClosed += ProductForm_FormClosed;
+            ProductNotifier.Instance.Attach(this);
             LoadProducts("");
         }
 
@@ -27,7 +30,14 @@ namespace OOADPROV2.Forms.CashierDashboardForm
             string filter = txtSearch.Text.Trim();
             LoadProducts(filter);
         }
-
+        public void Update(Products product)
+        {
+            LoadProducts(txtSearch.Text.Trim());
+        }
+        private void ProductForm_FormClosed(object? sender, FormClosedEventArgs e)
+        {
+            ProductNotifier.Instance.Detach(this);
+        }
         private void LoadProducts(string filter)
         {
             var products = searchContext.ExecuteSearch(filter);
@@ -85,6 +95,7 @@ namespace OOADPROV2.Forms.CashierDashboardForm
                 productPanel.Controls.Add(priceLabel);
                 productPanel.Controls.Add(stockLabel);
                 flowLayoutPanelProducts.Controls.Add(productPanel);
+
             }
         }
     }
