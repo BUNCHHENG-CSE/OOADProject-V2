@@ -23,8 +23,12 @@ public partial class SaleReportForm : Form
         try
         {
             var (dailyIncome, monthlyIncome, yearlyIncome) = SaleReportGet.OverallIncome();
-
-            double[] values = [(double)dailyIncome, (double)monthlyIncome, (double)yearlyIncome];
+            if (dailyIncome == null || monthlyIncome == null || yearlyIncome == null)
+            {
+                MessageBox.Show("Some income data is missing.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            double[] values = { (double)dailyIncome!, (double)monthlyIncome!, (double)yearlyIncome! };
             string[] labels = ["Daily", "Monthly", "Yearly"];
             Color[] labelColors = [Color.White, Color.White, Color.White];
             Color[] sliceColors = [Color.Gold, Color.BlueViolet, Color.Cyan];

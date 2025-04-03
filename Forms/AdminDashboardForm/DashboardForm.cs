@@ -50,7 +50,7 @@ public partial class DashboardForm : Form
                 }
 
             }
-            if (!values.IsNullOrEmpty())
+            if (values != null && values.Length == 2)
             {
                 if (values[0] > 0 || values[1] > 0)
                 {
@@ -63,11 +63,19 @@ public partial class DashboardForm : Form
                     formsPlotTodayvsYTD.Plot.XAxis.Ticks(false);
                     formsPlotTodayvsYTD.Plot.YAxis.Ticks(false);
                     formsPlotTodayvsYTD.Refresh();
+
                     lblTodaySales.Text = $"Today = {values[1]:C2}";
                     lblYesterdaySales.Text = $"Yesterday = {values[0]:C2}";
                     lbIncometoday.Text = $"{values[1]:C2}";
                 }
+                else
+                {
+                    lblTodaySales.Text = "Today = $0.00";
+                    lblYesterdaySales.Text = "Yesterday = $0.00";
+                    lbIncometoday.Text = "$0.00";
+                }
             }
+
         }
         catch (Exception ex)
         {
@@ -141,8 +149,8 @@ public partial class DashboardForm : Form
         try
         {
             OnLoadingChanged(true);
-            double totalSales = DashboardGet.TotalSalesAllTime();
-            lblTotalSales.Text = $"{totalSales:C}";
+            double? totalSales = DashboardGet.TotalSalesAllTime();
+            lblTotalSales.Text = totalSales.HasValue ? $"{totalSales.Value:C}" : "$0.00";
         }
         catch (Exception ex)
         {
