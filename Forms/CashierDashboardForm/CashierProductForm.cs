@@ -65,12 +65,20 @@ namespace OOADPROV2.Forms.CashierDashboardForm
                         : null
                 };
 
+                Label categoryLabel = new Label
+                {
+                    Text = product.Category.CategoryName,
+                    Font = new Font("Arial", 9, FontStyle.Bold),
+                    Size = new Size(150, 25),
+                    Location = new Point(15, 200),
+                    TextAlign = ContentAlignment.MiddleCenter
+                };
                 Label nameLabel = new Label
                 {
                     Text = product.ProductName,
                     Font = new Font("Arial", 10, FontStyle.Bold),
                     Size = new Size(150, 25),
-                    Location = new Point(15, 215),
+                    Location = new Point(15, 225),
                     TextAlign = ContentAlignment.MiddleCenter
                 };
 
@@ -79,7 +87,7 @@ namespace OOADPROV2.Forms.CashierDashboardForm
                     Text = $"Price: {product.ProductsPrice:C}",
                     Font = new Font("Arial", 9),
                     Size = new Size(150, 20),
-                    Location = new Point(15, 235),
+                    Location = new Point(15, 245),
                     TextAlign = ContentAlignment.MiddleCenter
                 };
                 Label stockLabel = new Label
@@ -92,6 +100,7 @@ namespace OOADPROV2.Forms.CashierDashboardForm
                 };
                 productPanel.Controls.Add(pictureBox);
                 productPanel.Controls.Add(nameLabel);
+                productPanel.Controls.Add(categoryLabel);
                 productPanel.Controls.Add(priceLabel);
                 productPanel.Controls.Add(stockLabel);
                 flowLayoutPanelProducts.Controls.Add(productPanel);
