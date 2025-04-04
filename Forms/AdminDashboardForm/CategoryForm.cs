@@ -58,12 +58,12 @@ public partial class CategoryForm : Form, IObservers<Categories>
         bool isDeleted = CategoryCommands.DeleteCategory(id);
         if (isDeleted)
         {
-            MessageBox.Show("Staff deleted successfully!");
+            MessageBox.Show("Category deleted successfully!");
             LoadingDataCategory();
         }
         else
         {
-            MessageBox.Show("Failed to delete the staff member.");
+            MessageBox.Show("Failed to delete the category member.");
         }
     }
 

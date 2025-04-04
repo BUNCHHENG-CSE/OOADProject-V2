@@ -113,7 +113,7 @@ public partial class UserForm : Form,IObservers<Users>
         }
         catch (Exception ex)
         {
-            MessageBox.Show(ex.Message, "Retriving staff", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBox.Show(ex.Message, "Retriving User", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
     }
     private void ClickTimer_Tick(object? sender, EventArgs e)
