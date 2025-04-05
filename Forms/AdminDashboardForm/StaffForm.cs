@@ -111,7 +111,7 @@ public partial class StaffForm : Form , IObservers<Staffs>
                 productPanel.Controls.Add(staffPosition);
                 flowLayoutPanelStaff.Controls.Add(productPanel);
             }
-            Helper.Instance.CloseConnection();
+            Database.Instance.CloseConnection();
         }
         catch (Exception ex)
         {

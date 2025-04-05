@@ -14,7 +14,7 @@ public class UpdateCommand(Categories categories) : ICommand<bool>
 {
     public bool Execute()
     {
-        SqlCommand cmd = new SqlCommand("spUpdateCategory", Helper.Instance.OpenConnection());
+        SqlCommand cmd = new SqlCommand("spUpdateCategory", Database.Instance.OpenConnection());
         cmd.CommandType = CommandType.StoredProcedure;
         cmd.Parameters.AddWithValue("@id", categories.CategoryID);
         cmd.Parameters.AddWithValue("@cateN", categories.CategoryName);
@@ -31,7 +31,7 @@ public class UpdateCommand(Categories categories) : ICommand<bool>
         finally
         {
             cmd.Dispose();
-            Helper.Instance.CloseConnection();
+            Database.Instance.CloseConnection();
         }
     }
 }

@@ -15,7 +15,7 @@ public class AddCommand(Categories categories) : ICommand<bool>
 
     public bool Execute()
     {
-        SqlCommand cmd = new("spInsertCategory", Helper.Instance.OpenConnection())
+        SqlCommand cmd = new("spInsertCategory", Database.Instance.OpenConnection())
         {
             CommandType = CommandType.StoredProcedure
         };
@@ -36,7 +36,7 @@ public class AddCommand(Categories categories) : ICommand<bool>
         {
 
             cmd.Dispose();
-            Helper.Instance.CloseConnection();
+            Database.Instance.CloseConnection();
         }
     }
 }

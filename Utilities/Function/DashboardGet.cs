@@ -12,7 +12,7 @@ public static class DashboardGet
 {
     public static double TotalSalesAllTime()
     {
-        SqlCommand cmd = new("spGetTotalSalesAllTime", Helper.Instance.OpenConnection())
+        SqlCommand cmd = new("spGetTotalSalesAllTime", Database.Instance.OpenConnection())
         {
             CommandType = CommandType.StoredProcedure
         };
@@ -39,7 +39,7 @@ public static class DashboardGet
 
     public static double OrderQuantityToday()
     {
-        SqlCommand cmd = new("spGetOrderQuantityToday", Helper.Instance.OpenConnection())
+        SqlCommand cmd = new("spGetOrderQuantityToday", Database.Instance.OpenConnection())
         {
             CommandType = CommandType.StoredProcedure
         };
@@ -64,7 +64,7 @@ public static class DashboardGet
     }
     public static int TotalUsers()
     {
-        SqlCommand cmd = new("spGetTotalUsers", Helper.Instance.OpenConnection())
+        SqlCommand cmd = new("spGetTotalUsers", Database.Instance.OpenConnection())
         {
             CommandType = CommandType.StoredProcedure
         };

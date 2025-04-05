@@ -17,7 +17,7 @@ namespace OOADPROV2.Utilities.Commands.Order.Action
 
         public int Execute()
         {
-            SqlCommand cmd = new SqlCommand("spInsertOrderReturnId", Helper.Instance.OpenConnection())
+            SqlCommand cmd = new SqlCommand("spInsertOrderReturnId", Database.Instance.OpenConnection())
             {
                 CommandType = CommandType.StoredProcedure
             };
@@ -38,7 +38,7 @@ namespace OOADPROV2.Utilities.Commands.Order.Action
             finally
             {
                 cmd.Dispose();
-                Helper.Instance.CloseConnection();
+                Database.Instance.CloseConnection();
             }
         }
     }

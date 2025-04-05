@@ -117,7 +117,7 @@ public partial class ProductsForm : Form, IObservers<Products>
                 productPanel.Controls.Add(productStockLabel);
                 flowLayoutPanelProducts.Controls.Add(productPanel);
             }
-            Helper.Instance.CloseConnection();
+            Database.Instance.CloseConnection();
         }
         catch (Exception ex)
         {

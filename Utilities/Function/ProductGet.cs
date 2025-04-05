@@ -13,7 +13,7 @@ public class ProductGet
 {
     public static IEnumerable<Products> All()
     {
-        SqlCommand cmd = new("spReadAllProducts", Helper.Instance.OpenConnection());
+        SqlCommand cmd = new("spReadAllProducts", Database.Instance.OpenConnection());
         SqlDataReader? reader = null;
         try
         {
@@ -38,6 +38,6 @@ public class ProductGet
             }
         }
         reader?.Close();
-        Helper.Instance.CloseConnection();
+        Database.Instance.CloseConnection();
     }
 }

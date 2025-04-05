@@ -14,7 +14,7 @@ public class UserGet
 {
     public static IEnumerable<Users> All()
     {
-        SqlCommand cmd = new("spReadAllUser", Helper.Instance.OpenConnection());
+        SqlCommand cmd = new("spReadAllUser", Database.Instance.OpenConnection());
         SqlDataReader? reader = null;
         try
         {
@@ -38,11 +38,11 @@ public class UserGet
             }
         }
         reader?.Close();
-        Helper.Instance.CloseConnection();
+        Database.Instance.CloseConnection();
     }
     public static Users One(Login login)
     {
-        SqlCommand cmd = new("spReadOneUser", Helper.Instance.OpenConnection())
+        SqlCommand cmd = new("spReadOneUser", Database.Instance.OpenConnection())
         {
             CommandType = CommandType.StoredProcedure
         };
@@ -70,7 +70,7 @@ public class UserGet
             }
         }
         reader?.Close();
-        Helper.Instance.CloseConnection();
+        Database.Instance.CloseConnection();
         return result;
     }
 }

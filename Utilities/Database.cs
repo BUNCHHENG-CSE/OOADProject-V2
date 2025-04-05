@@ -8,27 +8,27 @@ using System.Threading.Tasks;
 
 namespace OOADPROV2.Utilities;
 
-sealed class Helper
+sealed class Database
 {
 
-    private static Helper? _instance;
+    private static Database? _instance;
     private static readonly object _lock = new();
 
     public IConfiguration Configuration { get; private set; }
     private SqlConnection? _connection;
 
-    private Helper()
+    private Database()
     {
         LoadConfiguration("appSettings.json");
     }
 
-    public static Helper Instance
+    public static Database Instance
     {
         get
         {
             lock (_lock)
             {
-                _instance ??= new Helper();
+                _instance ??= new Database();
                 return _instance;
             }
         }

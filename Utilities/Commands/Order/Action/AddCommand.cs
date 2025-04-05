@@ -14,7 +14,7 @@ public class AddCommand(OrderDetails orderDetails) : ICommand<bool>
 {
     public bool Execute()
     {
-        SqlCommand cmd = new("spInsertOrderDetail", Helper.Instance.OpenConnection())
+        SqlCommand cmd = new("spInsertOrderDetail", Database.Instance.OpenConnection())
         {
             CommandType = CommandType.StoredProcedure
         };
@@ -35,7 +35,7 @@ public class AddCommand(OrderDetails orderDetails) : ICommand<bool>
         finally
         {
             cmd.Dispose();
-            Helper.Instance.CloseConnection();
+            Database.Instance.CloseConnection();
         }
     }
 }

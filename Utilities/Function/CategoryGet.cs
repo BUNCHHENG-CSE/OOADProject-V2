@@ -13,7 +13,7 @@ public class CategoryGet
 {
     public static IEnumerable<Categories> All()
     {
-        SqlCommand cmd = new("spReadAllCategory", Helper.Instance.OpenConnection());
+        SqlCommand cmd = new("spReadAllCategory", Database.Instance.OpenConnection());
         SqlDataReader? reader = null;
         try
         {
@@ -37,11 +37,11 @@ public class CategoryGet
             }
         }
         reader?.Close();
-        Helper.Instance.CloseConnection();
+        Database.Instance.CloseConnection();
     }
     public static IEnumerable<Categories> ID()
     {
-        SqlCommand cmd = new("spReadAllCategoryID", Helper.Instance.OpenConnection());
+        SqlCommand cmd = new("spReadAllCategoryID", Database.Instance.OpenConnection());
         SqlDataReader? reader = null;
         try
         {
@@ -65,11 +65,11 @@ public class CategoryGet
             }
         }
         reader?.Close();
-        Helper.Instance.CloseConnection();
+        Database.Instance.CloseConnection();
     }
     public static Categories One(int categoryID)
     {
-        SqlCommand cmd = new("spReadOneCategory", Helper.Instance.OpenConnection())
+        SqlCommand cmd = new("spReadOneCategory", Database.Instance.OpenConnection())
         {
             CommandType = CommandType.StoredProcedure
         };
@@ -97,7 +97,7 @@ public class CategoryGet
             }
         }
         reader?.Close();
-        Helper.Instance.CloseConnection();
+        Database.Instance.CloseConnection();
         return result;
     }
 }

@@ -53,7 +53,7 @@ public static class EntityFactory
     }
     public static string CreateConnectionString(string authType, string server, string database, string user = "", string password = "")
     {
-        var helper = Helper.Instance;
+        var helper = Database.Instance;
         string connectionTemplate = helper.GetDBConnectionSetting(authType);
 
         return authType switch

@@ -109,7 +109,7 @@ public partial class UserForm : Form,IObservers<Users>
                 userPanel.Controls.Add(userPosition);
                 flowLayoutPanelUser.Controls.Add(userPanel);
             }
-            Helper.Instance.CloseConnection();
+            Database.Instance.CloseConnection();
         }
         catch (Exception ex)
         {

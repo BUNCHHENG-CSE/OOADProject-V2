@@ -14,7 +14,7 @@ public class AddCommand(Staffs staff) : ICommand<bool>
 {
     public bool Execute()
     {
-        SqlCommand cmd = new("spInsertStaff", Helper.Instance.OpenConnection())
+        SqlCommand cmd = new("spInsertStaff", Database.Instance.OpenConnection())
         {
             CommandType = CommandType.StoredProcedure
         };
@@ -39,7 +39,7 @@ public class AddCommand(Staffs staff) : ICommand<bool>
         finally
         {
             cmd.Dispose();
-            Helper.Instance.CloseConnection();
+            Database.Instance.CloseConnection();
         }
     }
 }

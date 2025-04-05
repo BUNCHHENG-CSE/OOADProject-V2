@@ -15,7 +15,7 @@ class UpdateCommand(Products product) : ICommand<bool>
 {
     public bool Execute()
     {
-        SqlCommand cmd = new("spUpdateProduct", Helper.Instance.OpenConnection())
+        SqlCommand cmd = new("spUpdateProduct", Database.Instance.OpenConnection())
         {
             CommandType = CommandType.StoredProcedure
         };
@@ -38,7 +38,7 @@ class UpdateCommand(Products product) : ICommand<bool>
         finally
         {
             cmd.Dispose();
-            Helper.Instance.CloseConnection();
+            Database.Instance.CloseConnection();
         }
     }
 }

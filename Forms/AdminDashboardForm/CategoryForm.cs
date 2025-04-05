@@ -89,7 +89,7 @@ public partial class CategoryForm : Form, IObservers<Categories>
                 
                 dgvCategory.Rows.Add(category.CategoryID, category.CategoryName, category.CategoryDescription);
             }
-            Helper.Instance.CloseConnection();
+            Database.Instance.CloseConnection();
         }
         catch (Exception ex)
         {

@@ -13,7 +13,7 @@ public class DeleteCommand(int userID) : ICommand<bool>
 {
     public bool Execute()
     {
-        SqlCommand cmd = new("spDeleteUser", Helper.Instance.OpenConnection())
+        SqlCommand cmd = new("spDeleteUser", Database.Instance.OpenConnection())
         {
             CommandType = CommandType.StoredProcedure
         };
@@ -31,7 +31,7 @@ public class DeleteCommand(int userID) : ICommand<bool>
         finally
         {
             cmd.Dispose();
-            Helper.Instance.CloseConnection();
+            Database.Instance.CloseConnection();
         }
     }
 }

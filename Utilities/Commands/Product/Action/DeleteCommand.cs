@@ -9,7 +9,7 @@ public class DeleteCommand(int productID) : ICommand<bool>
 
     public bool Execute()
     {
-        SqlCommand cmd = new SqlCommand("spDeleteProduct", Helper.Instance.OpenConnection());
+        SqlCommand cmd = new SqlCommand("spDeleteProduct", Database.Instance.OpenConnection());
         cmd.CommandType = CommandType.StoredProcedure;
         cmd.Parameters.AddWithValue("@id", _productID);
 
@@ -25,7 +25,7 @@ public class DeleteCommand(int productID) : ICommand<bool>
         finally
         {
             cmd.Dispose();
-            Helper.Instance.CloseConnection();
+            Database.Instance.CloseConnection();
         }
     }
 

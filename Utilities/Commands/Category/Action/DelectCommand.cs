@@ -13,7 +13,7 @@ public class DelectCommand(int categoryID) : ICommand<bool>
 {
     public bool Execute()
     {
-        SqlCommand cmd = new("spDeleteCategory", Helper.Instance.OpenConnection())
+        SqlCommand cmd = new("spDeleteCategory", Database.Instance.OpenConnection())
         {
             CommandType = CommandType.StoredProcedure
         };
@@ -31,7 +31,7 @@ public class DelectCommand(int categoryID) : ICommand<bool>
         finally
         {
             cmd.Dispose();
-            Helper.Instance.CloseConnection();
+            Database.Instance.CloseConnection();
         }
     }
 }

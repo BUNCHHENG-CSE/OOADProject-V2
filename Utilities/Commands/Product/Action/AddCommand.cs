@@ -9,7 +9,7 @@ public class AddCommand(Products product) : ICommand<bool>
 
     public bool Execute()
     {
-        SqlCommand cmd = new("spInsertProduct", Helper.Instance.OpenConnection())
+        SqlCommand cmd = new("spInsertProduct", Database.Instance.OpenConnection())
         {
             CommandType = CommandType.StoredProcedure
         };
@@ -32,7 +32,7 @@ public class AddCommand(Products product) : ICommand<bool>
         finally
         {
             cmd.Dispose();
-            Helper.Instance.CloseConnection();
+            Database.Instance.CloseConnection();
         }
     }
 }

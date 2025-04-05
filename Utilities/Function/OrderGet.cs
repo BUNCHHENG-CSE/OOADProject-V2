@@ -13,7 +13,7 @@ public class OrderGet
 {
     public static IEnumerable<Orders> All()
     {
-        SqlCommand cmd = new("spReadAllOrder", Helper.Instance.OpenConnection());
+        SqlCommand cmd = new("spReadAllOrder", Database.Instance.OpenConnection());
         SqlDataReader? reader = null;
         try
         {
@@ -37,6 +37,6 @@ public class OrderGet
             }
         }
         reader?.Close();
-        Helper.Instance.CloseConnection();
+        Database.Instance.CloseConnection();
     }
 }

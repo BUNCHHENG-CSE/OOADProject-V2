@@ -13,7 +13,7 @@ public class StaffGet
 {
     public static IEnumerable<Staffs> All()
     {
-        SqlCommand cmd = new("spReadAllStaff", Helper.Instance.OpenConnection());
+        SqlCommand cmd = new("spReadAllStaff", Database.Instance.OpenConnection());
         SqlDataReader? reader = null;
         try
         {
@@ -37,11 +37,11 @@ public class StaffGet
             }
         }
         reader?.Close();
-        Helper.Instance.CloseConnection();
+        Database.Instance.CloseConnection();
     }
     public static IEnumerable<Staffs> ID()
     {
-        SqlCommand cmd = new("spReadAllStaffID", Helper.Instance.OpenConnection());
+        SqlCommand cmd = new("spReadAllStaffID", Database.Instance.OpenConnection());
         SqlDataReader? reader = null;
         try
         {
@@ -65,11 +65,11 @@ public class StaffGet
             }
         }
         reader?.Close();
-        Helper.Instance.CloseConnection();
+        Database.Instance.CloseConnection();
     }
     public static Staffs One(int staffID)
     {
-        SqlCommand cmd = new("spReadOneStaffNameandPositionPhoto", Helper.Instance.OpenConnection())
+        SqlCommand cmd = new("spReadOneStaffNameandPositionPhoto", Database.Instance.OpenConnection())
         {
             CommandType = CommandType.StoredProcedure
         };
@@ -97,7 +97,7 @@ public class StaffGet
             }
         }
         reader?.Close();
-        Helper.Instance.CloseConnection();
+        Database.Instance.CloseConnection();
         return result;
     }
 }

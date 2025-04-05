@@ -14,7 +14,7 @@ public partial class LoginForm : Form
     public LoginForm(LoadingForm loadingForm, DBConnectionForm databaseConnectionForm)
     {
         InitializeComponent();
-        var connection = Helper.Instance.OpenConnection();
+        var connection = Database.Instance.OpenConnection();
         btnLogin.Click += DoClickLogin;
         this.loadingFormReference = loadingForm;
         this.databaseConnectionFormReference = databaseConnectionForm;
@@ -27,8 +27,8 @@ public partial class LoginForm : Form
     {
         File.Delete($"{Environment.CurrentDirectory}/appSettings.json");
         databaseConnectionFormReference.Show();
-        Helper.Instance.CloseConnection();
-        Helper.Instance.LoadConfiguration("DBConnectionFormat.json");
+        Database.Instance.CloseConnection();
+        Database.Instance.LoadConfiguration("DBConnectionFormat.json");
         this.Hide();
     }
     private void LoginForm_FormClosed(object? sender, FormClosedEventArgs e)
@@ -114,7 +114,7 @@ public partial class LoginForm : Form
             txtUsername.Clear();
             txtPassword.Clear();
             this.Hide();
-            Helper.Instance.CloseConnection();
+            Database.Instance.CloseConnection();
         }
         else
         {

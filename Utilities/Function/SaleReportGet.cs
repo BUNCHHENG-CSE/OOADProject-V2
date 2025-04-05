@@ -6,7 +6,7 @@ public static class SaleReportGet
 {
     public static (decimal DailySales, decimal MonthlySales, decimal YearlySales) OverallIncome()
     {
-        SqlCommand cmd = new("spGetOverallIncome", Helper.Instance.OpenConnection())
+        SqlCommand cmd = new("spGetOverallIncome", Database.Instance.OpenConnection())
         {
             CommandType = CommandType.StoredProcedure
         };
@@ -50,7 +50,7 @@ public static class SaleReportGet
     {
         List<(DateTime, double)> dailySales = [];
 
-        SqlCommand cmd = new("spGetDailySales", Helper.Instance.OpenConnection())
+        SqlCommand cmd = new("spGetDailySales", Database.Instance.OpenConnection())
         {
             CommandType = CommandType.StoredProcedure
         };

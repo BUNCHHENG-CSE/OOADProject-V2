@@ -34,7 +34,7 @@ public partial class DashboardForm : Form
         try
         {
             OnLoadingChanged(true);
-            using (var command = new SqlCommand("spGetTodayVsYesterdaySales", Helper.Instance.OpenConnection()))
+            using (var command = new SqlCommand("spGetTodayVsYesterdaySales", Database.Instance.OpenConnection()))
             {
                 command.CommandType = CommandType.StoredProcedure;
                 using var reader = command.ExecuteReader();
@@ -100,7 +100,7 @@ public partial class DashboardForm : Form
         try
         {
             OnLoadingChanged(true);
-            using var command = new SqlCommand("spGetWeeklySales", Helper.Instance.OpenConnection());
+            using var command = new SqlCommand("spGetWeeklySales", Database.Instance.OpenConnection());
             command.CommandType = CommandType.StoredProcedure;
 
             using var reader = command.ExecuteReader();

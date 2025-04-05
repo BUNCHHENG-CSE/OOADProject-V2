@@ -13,7 +13,7 @@ public class AddNewCommand : ICommand<int>
 {
     public int Execute()
     {
-        SqlCommand cmd = new("spCreateNewCustomer", Helper.Instance.OpenConnection())
+        SqlCommand cmd = new("spCreateNewCustomer", Database.Instance.OpenConnection())
         {
             CommandType = CommandType.StoredProcedure
         };
@@ -30,7 +30,7 @@ public class AddNewCommand : ICommand<int>
         finally
         {
             cmd.Dispose();
-            Helper.Instance.CloseConnection();
+            Database.Instance.CloseConnection();
         }
     }
 }

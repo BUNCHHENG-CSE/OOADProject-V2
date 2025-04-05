@@ -12,7 +12,7 @@ public class DBConnectionFacade
             var connectionString = EntityFactory.CreateConnectionString(authType, server, database, user, password);
 
             SaveConnectionString(connectionString);
-            Helper.Instance.OpenConnection();
+            Utilities.Database.Instance.OpenConnection();
             return true;
         }
         catch (Exception ex)
@@ -26,6 +26,6 @@ public class DBConnectionFacade
     {
         var connectionData = JsonConvert.SerializeObject(new { DBConnectionString = connectionString });
         File.WriteAllText($"{Environment.CurrentDirectory}/appSettings.json", connectionData);
-        Helper.Instance.LoadConfiguration("appSettings.json");
+        Utilities.Database.Instance.LoadConfiguration("appSettings.json");
     }
 }

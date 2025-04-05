@@ -9,7 +9,7 @@ public class SearchByTextStrategy : ISearchStrategy
     public List<Products> Search(string searchText)
     {
         var result = new List<Products>();
-        using (var conn = Helper.Instance.OpenConnection())
+        using (var conn = Database.Instance.OpenConnection())
         {
             SqlCommand cmd = new SqlCommand("spSearchProducts", conn)
             {
