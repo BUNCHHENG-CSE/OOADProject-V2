@@ -50,7 +50,6 @@ sealed class Database
             _connection = new SqlConnection(connStr);
             _connection.Open();
         }
-
         return _connection;
     }
 
@@ -59,7 +58,6 @@ sealed class Database
         if (_connection != null && _connection.State == System.Data.ConnectionState.Open)
             _connection.Close();
     }
-
     public string GetDBConnectionSetting(string authType)
         => Configuration[$"DBConnectionString{authType}"] ?? "";
 }
